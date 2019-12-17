@@ -22,8 +22,9 @@ Voor de data heb ik de database gekregen van het NIBUD. De data moet ik zelf gaa
 Op basis van de input van de gebruiker wordt er vergeleken wat zijn budget bij alles is t.o.v. de resultaten uit de database. Voor deze data heb ik waarschijnlijk een local storage nodig.
 
 # Checklist
-- [ ] Alles opstellen
+- [x] Omgeving opzetten
 - [ ] Data ophalen
 - [ ] Data categoriseren
-- [ ]
-- [ ]
+- [ ] HTML  gereed maken
+- [ ] Laurens zijn voorbeeld tweaken
+- [ ] D3 verwerken
