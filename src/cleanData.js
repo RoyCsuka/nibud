@@ -1,37 +1,25 @@
-// Voor local doeleinde
-import config from './nibud-full-dataset.json'
+// Import de locale json files
+import main from './nibud-maincat.json'
+import sub from './nibud-subcat.json'
 
 // local aanroepen
-const jsonResults = config.results.bindings
-
-console.log(jsonResults)
+const mainArr = main;
+const subArr = sub;
 
 // export functie zorgt voor database resultaten
-export async function cleanedArr(endpoint, query){
-  //Load the data and return a promise which resolves with said data
-	let data = await loadData(endpoint, query)
-    console.log("raw data: ", data)
+export async function cleanedArr(mainArr, subArr) {
 
-    data = data.filter(entry => filterData(entry, "continentLabel"))
-
-    cleanAllData(data)
+    let allData =  mainArr + subArr;
+    console.log(allData)
 
     return data
 }
 
 
-// Haal data op en zet om in JSON met D3
-function loadData(url, query) {
-  return d3.json(url +"?query="+ encodeURIComponent(query) + "&format=json")
-    .then(data => data.results.bindings)
-}
-
-
 // Dezen functie cleaned alle data
 function cleanAllData() {
-    let addContinentLatAndLong = addLatLongContinent(jsonResults);
-    let convertYears = convertToYear(jsonResults);
-    return addContinentLatAndLong && convertYears
+    addLatLongContinent(jsonResults);
+
 }
 
 
@@ -45,13 +33,7 @@ function calculateAndGroup(source){
     .rollup(d => {
         return {
             amountOfCountryItems: Number(d3.sum(d.map(itemsPerCountry => itemsPerCountry.choCount))),
-            contLat: d[0].contLat,
-            contLong: d[0].contLong,
-            country: d[0].landLabel,
-            countryLat: d[0].countryLat,
-            countryLong: d[0].countryLong,
-            continent: d[0].continentLabel,
-            date: d[0].date
+            contLat: d[0].contLat
         }
     })
         .entries(source);

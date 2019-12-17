@@ -2,48 +2,7 @@ import { select , geoNaturalEarth1} from 'd3'
 import { feature } from 'topojson'
 import { cleanedArr } from './cleanData.js';
 
-// D3 data transfomeren
-// Eigen query aangepast
-const query = `PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX gn: <http://www.geonames.org/ontology#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-SELECT ?landLabel ?countryLat ?countryLong ?continentLabel ?contLat ?contLong ?date (COUNT(?cho) AS ?choCount) WHERE {
-   ?cho dct:created ?date;
-        dct:spatial ?plaats .
-
-  FILTER (!REGEX(?date, "[NI]")) .
-
-   ?plaats skos:exactMatch/gn:parentCountry ?land .
-   ?land wgs84:lat ?countryLat .
-   ?land wgs84:long ?countryLong .
-   ?land gn:name ?landLabel .
-
-  <https://hdl.handle.net/20.500.11840/termmaster2> skos:narrower ?continent .
-  ?continent skos:prefLabel ?continentLabel .
-  ?continent skos:narrower* ?place .
-  ?cho dct:spatial ?place .
-
-
-} GROUP BY ?date ?landLabel ?countryLat ?countryLong ?continentLabel ?contLat ?contLong
-ORDER BY DESC(?choCount)`
-
-// Mijn end-point
-const endpoint = "https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-14/sparql"
 const svg = select('svg')
-
-const mapSettings = {
-    projection: geoNaturalEarth1().rotate([-11,0]),
-    circleDelay: 11
-}
 
 // Global data variable
 let data
@@ -56,12 +15,7 @@ makeVisualization()
 
 // Our main function which runs other function to make a visualization
 async function makeVisualization(){
-    //Use the cleanedArr module to get and process our data
-    data = await cleanedArr(endpoint, query)
-
-    setUpCenturys(data)
-
-    // klik op het eerste element en zorg ervoor dat de onchange wordt getriggerd
+    let data = await cleanedArr(mainArr, subArr)
 
 }
 

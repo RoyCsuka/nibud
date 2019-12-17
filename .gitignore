@@ -5,6 +5,7 @@ package.json
 rollup.config.js
 nibud-full-dataset.json
 nibud-dataset-subposten.json
+nibud-dataset.csv
 
 # local env files
 .env.local

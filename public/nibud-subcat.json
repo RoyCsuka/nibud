@@ -1,0 +1,1616 @@
+[
+  {
+    "Post": "huur/hypotheek",
+    "Subpost": "Hypotheek",
+    "Detail": "Het Nibud specificeert voor deze post geen gemiddelde bedragen",
+    "Bedrag": ""
+  },
+  {
+    "Post": "huur/hypotheek",
+    "Subpost": "Huur",
+    "Detail": "Het Nibud specificeert voor deze post geen gemiddelde bedragen",
+    "Bedrag": ""
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "Vrijstaande woning",
+    "Bedrag": 179
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "2 onder 1 kap",
+    "Bedrag": 139
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "Hoekwoning",
+    "Bedrag": 125
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "Tussenwoning",
+    "Bedrag": 110
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "Flat/appartement",
+    "Bedrag": 87
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Gas",
+    "Detail": "Totaal gemiddeld",
+    "Bedrag": 118
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Bad- en douchekosten",
+    "Detail": "Gasboiler bad",
+    "Bedrag": "0,64"
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Bad- en douchekosten",
+    "Detail": "Elektrische boiler bad",
+    "Bedrag": "0,96"
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Bad- en douchekosten",
+    "Detail": "Gasboiler douche",
+    "Bedrag": "0,31"
+  },
+  {
+    "Post": "gas",
+    "Subpost": "Bad- en douchekosten",
+    "Detail": "Elektrische boiler douche",
+    "Bedrag": "0,42"
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "1 persoon",
+    "Bedrag": 36
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "2 personen",
+    "Bedrag": 57
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "3 personen",
+    "Bedrag": 68
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "4 personen",
+    "Bedrag": 78
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "5 personen",
+    "Bedrag": 82
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "6 personen",
+    "Bedrag": 83
+  },
+  {
+    "Post": "elektriciteit",
+    "Subpost": "Elektriciteit",
+    "Detail": "Totaal gemiddeld",
+    "Bedrag": 56
+  },
+  {
+    "Post": "water",
+    "Subpost": "Water",
+    "Detail": "1 persoon",
+    "Bedrag": "10,24"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Water",
+    "Detail": "2 personen",
+    "Bedrag": "14,68"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Water",
+    "Detail": "3 personen",
+    "Bedrag": "18,63"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Water",
+    "Detail": "4 personen",
+    "Bedrag": "21,24"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Water",
+    "Detail": "5 personen",
+    "Bedrag": "23,18"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "90 graden",
+    "Bedrag": "1,11"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "elektriciteit (90 graden)",
+    "Bedrag": "0,41"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "water (90 graden)",
+    "Bedrag": "0,08"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "waspoeder (90 graden)",
+    "Bedrag": "0,14"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "afschrijving/onderhoud (90 graden)",
+    "Bedrag": "0,48"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "60 graden",
+    "Bedrag": "0,91"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "elektriciteit (60 graden)",
+    "Bedrag": "0,23"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "water (60 graden)",
+    "Bedrag": "0,07"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "waspoeder (60 graden)",
+    "Bedrag": "0,14"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "afschrijving/onderhoud (60 graden)",
+    "Bedrag": "0,48"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "40 graden",
+    "Bedrag": "0,81"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "elektriciteit (40 graden)",
+    "Bedrag": "0,13"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "water (40 graden)",
+    "Bedrag": "0,07"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "waspoeder (40 graden)",
+    "Bedrag": "0,14"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "afschrijving/onderhoud (40 graden)",
+    "Bedrag": "0,48"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "30 graden",
+    "Bedrag": "0,76"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "elektriciteit (30 graden)",
+    "Bedrag": "0,08"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "water (30 graden)",
+    "Bedrag": "0,07"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "waspoeder (30 graden)",
+    "Bedrag": "0,14"
+  },
+  {
+    "Post": "water",
+    "Subpost": "Waskosten",
+    "Detail": "afschrijving/onderhoud (30 graden)",
+    "Bedrag": "0,48"
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Onroerend zaakbelasting",
+    "Detail": "0,1180% van de WOZ-waarde",
+    "Bedrag": ""
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Reinigingsheffing",
+    "Detail": "Eenpersoonshuishouden",
+    "Bedrag": 205
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Reinigingsheffing",
+    "Detail": "Meerpersoonshuishouden",
+    "Bedrag": 253
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Rioolheffing",
+    "Detail": "Eenpersoonshuishouden",
+    "Bedrag": 176
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Rioolheffing",
+    "Detail": "Meerpersoonshuishouden",
+    "Bedrag": 194
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Zuiveringsheffing",
+    "Detail": "Eenpersoonshuishouden",
+    "Bedrag": 57
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Zuiveringsheffing",
+    "Detail": "Meerpersoonshuishouden",
+    "Bedrag": 170
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Ingezetenenheffing",
+    "Detail": "Per woning",
+    "Bedrag": 85
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Heffing gebouwd",
+    "Detail": "0,0413% van de WOZ-waarde",
+    "Bedrag": ""
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Hondenbelasting",
+    "Detail": "1e hond maximaal",
+    "Bedrag": "122,00"
+  },
+  {
+    "Post": "lokale lasten",
+    "Subpost": "Hondenbelasting",
+    "Detail": "2e hond maximaal",
+    "Bedrag": "188,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Vaste telefoon",
+    "Detail": "Per kind tot 18 jaar",
+    "Bedrag": "4,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Vaste telefoon",
+    "Detail": "Per persoon vanaf 18 jaar tot pensioengerechtigde leeftijd",
+    "Bedrag": "11,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Vaste telefoon",
+    "Detail": "Per persoon vanaf pensioengerechtigde leeftijd",
+    "Bedrag": "4,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Vaste telefoon",
+    "Detail": "Per huishouden",
+    "Bedrag": "11,50"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Televisie",
+    "Detail": "Basispakket (bedrag 2018)",
+    "Bedrag": "19,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Internet",
+    "Detail": "Basisabonnement (40 MB) inclusief televisie",
+    "Bedrag": "44,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Internet",
+    "Detail": "Uitgebreider abonnement (100MB) inclusief televisie",
+    "Bedrag": "56,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Mobiele telefoon",
+    "Detail": "Sim only 150 min zonder internetbundel",
+    "Bedrag": "11,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Mobiele telefoon",
+    "Detail": "Sim only 150 min met 1 GB databundel",
+    "Bedrag": "18,00"
+  },
+  {
+    "Post": "telefoon, televisie, internet",
+    "Subpost": "Mobiele telefoon",
+    "Detail": "Sim only onbeperkt bellen met 1 GB databundel (bedrag 2018)",
+    "Bedrag": "21,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Zorg",
+    "Detail": "Basivserzekering natura",
+    "Bedrag": "124,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Zorg",
+    "Detail": "Basivserzekering restitutie",
+    "Bedrag": "130,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aanvullend zorg",
+    "Detail": "Premie basis aanvullende zorgverzekering",
+    "Bedrag": "8,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aanvullend zorg",
+    "Detail": "Premie uitgebreide aanvullende zorgverzekering",
+    "Bedrag": "36,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aanvullend zorg",
+    "Detail": "Goedkope tandartsverzekering",
+    "Bedrag": "15,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aanvullend zorg",
+    "Detail": "Uitgebreide tandartsverzekering",
+    "Bedrag": "39,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand gempremie aans",
+    "Bedrag": "3,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand met kinderen gempremie aans",
+    "Bedrag": "6,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar zonder kinderen gempremie aans",
+    "Bedrag": "5,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar met kinderen gempremie aans",
+    "Bedrag": "6,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand lagprem aans",
+    "Bedrag": "2,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand met kinderen lagprem aans",
+    "Bedrag": "3,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar zonder kinderen lagprem aans",
+    "Bedrag": "3,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar met kinderen lagprem aans",
+    "Bedrag": "3,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand hogprem aans",
+    "Bedrag": "5,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "alleenstaand met kinderen hogprem aans",
+    "Bedrag": "9,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar zonder kinderen hogprem aans",
+    "Bedrag": "7,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Aansprakelijkheid",
+    "Detail": "paar met kinderen hogprem aans",
+    "Bedrag": "9,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement gempremie goedkopere regio opstal",
+    "Bedrag": "20,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning gempremie goedkoop opstal",
+    "Bedrag": "21,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning gemprem goedkoop opstal",
+    "Bedrag": "25,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande woning gemprem goedkoop opstal",
+    "Bedrag": "34,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement gempremie uur opstal",
+    "Bedrag": "20,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning gempremie duur opstal",
+    "Bedrag": "22,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning gempremie duur opstal",
+    "Bedrag": "28,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande woning gempremie duur opstal",
+    "Bedrag": "43,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement lagprem goedkoop opstal",
+    "Bedrag": "11,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning lagprem goedkoop opstal",
+    "Bedrag": "12,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning lagprem goedkoop opstal",
+    "Bedrag": "16,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande woning lagprem goedkoop opstal",
+    "Bedrag": "21,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement lagpremduure regio opstal",
+    "Bedrag": "13,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning lagpremduur regio opstal",
+    "Bedrag": "13,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning lagpremduur regio opstal",
+    "Bedrag": "13,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande woning lagpremduur regio opstal",
+    "Bedrag": "13,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement hoogprem goedkoop opstal",
+    "Bedrag": "27,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning hoogprem goedkoop opstal",
+    "Bedrag": "35,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning hoogprem goedkoop opstal",
+    "Bedrag": "44,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande woning hoogprem goedkoop opstal",
+    "Bedrag": "51,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "appartement hoogprem duur opstal",
+    "Bedrag": "30,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "tussenwoning hoogprem duur opstal",
+    "Bedrag": "38,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "2 onder 1 kap/hoekwoning hoogprem duur opstal",
+    "Bedrag": "51,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Opstal",
+    "Detail": "vrijstaande  woning hoogprem duur opstal",
+    "Bedrag": "72,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 5.000, aanvangsleeftijd 20 jaar",
+    "Bedrag": "5,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 5.000, aanvangsleeftijd 40 jaar",
+    "Bedrag": "8,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 5.000, aanvangsleeftijd 60 jaar",
+    "Bedrag": "19,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 10.000, aanvangsleeftijd 20 jaar",
+    "Bedrag": "9,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 10.000, aanvangsleeftijd 40 jaar",
+    "Bedrag": "16,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Uitvaart",
+    "Detail": "Kapitaal € 10.000, aanvangsleeftijd 60 jaar",
+    "Bedrag": "37,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand europa zonder",
+    "Bedrag": "5,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand met kinderen europa zonder",
+    "Bedrag": "8,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar zonder kinderen europa zonder",
+    "Bedrag": "8,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar met kinderen europa zonder",
+    "Bedrag": "10,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand europa met",
+    "Bedrag": "9,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand met kinderen europa met",
+    "Bedrag": "15,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar zonder kinderen europa met",
+    "Bedrag": "15,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar met kinderen europa met",
+    "Bedrag": "18,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand wereld zonder",
+    "Bedrag": "6,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand met kinderen wereld zonder",
+    "Bedrag": "10,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar zonder kinderen wereld zonder",
+    "Bedrag": "10,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar met kinderen wereld zonder",
+    "Bedrag": "13,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand wereld met",
+    "Bedrag": "10,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "alleenstaand met kinderen wereld met",
+    "Bedrag": "18,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar zonder kinderen wereld met",
+    "Bedrag": "17,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Reizen",
+    "Detail": "paar met kinderen wereld met",
+    "Bedrag": "21,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "alleenstaand beperkt",
+    "Bedrag": "20,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "alleenstaand met kinderen beperkt",
+    "Bedrag": "21,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "paar zonder kinderen beperkt",
+    "Bedrag": "22,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "paar met kinderen beperkt",
+    "Bedrag": "22,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "alleenstaand uitgebreid",
+    "Bedrag": "22,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "alleenstaand met kinderen uitgebreid",
+    "Bedrag": "24,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "paar zonder kinderen uitgebreid",
+    "Bedrag": "25,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Rechtsbijstand",
+    "Detail": "paar met kinderen uitgebreid",
+    "Bedrag": "25,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement gemprem goedkoop inboe",
+    "Bedrag": "9,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning gemprem goedkoop inboe",
+    "Bedrag": "9,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning gemprem goedkoop inboe",
+    "Bedrag": "10,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning gemprem goedkoop inboe",
+    "Bedrag": "12,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement gemprem duur inboe",
+    "Bedrag": "13,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning gemprem duur inboe",
+    "Bedrag": "14,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning gemprem duur inboe",
+    "Bedrag": "16,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning gemprem duur inboe",
+    "Bedrag": "19,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement lagprem goedkoop  inboe",
+    "Bedrag": "4,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning lagprem goedkoop inboe",
+    "Bedrag": "4,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning lagprem goedkoop inboe",
+    "Bedrag": "5,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning lagprem goedkoop inboe",
+    "Bedrag": "7,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement lagprem duur inboe",
+    "Bedrag": "8,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning lagprem duur inboel",
+    "Bedrag": "9,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning lagprem duur inboe",
+    "Bedrag": "10,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning lagprem duur inboe",
+    "Bedrag": "11,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement hogprem goedkoop inboe",
+    "Bedrag": "13,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning hogprem goedkoop inboe",
+    "Bedrag": "13,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning hogprem goedkoop inboe",
+    "Bedrag": "13,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning hogprem goedkoop inboe",
+    "Bedrag": "20,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "appartement hogprem duur inboe",
+    "Bedrag": "18,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "tussenwoning hogprem duur inboe",
+    "Bedrag": "21,00"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "2 onder 1 kap/hoekwoning hogprem duur inboe",
+    "Bedrag": "25,50"
+  },
+  {
+    "Post": "verzekeringen",
+    "Subpost": "Inboedel",
+    "Detail": "vrijstaande woning hogprem duur inboe",
+    "Bedrag": "37,00"
+  },
+  {
+    "Post": "onderwijs",
+    "Subpost": "Basisonderwijs",
+    "Detail": "Basisschool",
+    "Bedrag": "4,50"
+  },
+  {
+    "Post": "onderwijs",
+    "Subpost": "Middelbaar onderwijs",
+    "Detail": "Onderbouw havo/vwo",
+    "Bedrag": "31,00"
+  },
+  {
+    "Post": "onderwijs",
+    "Subpost": "Middelbaar onderwijs",
+    "Detail": "Bovenbouw havo/vwo",
+    "Bedrag": "43,00"
+  },
+  {
+    "Post": "onderwijs",
+    "Subpost": "Middelbaar onderwijs",
+    "Detail": "Vmbo",
+    "Bedrag": "33,50"
+  },
+  {
+    "Post": "onderwijs",
+    "Subpost": "Middelbaar onderwijs",
+    "Detail": "MBO",
+    "Bedrag": "52,00"
+  },
+  {
+    "Post": "kinderopvang",
+    "Subpost": "Kinderopvang",
+    "Detail": "Dagopvang (kinderen tot 4 jaar) uurtarief",
+    "Bedrag": "8,02"
+  },
+  {
+    "Post": "kinderopvang",
+    "Subpost": "Kinderopvang",
+    "Detail": "Buitenschoolse opvang uurtarief",
+    "Bedrag": "6,89"
+  },
+  {
+    "Post": "kinderopvang",
+    "Subpost": "Kinderopvang",
+    "Detail": "Opvang door gastouder uurtarief",
+    "Bedrag": "6,15"
+  },
+  {
+    "Post": "contributies en abonnementen",
+    "Subpost": "Bankkosten",
+    "Detail": "Per volwassene",
+    "Bedrag": "1,5"
+  },
+  {
+    "Post": "contributies en abonnementen",
+    "Subpost": "Contributies verenigingen",
+    "Detail": "Per kind 4 tot 12 jaar",
+    "Bedrag": "11,5"
+  },
+  {
+    "Post": "contributies en abonnementen",
+    "Subpost": "Contributies verenigingen",
+    "Detail": "Per persoon vanaf 12 jaar",
+    "Bedrag": "17,5"
+  },
+  {
+    "Post": "contributies en abonnementen",
+    "Subpost": "Contributies verenigingen",
+    "Detail": "Per huishouden",
+    "Bedrag": "2,5"
+  },
+  {
+    "Post": "contributies en abonnementen",
+    "Subpost": "Overige contributies en abonnementen",
+    "Detail": "Het Nibud specificeert voor deze post geen gemiddelde bedragen",
+    "Bedrag": ""
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Fiets",
+    "Detail": "Per kind 4-7 jaar",
+    "Bedrag": "4,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Fiets",
+    "Detail": "Per kind 7-10 jaar",
+    "Bedrag": 6
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Fiets",
+    "Detail": "Per persoon van 10 jaar en ouder",
+    "Bedrag": 9
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Openbaar vervoer",
+    "Detail": "Per kind tot 12 jaar",
+    "Bedrag": 5
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Openbaar vervoer",
+    "Detail": "Per volwassene tot pensioengerechtigde leeftijd",
+    "Bedrag": "7,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Openbaar vervoer",
+    "Detail": "Per volwassene vanaf pensioengerechtigde leeftijd",
+    "Bedrag": 5
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "afschrijving (exclusief rente) mini compact var",
+    "Bedrag": 20
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "onderhoud en reparatie mini compact var",
+    "Bedrag": "39,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "brandstof mini compact var",
+    "Bedrag": "73,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "Totaal per maand mini compact var",
+    "Bedrag": 133
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "kilometerprijs variabele kosten mini compact var",
+    "Bedrag": "0,177"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "afschrijving (exclusief rente) compact var",
+    "Bedrag": 30
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "onderhoud en reparatie compact var",
+    "Bedrag": "43,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "brandstof compact var",
+    "Bedrag": "89,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "Totaal per maand compact var",
+    "Bedrag": 163
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "kilometerprijs variabele kosten compact var",
+    "Bedrag": "0,196"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "afschrijving (exclusief rente) compact midden var",
+    "Bedrag": 39
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "onderhoud en reparatie compact midden var",
+    "Bedrag": 61
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "brandstof compact midden var",
+    "Bedrag": "109,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "Totaal per maand compact midden var",
+    "Bedrag": "209,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "kilometerprijs variabele kosten compact midden var",
+    "Bedrag": "0,219"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "afschrijving (exclusief rente) midden var",
+    "Bedrag": 56
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "onderhoud en reparatie midden var",
+    "Bedrag": "67,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "brandstof midden var",
+    "Bedrag": "113,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "Totaal per maand midden var",
+    "Bedrag": 237
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten variabel",
+    "Detail": "kilometerprijs variabele kosten midden var",
+    "Bedrag": "0,259"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "afschrijving (exclusief rente) mini compact vast",
+    "Bedrag": "58,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "verzekering mini compact vast",
+    "Bedrag": 64
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "motorrijtuigenbelasting mini compact vast",
+    "Bedrag": "19,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "onderhoud mini compact vast",
+    "Bedrag": 21
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "Totaal per maand mini compact vast",
+    "Bedrag": 163
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "afschrijving (exclusief rente) compact vast",
+    "Bedrag": "72,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "verzekering compact vast",
+    "Bedrag": "76,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "motorrijtuigenbelasting compact vast",
+    "Bedrag": "32,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "onderhoud compact vast",
+    "Bedrag": 21
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "Totaal per maand compact vast",
+    "Bedrag": "202,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "afschrijving (exclusief rente) compact midden vast",
+    "Bedrag": "127,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "verzekering compact midden vast",
+    "Bedrag": "93,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "motorrijtuigenbelasting compact midden vast",
+    "Bedrag": 47
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "onderhoud compact midden vast",
+    "Bedrag": 21
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "Totaal per  maand compact  vast",
+    "Bedrag": 289
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "afschrijving (exclusief rente) midden vast",
+    "Bedrag": 188
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "verzekering midden vast",
+    "Bedrag": "113,5"
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "motorrijtuigenbelasting midden vast",
+    "Bedrag": 57
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "onderhoud midden vast",
+    "Bedrag": 21
+  },
+  {
+    "Post": "vervoer",
+    "Subpost": "Autokosten vast",
+    "Detail": "Totaal per maand midden vast",
+    "Bedrag": "379,5"
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Kinderkleding meisjes",
+    "Detail": "Per jaar",
+    "Bedrag": 397
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Kinderkleding jongens",
+    "Detail": "Per jaar",
+    "Bedrag": 357
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Kinderkleding meisjes",
+    "Detail": "Per maand",
+    "Bedrag": 33
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Kinderkleding jongens",
+    "Detail": "Per maand",
+    "Bedrag": 30
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Dameskleding",
+    "Detail": "Per jaar",
+    "Bedrag": 652
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Dameskleding",
+    "Detail": "Per maand",
+    "Bedrag": 54
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Herenkleding",
+    "Detail": "Per jaar",
+    "Bedrag": 610
+  },
+  {
+    "Post": "kleding en schoenen",
+    "Subpost": "Herenkleding",
+    "Detail": "Per maand",
+    "Bedrag": 51
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 1 volwassene",
+    "Detail": "Zonder kinderen 1p",
+    "Bedrag": 65
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 1 volwassene",
+    "Detail": "1 kind 1p",
+    "Bedrag": 73
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 1 volwassene",
+    "Detail": "2 kinderen 1p",
+    "Bedrag": 80
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 1 volwassene",
+    "Detail": "3 kinderen 1p",
+    "Bedrag": 89
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 1 volwassene",
+    "Detail": "4 kinderen 1p",
+    "Bedrag": 97
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 2 volwassenen",
+    "Detail": "Zonder kinderen 2p",
+    "Bedrag": 77
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 2 volwassenen",
+    "Detail": "1 kind 2p",
+    "Bedrag": 84
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 2 volwassenen",
+    "Detail": "2 kinderen 2p",
+    "Bedrag": 94
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 2 volwassenen",
+    "Detail": "3 kinderen 2p",
+    "Bedrag": 101
+  },
+  {
+    "Post": "inventaris",
+    "Subpost": "Pakket voor 2 volwassenen",
+    "Detail": "4 kinderen 2p",
+    "Bedrag": 110
+  },
+  {
+    "Post": "onderhoud huis en tuin",
+    "Subpost": "Onderhoud huis en tuin",
+    "Detail": "Basisbedrag huur",
+    "Bedrag": 23
+  },
+  {
+    "Post": "onderhoud huis en tuin",
+    "Subpost": "Onderhoud huis en tuin",
+    "Detail": "Basisbedrag koop",
+    "Bedrag": "71,5"
+  },
+  {
+    "Post": "niet-vergoede ziektekosten",
+    "Subpost": "Eigen risico zorgverzekering",
+    "Detail": "Per volwassene per jaar",
+    "Bedrag": 385
+  },
+  {
+    "Post": "niet-vergoede ziektekosten",
+    "Subpost": "Zelfzorgmiddelen",
+    "Detail": "Per persoon tot pensioengerechtigde leeftijd",
+    "Bedrag": 4
+  },
+  {
+    "Post": "niet-vergoede ziektekosten",
+    "Subpost": "Zelfzorgmiddelen",
+    "Detail": "Per persoon vanaf pensioengerechtigde leeftijd",
+    "Bedrag": "2,5"
+  },
+  {
+    "Post": "niet-vergoede ziektekosten",
+    "Subpost": "Zelfzorgmiddelen",
+    "Detail": "Per huishouden",
+    "Bedrag": 2
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Recreatie",
+    "Detail": "Het Nibud specificeert voor deze post geen gemiddelde bedragen",
+    "Bedrag": ""
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Bezoek ontvangen",
+    "Detail": "Per persoon",
+    "Bedrag": 9
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Bezoek ontvangen",
+    "Detail": "Per huishouden",
+    "Bedrag": "11,5"
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Op bezoek gaan",
+    "Detail": "Per persoon",
+    "Bedrag": 6
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Vakantie/uitgaan",
+    "Detail": "Per persoon",
+    "Bedrag": "17,5"
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Vakantie/uitgaan",
+    "Detail": "Per huishouden",
+    "Bedrag": "23,5"
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Recreatief vervoer",
+    "Detail": "Per kind 4 tot 12 jaar",
+    "Bedrag": "2,5"
+  },
+  {
+    "Post": "vrijetijdsuitgaven",
+    "Subpost": "Recreatief vervoer",
+    "Detail": "Per persoon vanaf 12 jaar",
+    "Bedrag": "7,5"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "kind 1-3 jaar",
+    "Bedrag": "2,51"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "kind 4-8 jaar",
+    "Bedrag": "3,42"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "kind 9-13 jaar",
+    "Bedrag": "5,55"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "man 14-50 jaar",
+    "Bedrag": "6,76"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "vrouw 14-50 jaar",
+    "Bedrag": "6,06"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "man 51-69 jaar",
+    "Bedrag": "6,43"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "vrouw 51-69 jaar",
+    "Bedrag": "6,08"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "man en vrouw 70+",
+    "Bedrag": "6,39"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "zwangere vrouw",
+    "Bedrag": "6,22"
+  },
+  {
+    "Post": "voeding",
+    "Subpost": "Voeding",
+    "Detail": "moeder die borstvoeding geeft",
+    "Bedrag": 7
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Was- en schoonmaakmiddelen",
+    "Detail": "Per persoon",
+    "Bedrag": "1,5"
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Was- en schoonmaakmiddelen",
+    "Detail": "Per huishouden",
+    "Bedrag": 3
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Persoonlijke verzorging",
+    "Detail": "Per kind tot 12 jaar (exclusief kapper)",
+    "Bedrag": 6
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Persoonlijke verzorging",
+    "Detail": "Per persoon vanaf 12 jaar (exclusief kapper)",
+    "Bedrag": "10,5"
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Huishoudelijke dienstverlening",
+    "Detail": "Het Nibud specificeert voor deze post geen gemiddelde bedragen",
+    "Bedrag": ""
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Diversen, bv zakgeld, postzegels, identiteitskaart, etc",
+    "Detail": "Per persoon",
+    "Bedrag": 3
+  },
+  {
+    "Post": "overige huishoudelijke uitgaven",
+    "Subpost": "Diversen, bv zakgeld, postzegels, identiteitskaart, etc",
+    "Detail": "Per huishouden",
+    "Bedrag": 4
+  }
+]
