@@ -16,7 +16,7 @@ Hieronder is het prototype te zien van ons gekozen concept. Dit prototype is geb
 
 # Data
 Voor de data heb ik de database gekregen van het NIBUD. De data moet ik zelf gaan categoriseren op basis van onze cardsorting die hieronder te zien is. De eerste weergave van de datavisualisatie wordt namelijk verdeelt over de 4 hoofdcategorieën en hierop kun je klikken waardoor je all categorien erbij krijgt die daaronder vallen.
-![Prototype resultaten](https://i.gyazo.com/07818e5e6f8f4edca558143cf2cd280c.png)
+![Cardsorting](https://i.gyazo.com/f9475727dd713f1e6fc61be21bc74d8b.jpg)
 
 ## Ingevulde data
 Op basis van de input van de gebruiker wordt er vergeleken wat zijn budget bij alles is t.o.v. de resultaten uit de database. Voor deze data heb ik waarschijnlijk een local storage nodig.
