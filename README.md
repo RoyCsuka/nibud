@@ -23,8 +23,9 @@ Op basis van de input van de gebruiker wordt er vergeleken wat zijn budget bij a
 
 # Checklist
 - [x] Omgeving opzetten
-- [ ] Data ophalen
-- [ ] Data categoriseren
+- [x] Data ophalen
+- [ ] Data nesten op doelgroep
+- [ ] Data verdelen over vier categorieën
 - [ ] HTML  gereed maken
 - [ ] Laurens zijn voorbeeld tweaken
 - [ ] D3 verwerken

@@ -1,11 +1,15 @@
-import { select , geoNaturalEarth1} from 'd3'
-import { feature } from 'topojson'
+import { select , geoNaturalEarth1} from 'd3';
+import { feature } from 'topojson';
 import { cleanedArr } from './cleanData.js';
+// Import de locale json files
+import main from './nibud-maincat.json';
+import sub from './nibud-subcat.json';
 
 const svg = select('svg')
 
-// Global data variable
-let data
+// local aanroepen
+const mainArr = main;
+const subArr = sub;
 
 // standaard waarde
 let centuryVar = 2000;
@@ -14,8 +18,10 @@ let centuryVar = 2000;
 makeVisualization()
 
 // Our main function which runs other function to make a visualization
-async function makeVisualization(){
+async function makeVisualization() {
     let data = await cleanedArr(mainArr, subArr)
+
+    console.log(data)
 
 }
 
