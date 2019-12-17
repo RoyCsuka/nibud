@@ -1,38 +1,29 @@
 # Tech-track - Frontend Data
 ## De opdracht
-Deze twee weken heb ik mij bezig gehouden met het verder uitwerken van het [concept van afgelopen twee weken](https://github.com/RoyCsuka/functional-programming). Deze twee weken staan in het teken van de interactie verwerken in je concept die in deze readme te vinden is.
+Het onafhankelijke voorlichtingsinstituut Nibud, doet onderzoek en geeft voorlichting over de huishoudportemonnee van Nederland.
+
+Naast het geven van trainingen en onderzoek doen, maakt het Nibud ook gebruik van een voorlichtingsboek. Dit boek geeft voor verschillende levenssituaties een mogelijkheid om met geld om te gaan. Denk hierbij aan studeren, scheiden, krijgen van kinderen en hypotheekzaken.
+
+Het boekje is tot op heden alleen offline te gebruiken, het Nibud wil graag een stapje verder gaan en deze hulp ook online aanbieden. De vraag hierbij of hoofdstukken 3 en 4 (uitgaven en begrotingen) visueel weergegeven kunnen worden zodat deze in de praktijk duidelijk is voor consumenten en budgetcoaches.
 
 # Concept
-Mijn concept focust zich op het aantal items laten zien op basis van herkomst in combinatie met tijd. Als visuele uitwerking heb ik gekozen voor een map (zie afbeeldingen hieronder).
+Voor het nibud gaan wij twee bestaande tools samenvoegen. Namelijk het budgethandboek en het online budgetadvies. Met deze tool krijg je een overzicht te zien van je
 
-![Concept uitwerking scherm 1](https://github.com/RoyCsuka/assets/blob/master/concept-maps-v2_3.jpg)
-
-![Concept uitwerking scherm 2](https://github.com/RoyCsuka/assets/blob/master/concept-maps-v2_4.jpg)
+## Prototype
+Hieronder is het prototype te zien van ons gekozen concept. Dit prototype is gebouwd in Adobe XD en [hier](https://xd.adobe.com/view/a8e541bb-4ab5-4710-7ecd-199d01a0ce30-ded4/screen/425ab13f-6193-4ed2-984c-d21f9a82961d/Home?fullscreen) is de online link.
+![Prototype invullen gegevens](https://i.gyazo.com/ea2b0ab6ad4941ffce57403c0c6e0ff2.png)
+![Prototype resultaten](https://i.gyazo.com/07818e5e6f8f4edca558143cf2cd280c.png)
 
 # Data
-- [x] Data opschonen per eeuw
-- [x] Externe database vinden van gebeurtenissen per eeuw
-- [x] Externe database opschonen
-- [ ] Alle landen groeperen als super-continent (Afrika, Amerika, Eurazië en Oceanië)
-- [ ] Alles wat dezelfde locatie en jaartal heeft samenvoegen (het aantal items wel bij elkaar optellen)
-- [ ] Alles per eeuw laten zien
+Voor de data heb ik de database gekregen van het NIBUD. De data moet ik zelf gaan categoriseren op basis van onze cardsorting die hieronder te zien is. De eerste weergave van de datavisualisatie wordt namelijk verdeelt over de 4 hoofdcategorieën en hierop kun je klikken waardoor je all categorien erbij krijgt die daaronder vallen.
+![Prototype resultaten](https://i.gyazo.com/07818e5e6f8f4edca558143cf2cd280c.png)
 
-## Opschonen met JavaScript
-In mijn vorige [Wiki leg ik stap voor stap uit](https://github.com/RoyCsuka/functional-programming/wiki/Data-cleaning) hoe ik mijn data heb schoongemaakt. I.v.m. tijdsnood heb ik de "v.chr", "n.chr", "bc" en "ad" data waardes en niet schoon kunnen maken. Daarom heb ik ervoor gekozen om deze if statement nog te defineren voordat ik de data terug geef aan mijn main functie.
-```
-if (item.date.value.toString().length === 4 && item.date.value <= 2019 && item.date.value >= 0) {
-    // console.log(item.date.value)
-    return item
-}
-```
-Hierdoor is de data niet 100% compleet maar heb ik wel het functionele gedeelte gedaan en begrepen.
+## Ingevulde data
+Op basis van de input van de gebruiker wordt er vergeleken wat zijn budget bij alles is t.o.v. de resultaten uit de database. Voor deze data heb ik waarschijnlijk een local storage nodig.
 
-## Externe database
-Online heb ik gezocht naar een database met historische gebeurtenissen in de wereld met [dit bestand als begin](https://slidex.tips/download/major-events-in-world-history). Uiteindelijk heb ik de data uit dit PDF'je gehaald en in Excel verwerkt. De data heb ik opgeschoond in Excel en heb ik geexpoteerd als CSV en omgezet naar JSON. Hieronder een regel uit de database:
-![Externe database](https://github.com/RoyCsuka/assets/blob/master/external-database.png)
-
-## Data transformeren met D3
-Met D3 heb ik de [code van Laurens](https://beta.vizhub.com/Razpudding/2e039bf6e39a421180741285a8f735a3) gepakt en maar twee zinnen van veranderd waardoor de groepering en counting van de arrays anders is gegaan. Met als eindresultaat:
-
-## Technische specificaties
-- Persoon X heeft mij geholpen met mijn opgeschoonde data om te zetten naar pure code.
+# Checklist
+- [ ] Alles opstellen
+- [ ] Data ophalen
+- [ ] Data categoriseren
+- [ ]
+- [ ]
