@@ -1,31 +1,58 @@
 // export functie zorgt voor database resultaten
-export async function cleanedArr(mainArr, subArr) {
+export async function cleanedArr(mainArr) {
 
-    let allData =  mainArr.concat(subArr);
+    mainArr = prepareData(mainArr)
 
-    console.log(allData)
-
-    allData = prepareData(allData)
-
-    return allData
+    return mainArr
 }
 
 
 // Dezen functie cleaned alle data
-function prepareData(allData) {
-    // mergeMainAndSub(allData)
-    groupByTargetAudience(allData)
+function prepareData(mainData) {
+    mainData = toMonths(mainData)
+    mainData = makeSubCategories(mainData)
+    mainData = groupMainData(mainData)
+
+    return mainData
 
 }
 
+function toMonths(monthsData) {
 
-//Nest the data per preference (this will be our x-axis value
-//Rollup data so we get averages and totals for each variable
-//Note: this could also be done when visualizing the values
-//    and we could make this pattern more functional by creating a mean and total function
-function groupByTargetAudience(source){
+    return monthsData
+}
+
+function makeSubCategories(data) {
+
+    data.forEach(cat => {
+        switch(cat.Post) {
+            case 'kleding en schoenen':
+            case 'inventaris':
+            case 'onderhoud huis en tuin':
+            case 'niet-vergoede ziektekosten':
+            case 'vrijetijdsuitgaven':
+                cat.maincat = "reserveringsuitgaven"
+        }
+    })
+
+    console.log(data)
+
+    return data
+}
+
+function groupMainData(source) {
     let transformed =  d3.nest()
-    .key(d => d.Huishouden)
+    .key(function(d) { return d.Huishouden; })
     .entries(source);
+    console.log(transformed)
     return transformed
 }
+
+// Voor als subposten ook gefixt moet worden
+// function groupSubData(source){
+//     let transformed =  d3.nest()
+//     .key(function(d) { return d.Post; })
+//     .entries(source);
+//     console.log(transformed)
+//     return transformed
+// }

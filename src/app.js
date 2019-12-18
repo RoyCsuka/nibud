@@ -3,13 +3,11 @@ import { feature } from 'topojson';
 import { cleanedArr } from './cleanData.js';
 // Import de locale json files
 import main from './nibud-maincat.json';
-import sub from './nibud-subcat.json';
 
 const svg = select('svg')
 
 // local aanroepen
 const mainArr = main;
-const subArr = sub;
 
 // standaard waarde
 let centuryVar = 2000;
@@ -19,9 +17,9 @@ makeVisualization()
 
 // Our main function which runs other function to make a visualization
 async function makeVisualization() {
-    let data = await cleanedArr(mainArr, subArr)
+    let data = await cleanedArr(mainArr)
 
-    console.log(data)
+    console.log("Data in app.js ", data)
 
 }
 
