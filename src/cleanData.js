@@ -7,7 +7,7 @@ export async function cleanedArr(mainArr) {
 }
 
 
-// Dezen functie cleaned alle data
+// Deze functie maakt alle data gereed voor D3
 function prepareData(mainData) {
     mainData = toMonths(mainData)
     mainData = makeSubCategories(mainData)
@@ -17,12 +17,16 @@ function prepareData(mainData) {
 
 }
 
+// Trekt alle waardes gelijk
 function toMonths(monthsData) {
 
     return monthsData
 }
 
+// Maakt hoofdcategorieën aan
 function makeSubCategories(data) {
+
+    data.map(cat => cat.Post = cat.Post.toLowerCase())
 
     data.forEach(cat => {
         switch(cat.Post) {
@@ -31,7 +35,34 @@ function makeSubCategories(data) {
             case 'onderhoud huis en tuin':
             case 'niet-vergoede ziektekosten':
             case 'vrijetijdsuitgaven':
-                cat.maincat = "reserveringsuitgaven"
+                cat.maincat = "reserverings uitgaven"
+        }
+    })
+
+    data.forEach(cat => {
+        switch(cat.Post) {
+            case 'huur/hypotheek':
+            case 'gas':
+            case 'elektriciteit':
+            case 'water':
+            case 'verzekeringen':
+            case 'verzekeringen':
+            case 'onderwijs':
+            case 'kinderopvang':
+            case 'vervoer':
+            case 'contributies en abonnementen':
+            case 'lokale lasten':
+            case 'telefoon, televisie, internet':
+                cat.maincat = "vaste lasten"
+        }
+    })
+
+    data.forEach(cat => {
+        switch(cat.Post) {
+            case 'voeding':
+            case 'overige huishoudelijke uitgaven':
+            case 'reserveringsuitgaven':
+                cat.maincat = "huishoudelijke uitgaven"
         }
     })
 
@@ -47,12 +78,3 @@ function groupMainData(source) {
     console.log(transformed)
     return transformed
 }
-
-// Voor als subposten ook gefixt moet worden
-// function groupSubData(source){
-//     let transformed =  d3.nest()
-//     .key(function(d) { return d.Post; })
-//     .entries(source);
-//     console.log(transformed)
-//     return transformed
-// }

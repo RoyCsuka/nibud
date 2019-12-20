@@ -5,19 +5,31 @@ import { cleanedArr } from './cleanData.js';
 import main from './nibud-maincat.json';
 
 const svg = select('svg')
+const margin = {top: 48, right: 72, bottom: 120, left: 72}
+const height = parseInt(svg.style('height'), 10) - margin.top - margin.bottom;
+const width = parseInt(svg.style('width'), 10) - margin.left - margin.right;
+const group = svg
+  .append('g')
+  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+// Scales
+const x = d3.scaleBand().padding(0.2)
+const y = d3.scaleLinear()
 
 // local aanroepen
 const mainArr = main;
 
-// standaard waarde
-let centuryVar = 2000;
+//The initial variable the y axis is set on
+let yVar =  "";
+let xVar = "";
 
-
-makeVisualization()
+makeBugetVisualisation()
 
 // Our main function which runs other function to make a visualization
-async function makeVisualization() {
+async function makeBugetVisualisation() {
     let data = await cleanedArr(mainArr)
+
+    setUpForm(data)
 
     console.log("Data in app.js ", data)
 
@@ -25,7 +37,7 @@ async function makeVisualization() {
 
 //This awesome function makes dynamic input options based on our data!
 //You can also create the options by hand if you can't follow what happens here
-function setUpCenturys(data) {
+function setUpForm(data) {
 
     const form = d3.select('form')
         .selectAll('input')
