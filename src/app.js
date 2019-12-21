@@ -59,10 +59,12 @@ function setUpForm(data) {
 //This function will change the graph when the user selects another variable
 function selectionChanged(){
     //'this' refers to the form element!
-    centuryVar = this ? parseInt(this.value) : centuryVar
+    // hallo = this ? parseInt(this.value) : xVar
 
     // Laurens heeft mij hiermee geholpen
-    let arrOfSelectedData = data.find(element => element.key == this.value);
+    let arrOfSelectedData = mainArr.find(element => element.key == this.value);
+
+    console.log(mainArr)
     // veranderd de tekst boven aan
 
     plotLocations(svg, flattened, mapSettings.projection, min, max)
