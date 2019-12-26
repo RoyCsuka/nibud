@@ -30,8 +30,8 @@ async function makeBugetVisualisation() {
     let data = await cleanedArr(mainArr)
 
     setUpForm(data)
-    setupScales()
-    setupAxes()
+    // setupScales()
+    // setupAxes()
 
     // console.log("Data in app.js ", data)
 
@@ -89,43 +89,39 @@ function selectionChanged(){
         })[0].value;
 
     // Console log van alle resultaten
-    console.log(this.value)
-    console.log("huishoudelijke uitgaven", Math.round(huishoudelijkeUitgavenAvg))
-    console.log("Vaste lasten", Math.round(vasteLastenAvg))
-    console.log("Reserverings uitgaven", Math.round(reserveringsUitgavenAvg))
-    console.log("Inkomen", Math.round(inkomen))
-    console.log("Uitgaven", Math.round(uitgaven))
+
+    // Inkomen min uitgaven zodat je weet hoeveel je over hebt
     let saldo = Math.round(inkomen - uitgaven)
 
-    console.log("Min", Math.round(min), " Max", Math.round(max))
-    console.log(" ")
+    let selectedData = {mainCat: this.value, huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)}
+    // selectedData.key = this.value;
 
-    let selectedData = [this.value, {huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)}]
+
     console.log(selectedData)
 
     // plotLocations()
 
 }
 
-function setupScales(){
-    //We'll set the x domain to the different preferences
-    x.domain(nestedData.map(preference => preference.key))
-    //The y-domain is set to the min and max of the current y variable
-    y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
-    x.rangeRound([0, width]);
-    y.rangeRound([height, 0]);
-}
-
-function setupAxes(){
-    group
-        .append('g')
-        .attr('class', 'axis axis-x')
-        .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
-    group
-        .append('g')
-        .attr('class', 'axis axis-y')
-        .call(d3.axisLeft(y).ticks(10))
-}
+// function setupScales(){
+//     //We'll set the x domain to the different preferences
+//     x.domain(nestedData.map(preference => preference.key))
+//     //The y-domain is set to the min and max of the current y variable
+//     y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
+//     x.rangeRound([0, width]);
+//     y.rangeRound([height, 0]);
+// }
+//
+// function setupAxes(){
+//     group
+//         .append('g')
+//         .attr('class', 'axis axis-x')
+//         .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
+//     group
+//         .append('g')
+//         .attr('class', 'axis axis-y')
+//         .call(d3.axisLeft(y).ticks(10))
+// }
 
 
 //Plot each location on the map with a circle
