@@ -3697,14 +3697,11 @@
       mainData = toMonths(mainData);
       mainData = makeSubCategories(mainData);
       mainData = groupMainData(mainData);
-
       return mainData
-
   }
 
   // Trekt alle waardes gelijk
   function toMonths(monthsData) {
-
       return monthsData
   }
 
@@ -90859,13 +90856,13 @@
                       .attr('type', 'radio')
                       .attr('name', 'century')
                       .attr('value', d => d.key)
-                      .on('change', selectionChanged);
+                      .on('change', average);
   }
 
 
   // Code van Laurens
   //This function will change the graph when the user selects another variable
-  function selectionChanged(){
+  function average(){
       // Filteren van de geselecteerde waarde
       var arrOfSelectedData = mainArr.filter(d => d.Huishouden == this.value);
 
@@ -90901,13 +90898,25 @@
       let saldo = Math.round(inkomen - uitgaven);
 
       let selectedData = {mainCat: this.value, huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)};
-      // selectedData.key = this.value;
 
+      balance(selectedData);
 
-      console.log(selectedData);
+  }
 
-      // plotLocations()
+  function balance(selectCat) {
+      console.log(selectCat);
 
+      let balancevasteLasten = selectCat.Inkomen - selectCat.vasteLasten;
+      console.log(balancevasteLasten);
+
+      let balancehuisHoudelijkeUitgaven = balancevasteLasten - selectCat.huishoudelijkeUitgaven;
+      console.log(balancehuisHoudelijkeUitgaven);
+
+      let balancereserveringsUitgaven = balancehuisHoudelijkeUitgaven - selectCat.reserveringsUitgaven;
+      console.log(balancereserveringsUitgaven);
+
+      let balance = selectCat;
+      setUpScales(balance);
   }
 
   // function setupScales(){

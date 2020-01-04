@@ -12,14 +12,11 @@ function prepareData(mainData) {
     mainData = toMonths(mainData)
     mainData = makeSubCategories(mainData)
     mainData = groupMainData(mainData)
-
     return mainData
-
 }
 
 // Trekt alle waardes gelijk
 function toMonths(monthsData) {
-
     return monthsData
 }
 
