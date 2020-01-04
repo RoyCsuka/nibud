@@ -55,8 +55,6 @@ function setUpForm(data) {
                     .on('change', average)
 }
 
-
-// Code van Laurens
 //This function will change the graph when the user selects another variable
 function average(){
     // Filteren van de geselecteerde waarde
@@ -89,14 +87,12 @@ function average(){
         })[0].value;
 
     // Console log van alle resultaten
-
     // Inkomen min uitgaven zodat je weet hoeveel je over hebt
     let saldo = Math.round(inkomen - uitgaven)
 
     let selectedData = {mainCat: this.value, huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)}
 
     balance(selectedData)
-
 }
 
 function balance(selectCat) {
@@ -115,68 +111,22 @@ function balance(selectCat) {
     setUpScales(balance)
 }
 
-// function setupScales(){
-//     //We'll set the x domain to the different preferences
-//     x.domain(nestedData.map(preference => preference.key))
-//     //The y-domain is set to the min and max of the current y variable
-//     y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
-//     x.rangeRound([0, width]);
-//     y.rangeRound([height, 0]);
-// }
-//
-// function setupAxes(){
-//     group
-//         .append('g')
-//         .attr('class', 'axis axis-x')
-//         .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
-//     group
-//         .append('g')
-//         .attr('class', 'axis axis-y')
-//         .call(d3.axisLeft(y).ticks(10))
-// }
+function setupScales(){
+    //We'll set the x domain to the different preferences
+    x.domain(nestedData.map(preference => preference.key))
+    //The y-domain is set to the min and max of the current y variable
+    y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
+    x.rangeRound([0, width]);
+    y.rangeRound([height, 0]);
+}
 
-
-//Plot each location on the map with a circle
-// function plotLocations(container, data, projection, min, max) {
-//
-//     const scale = d3.scaleLinear().domain([ min, max ]).range([ 15, 90 ]);
-//
-//
-//     let circles = svg.selectAll('circle').data([data][0])
-//     let text = svg.selectAll('text').data([data][0])
-//     // update
-//     circles
-//         .attr('cx', d => projection([d.contLong, d.contLat])[0])
-//         .attr('cy', d => projection([d.contLong, d.contLat])[1])
-//         .attr('r', function(d) { return scale(d.amountOfCountryItems) })
-//
-//     text
-//         .attr('x', d => projection([d.contLong, d.contLat])[0])
-//         .attr('y', d => projection([d.contLong, d.contLat])[1])
-//             .text(d => d.amountOfCountryItems)
-//
-//     // enter
-//     circles
-//         .enter()
-//         .append('circle')
-//             .attr('cx', d => projection([d.contLong, d.contLat])[0])
-//             .attr('cy', d => projection([d.contLong, d.contLat])[1])
-//             .attr('r', function(d) { return scale(d.amountOfCountryItems) })
-//             .attr('opacity', 0.8)
-//     text
-//         .enter()
-//         .append('text')
-//             .attr('x', d => projection([d.contLong, d.contLat])[0])
-//             .attr('y', d => projection([d.contLong, d.contLat])[1])
-//                 .text(d => d.amountOfCountryItems)
-//
-//     // exit
-//     circles
-//         .exit()
-//         .remove()
-//     text
-//         .exit()
-//         .remove()
-//
-//
-// }
+function setupAxes(){
+    group
+        .append('g')
+        .attr('class', 'axis axis-x')
+        .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
+    group
+        .append('g')
+        .attr('class', 'axis axis-y')
+        .call(d3.axisLeft(y).ticks(10))
+}
