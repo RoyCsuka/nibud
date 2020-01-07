@@ -29,11 +29,9 @@ makeBugetVisualisation()
 async function makeBugetVisualisation() {
     let data = await cleanedArr(mainArr)
 
-    setUpForm(data)
-    // setupScales()
-    // setupAxes()
+    console.log("Data in app", data);
 
-    // console.log("Data in app.js ", data)
+    setUpForm(data)
 
 }
 
@@ -52,81 +50,41 @@ function setUpForm(data) {
                     .attr('type', 'radio')
                     .attr('name', 'century')
                     .attr('value', d => d.key)
-                    .on('change', average)
+                    .on('change', balance)
 }
 
-//This function will change the graph when the user selects another variable
-function average(){
-    // Filteren van de geselecteerde waarde
-    var arrOfSelectedData = mainArr.filter(d => d.Huishouden == this.value);
+function balance() {
+    console.log("Balans", data);
 
-    // Categorieseren op de maincat
-    var huishoudelijkeUitgaven = arrOfSelectedData.filter(d => d.maincat == "huishoudelijke uitgaven")
-    var vasteLasten = arrOfSelectedData.filter(d => d.maincat == "vaste lasten")
-    var reserveringsUitgaven = arrOfSelectedData.filter(d => d.maincat == "reserverings uitgaven")
-    var inkomen = arrOfSelectedData.filter(d => d.Inkomen)
+    let vaste_lasten = selectCat.Inkomen - selectCat.vasteLasten;
+    console.log(vaste_lasten, "Vaste lasten");
 
-    // Gemiddelde van de drie categorieën
-    var huishoudelijkeUitgavenAvg = d3.mean(huishoudelijkeUitgaven.map(d => d.Bedrag))
-    var vasteLastenAvg = d3.mean(vasteLasten.map(d => d.Bedrag))
-    var reserveringsUitgavenAvg = d3.mean(reserveringsUitgaven.map(d => d.Bedrag))
-    var inkomen = d3.mean(inkomen.map(d => d.Inkomen))
-    var uitgaven = huishoudelijkeUitgavenAvg + vasteLastenAvg + reserveringsUitgavenAvg;
+    let huishoudelijke_uitgaven = vaste_lasten - selectCat.huishoudelijkeUitgaven;
+    console.log(huishoudelijke_uitgaven, "Huishoudelijke uitgaven");
 
+    let reserverings_uitgaven = huishoudelijke_uitgaven - selectCat.reserveringsUitgaven;
+    console.log(reserverings_uitgaven, "Reserverings uitgaven");
 
-    // Om de min en max te berekenen
-    var allAvgs = [huishoudelijkeUitgavenAvg, vasteLastenAvg, reserveringsUitgavenAvg];
-    // minimale en maximale waarde
-    let max = d3.entries(allAvgs)
-        .sort(function(a, b) {
-            return d3.descending(a.value, b.value);
-        })[0].value;
-    let min = d3.entries(allAvgs)
-        .sort(function(a, b) {
-            return d3.ascending(a.value, b.value);
-        })[0].value;
-
-    // Console log van alle resultaten
-    // Inkomen min uitgaven zodat je weet hoeveel je over hebt
-    let saldo = Math.round(inkomen - uitgaven)
-
-    let selectedData = {mainCat: this.value, huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)}
-
-    balance(selectedData)
+    // setUpScales()
 }
-
-function balance(selectCat) {
-    console.log(selectCat);
-
-    let balancevasteLasten = selectCat.Inkomen - selectCat.vasteLasten;
-    console.log(balancevasteLasten);
-
-    let balancehuisHoudelijkeUitgaven = balancevasteLasten - selectCat.huishoudelijkeUitgaven;
-    console.log(balancehuisHoudelijkeUitgaven);
-
-    let balancereserveringsUitgaven = balancehuisHoudelijkeUitgaven - selectCat.reserveringsUitgaven;
-    console.log(balancereserveringsUitgaven);
-
-    let balance = selectCat;
-    setUpScales(balance)
-}
-
-function setupScales(){
-    //We'll set the x domain to the different preferences
-    x.domain(nestedData.map(preference => preference.key))
-    //The y-domain is set to the min and max of the current y variable
-    y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
-    x.rangeRound([0, width]);
-    y.rangeRound([height, 0]);
-}
-
-function setupAxes(){
-    group
-        .append('g')
-        .attr('class', 'axis axis-x')
-        .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
-    group
-        .append('g')
-        .attr('class', 'axis axis-y')
-        .call(d3.axisLeft(y).ticks(10))
-}
+//
+// function setUpScales() {
+//     //We'll set the x domain to the different preferences
+//     x.domain(vaste_lasten, huishoudelijke_uitgaven, reserverings_uitgaven)
+//     //The y-domain is set to the min and inkomen of the current y variable
+//     y.domain(inkomen)
+//     x.rangeRound([0, width]);
+//     y.rangeRound([height, 0]);
+// }
+//
+// function setupAxes(){
+//     group
+//         .append('g')
+//         .attr('class', 'axis axis-x')
+//         .call(d3.axisBottom(x)).attr('transform', 'translate(0,' + height + ')')
+//     group
+//         .append('g')
+//         .attr('class', 'axis axis-y')
+//         .call(d3.axisLeft(y).ticks(10))
+//         const bars = group.selectAll('.bar')
+// }

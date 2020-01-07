@@ -3685,24 +3685,17 @@
 
   // export functie zorgt voor database resultaten
   async function cleanedArr(mainArr) {
-
       mainArr = prepareData(mainArr);
-
       return mainArr
   }
 
 
   // Deze functie maakt alle data gereed voor D3
   function prepareData(mainData) {
-      mainData = toMonths(mainData);
       mainData = makeSubCategories(mainData);
       mainData = groupMainData(mainData);
+      mainData = average(mainData);
       return mainData
-  }
-
-  // Trekt alle waardes gelijk
-  function toMonths(monthsData) {
-      return monthsData
   }
 
   // Maakt hoofdcategorieën aan
@@ -3712,6 +3705,7 @@
 
       data.forEach(cat => {
           switch(cat.Post) {
+              case 'reserveringsuitgaven':
               case 'kleding en schoenen':
               case 'inventaris':
               case 'onderhoud huis en tuin':
@@ -3721,44 +3715,145 @@
           }
       });
 
+      console.log(data.filter(d => d.Post == "huur/hypotheek"));
+
       data.forEach(cat => {
           switch(cat.Post) {
+              case 'vaste lasten':
               case 'huur/hypotheek':
               case 'gas':
               case 'elektriciteit':
               case 'water':
-              case 'verzekeringen':
-              case 'verzekeringen':
-              case 'onderwijs':
-              case 'kinderopvang':
-              case 'vervoer':
-              case 'contributies en abonnementen':
               case 'lokale lasten':
-              case 'telefoon, televisie, internet':
                   cat.maincat = "vaste lasten";
           }
       });
 
       data.forEach(cat => {
           switch(cat.Post) {
-              case 'voeding':
-              case 'overige huishoudelijke uitgaven':
-              case 'reserveringsuitgaven':
-                  cat.maincat = "huishoudelijke uitgaven";
+              case 'telefoon, televisie, internet':
+              case 'verzekeringen':
+              case 'contributies en abonnementen':
+              case 'onderwijs':
+              case 'kinderopvang':
+              case 'vervoer':
+                  cat.maincat = "overige vaste lasten";
           }
       });
 
+      data.forEach(cat => {
+          switch(cat.Post) {
+              case 'voeding':
+              case 'huishoudelijke uitgaven':
+              case 'overige huishoudelijke uitgaven':
+                  cat.maincat = "huishoudelijke uitgaven";
+          }
+      });
       console.log(data);
-
       return data
   }
 
   function groupMainData(source) {
       let transformed =  d3.nest()
-      .key(function(d) { return d.Huishouden; })
-      .entries(source);
-      console.log(transformed);
+
+          .key(function(d) { return d.Huishouden; })
+          .entries(source);
+
       return transformed
+  }
+
+
+  function average(groupedData) {
+      groupedData.forEach(d => {
+          // HOOFDPOST ------------------------------------------------------
+          // reserverings uitgaven
+          let reserveringsUitgaven = d.values.filter(d => d.maincat == "reserverings uitgaven");
+          reserveringsUitgaven = d3.mean(reserveringsUitgaven.map(d => d.Bedrag));
+          // Subposten -------------------------------------------------------
+          let kledingEnSchoenen = d.values.filter(d => d.Post == "kleding en schoenen");
+          kledingEnSchoenen = d3.mean(kledingEnSchoenen.map(d => d.Bedrag));
+          let inventaris = d.values.filter(d => d.Post == "inventaris");
+          inventaris = d3.mean(inventaris.map(d => d.Bedrag));
+          let huisEnTuin = d.values.filter(d => d.Post == "onderhoud huis en tuin");
+          huisEnTuin = d3.mean(huisEnTuin.map(d => d.Bedrag));
+          let nietVergoedeZiektekosten = d.values.filter(d => d.Post == "niet-vergoede ziektekosten");
+          nietVergoedeZiektekosten = d3.mean(nietVergoedeZiektekosten.map(d => d.Bedrag));
+          let vrijetijdsUitgaven = d.values.filter(d => d.Post == "vrijetijdsuitgaven");
+          vrijetijdsUitgaven = d3.mean(vrijetijdsUitgaven.map(d => d.Bedrag));
+
+
+          // HOOFDPOST ------------------------------------------------------
+          // vaste lasten
+          let vasteLasten = d.values.filter(d => d.maincat == "vaste lasten");
+          vasteLasten = d3.mean(vasteLasten.map(d => d.Bedrag));
+          // Subposten -------------------------------------------------------
+          let huurHypotheek = d.values.filter(d => d.Post == "huur/hypotheek");
+          huurHypotheek = d3.mean(huurHypotheek.map(d => d.Bedrag));
+          let gas = d.values.filter(d => d.Post == "gas");
+          gas = d3.mean(gas.map(d => d.Bedrag));
+          let elektriciteit = d.values.filter(d => d.Post == "elektriciteit");
+          elektriciteit = d3.mean(elektriciteit.map(d => d.Bedrag));
+          let water = d.values.filter(d => d.Post == "water");
+          water = d3.mean(water.map(d => d.Bedrag));
+          let lokaleLasten = d.values.filter(d => d.Post == "lokale lasten");
+          lokaleLasten = d3.mean(lokaleLasten.map(d => d.Bedrag));
+
+
+          // HOOFDPOST ------------------------------------------------------
+          // Huishoudelijke uitgaven
+          let huishoudelijkeUitgaven = d.values.filter(d => d.Post == "huishoudelijke uitgaven");
+          huishoudelijkeUitgaven = d3.mean(huishoudelijkeUitgaven.map(d => d.Bedrag));
+          // Subposten -------------------------------------------------------
+
+
+
+          // inkomen & uitgaven
+          let inkomen = d.values.filter(d => d.Inkomen);
+          inkomen = d3.mean(inkomen.map(d => d.Inkomen));
+          let uitgaven = huishoudelijkeUitgaven + vasteLasten + reserveringsUitgaven;
+
+          // Om de minimale waarde te berekenen
+          let allAvgs = [huishoudelijkeUitgaven, vasteLasten, reserveringsUitgaven];
+
+          // minimale waarde
+          let min = d3.entries(allAvgs)
+          .sort(function(a, b) {
+              return d3.ascending(a.value, b.value);
+          })[0].value;
+
+          // Console log van alle resultaten
+          // Inkomen minimale uitgaven zodat je weet hoeveel je over hebt
+          let saldo = Math.round(inkomen - uitgaven);
+
+          let selectedData = {
+              reserveringsuitgaven: Math.round(reserveringsUitgaven),
+              kleding: Math.round(kledingEnSchoenen),
+              inventaris: Math.round(inventaris),
+              huisentuinonderhoud: Math.round(huisEnTuin),
+              nietvergoedeziektekosten: Math.round(nietVergoedeZiektekosten),
+              vrijetijdsuitgaven: Math.round(vrijetijdsUitgaven),
+
+              vastelasten: Math.round(vasteLasten),
+              huurhypotheek: Math.round(huurHypotheek),
+              gas: Math.round(gas),
+              elektriciteit: Math.round(elektriciteit),
+              water: Math.round(water),
+              lokaleLasten: Math.round(lokaleLasten),
+
+              reserveringsuitgaven: Math.round(reserveringsUitgaven),
+
+              huishoudelijkeuitgaven: Math.round(huishoudelijkeUitgaven),
+
+              inkomen: Math.round(inkomen),
+              uitgaven: Math.round(uitgaven),
+              saldo: saldo, Min: Math.round(min),
+              max: Math.round(inkomen)
+          };
+          let avgData = d.values = selectedData;
+      });
+
+      return groupedData
+
   }
 
   var main = [
@@ -90833,11 +90928,9 @@
   async function makeBugetVisualisation() {
       let data = await cleanedArr(mainArr);
 
-      setUpForm(data);
-      // setupScales()
-      // setupAxes()
+      console.log("Data in app", data);
 
-      // console.log("Data in app.js ", data)
+      setUpForm(data);
 
   }
 
@@ -90856,74 +90949,29 @@
                       .attr('type', 'radio')
                       .attr('name', 'century')
                       .attr('value', d => d.key)
-                      .on('change', average);
+                      .on('change', balance);
   }
 
+  function balance() {
+      console.log("Balans", data);
 
-  // Code van Laurens
-  //This function will change the graph when the user selects another variable
-  function average(){
-      // Filteren van de geselecteerde waarde
-      var arrOfSelectedData = mainArr.filter(d => d.Huishouden == this.value);
+      let vaste_lasten = selectCat.Inkomen - selectCat.vasteLasten;
+      console.log(vaste_lasten, "Vaste lasten");
 
-      // Categorieseren op de maincat
-      var huishoudelijkeUitgaven = arrOfSelectedData.filter(d => d.maincat == "huishoudelijke uitgaven");
-      var vasteLasten = arrOfSelectedData.filter(d => d.maincat == "vaste lasten");
-      var reserveringsUitgaven = arrOfSelectedData.filter(d => d.maincat == "reserverings uitgaven");
-      var inkomen = arrOfSelectedData.filter(d => d.Inkomen);
+      let huishoudelijke_uitgaven = vaste_lasten - selectCat.huishoudelijkeUitgaven;
+      console.log(huishoudelijke_uitgaven, "Huishoudelijke uitgaven");
 
-      // Gemiddelde van de drie categorieën
-      var huishoudelijkeUitgavenAvg = d3.mean(huishoudelijkeUitgaven.map(d => d.Bedrag));
-      var vasteLastenAvg = d3.mean(vasteLasten.map(d => d.Bedrag));
-      var reserveringsUitgavenAvg = d3.mean(reserveringsUitgaven.map(d => d.Bedrag));
-      var inkomen = d3.mean(inkomen.map(d => d.Inkomen));
-      var uitgaven = huishoudelijkeUitgavenAvg + vasteLastenAvg + reserveringsUitgavenAvg;
+      let reserverings_uitgaven = huishoudelijke_uitgaven - selectCat.reserveringsUitgaven;
+      console.log(reserverings_uitgaven, "Reserverings uitgaven");
 
-
-      // Om de min en max te berekenen
-      var allAvgs = [huishoudelijkeUitgavenAvg, vasteLastenAvg, reserveringsUitgavenAvg];
-      // minimale en maximale waarde
-      let max = d3.entries(allAvgs)
-          .sort(function(a, b) {
-              return d3.descending(a.value, b.value);
-          })[0].value;
-      let min = d3.entries(allAvgs)
-          .sort(function(a, b) {
-              return d3.ascending(a.value, b.value);
-          })[0].value;
-
-      // Console log van alle resultaten
-
-      // Inkomen min uitgaven zodat je weet hoeveel je over hebt
-      let saldo = Math.round(inkomen - uitgaven);
-
-      let selectedData = {mainCat: this.value, huishoudelijkeUitgaven: Math.round(huishoudelijkeUitgavenAvg), vasteLasten: Math.round(vasteLastenAvg), reserveringsUitgaven: Math.round(reserveringsUitgavenAvg), Inkomen: Math.round(inkomen), Uitgaven: Math.round(uitgaven), Saldo: saldo, Min: Math.round(min), Max: Math.round(max)};
-
-      balance(selectedData);
-
+      // setUpScales()
   }
-
-  function balance(selectCat) {
-      console.log(selectCat);
-
-      let balancevasteLasten = selectCat.Inkomen - selectCat.vasteLasten;
-      console.log(balancevasteLasten);
-
-      let balancehuisHoudelijkeUitgaven = balancevasteLasten - selectCat.huishoudelijkeUitgaven;
-      console.log(balancehuisHoudelijkeUitgaven);
-
-      let balancereserveringsUitgaven = balancehuisHoudelijkeUitgaven - selectCat.reserveringsUitgaven;
-      console.log(balancereserveringsUitgaven);
-
-      let balance = selectCat;
-      setUpScales(balance);
-  }
-
-  // function setupScales(){
+  //
+  // function setUpScales() {
   //     //We'll set the x domain to the different preferences
-  //     x.domain(nestedData.map(preference => preference.key))
-  //     //The y-domain is set to the min and max of the current y variable
-  //     y.domain([0, d3.max( nestedData.map(preference => preference.value[yVar]) )] )
+  //     x.domain(vaste_lasten, huishoudelijke_uitgaven, reserverings_uitgaven)
+  //     //The y-domain is set to the min and inkomen of the current y variable
+  //     y.domain(inkomen)
   //     x.rangeRound([0, width]);
   //     y.rangeRound([height, 0]);
   // }
@@ -90937,52 +90985,7 @@
   //         .append('g')
   //         .attr('class', 'axis axis-y')
   //         .call(d3.axisLeft(y).ticks(10))
-  // }
-
-
-  //Plot each location on the map with a circle
-  // function plotLocations(container, data, projection, min, max) {
-  //
-  //     const scale = d3.scaleLinear().domain([ min, max ]).range([ 15, 90 ]);
-  //
-  //
-  //     let circles = svg.selectAll('circle').data([data][0])
-  //     let text = svg.selectAll('text').data([data][0])
-  //     // update
-  //     circles
-  //         .attr('cx', d => projection([d.contLong, d.contLat])[0])
-  //         .attr('cy', d => projection([d.contLong, d.contLat])[1])
-  //         .attr('r', function(d) { return scale(d.amountOfCountryItems) })
-  //
-  //     text
-  //         .attr('x', d => projection([d.contLong, d.contLat])[0])
-  //         .attr('y', d => projection([d.contLong, d.contLat])[1])
-  //             .text(d => d.amountOfCountryItems)
-  //
-  //     // enter
-  //     circles
-  //         .enter()
-  //         .append('circle')
-  //             .attr('cx', d => projection([d.contLong, d.contLat])[0])
-  //             .attr('cy', d => projection([d.contLong, d.contLat])[1])
-  //             .attr('r', function(d) { return scale(d.amountOfCountryItems) })
-  //             .attr('opacity', 0.8)
-  //     text
-  //         .enter()
-  //         .append('text')
-  //             .attr('x', d => projection([d.contLong, d.contLat])[0])
-  //             .attr('y', d => projection([d.contLong, d.contLat])[1])
-  //                 .text(d => d.amountOfCountryItems)
-  //
-  //     // exit
-  //     circles
-  //         .exit()
-  //         .remove()
-  //     text
-  //         .exit()
-  //         .remove()
-  //
-  //
+  //         const bars = group.selectAll('.bar')
   // }
 
 }(topojson));
