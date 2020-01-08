@@ -77,13 +77,11 @@ function groupMainData(source) {
     return transformed
 }
 
-
+// bereken het gemiddelde van elke post binnen elke categorie
 function average(groupedData) {
     groupedData.forEach(d => {
         // HOOFDPOST ------------------------------------------------------
-        // reserverings uitgaven
-        let reserveringsUitgaven = d.values.filter(d => d.maincat == "reserverings uitgaven");
-        reserveringsUitgaven = d3.mean(reserveringsUitgaven.map(d => d.Bedrag));
+        // Reserverings uitgaven
         // Subposten -------------------------------------------------------
         let kledingEnSchoenen = d.values.filter(d => d.Post == "kleding en schoenen");
         kledingEnSchoenen = d3.mean(kledingEnSchoenen.map(d => d.Bedrag));
@@ -98,7 +96,7 @@ function average(groupedData) {
 
 
         // HOOFDPOST ------------------------------------------------------
-        // vaste lasten
+        // Vaste lasten
         let vasteLasten = d.values.filter(d => d.maincat == "vaste lasten");
         vasteLasten = d3.mean(vasteLasten.map(d => d.Bedrag));
         // Subposten -------------------------------------------------------
@@ -115,14 +113,37 @@ function average(groupedData) {
 
 
         // HOOFDPOST ------------------------------------------------------
+        // Overige vaste lasten
+        let overigeVasteLasten = {overigeVasteLasten: "ja"};
+        // Subposten -------------------------------------------------------
+        let telefoonTelevisieInternet = d.values.filter(d => d.Post == "telefoon, televisie, internet");
+        telefoonTelevisieInternet = d3.mean(telefoonTelevisieInternet.map(d => d.Bedrag));
+        let verzekeringen = d.values.filter(d => d.Post == "verzekeringen");
+        verzekeringen = d3.mean(verzekeringen.map(d => d.Bedrag));
+        let contributiesAbonnementen = d.values.filter(d => d.Post == "contributies en abonnementen");
+        contributiesAbonnementen = d3.mean(contributiesAbonnementen.map(d => d.Bedrag));
+        let onderwijs = d.values.filter(d => d.Post == "onderwijs");
+        onderwijs = d3.mean(onderwijs.map(d => d.Bedrag));
+        let kinderopvang = d.values.filter(d => d.Post == "kinderopvang");
+        kinderopvang = d3.mean(kinderopvang.map(d => d.Bedrag));
+        let vervoer = d.values.filter(d => d.Post == "vervoer");
+        vervoer = d3.mean(vervoer.map(d => d.Bedrag));
+
+
+        // HOOFDPOST ------------------------------------------------------
         // Huishoudelijke uitgaven
         let huishoudelijkeUitgaven = d.values.filter(d => d.Post == "huishoudelijke uitgaven");
         huishoudelijkeUitgaven = d3.mean(huishoudelijkeUitgaven.map(d => d.Bedrag));
         // Subposten -------------------------------------------------------
+        let voeding = d.values.filter(d => d.Post == "voeding");
+        voeding = d3.mean(voeding.map(d => d.Bedrag));
+        let overigeHuishoudelijkeUitgaven = d.values.filter(d => d.Post == "overige huishoudelijke uitgaven");
+        overigeHuishoudelijkeUitgaven = d3.mean(overigeHuishoudelijkeUitgaven.map(d => d.Bedrag));
+        let reserveringsUitgaven = d.values.filter(d => d.maincat == "reserverings uitgaven");
+        reserveringsUitgaven = d3.mean(reserveringsUitgaven.map(d => d.Bedrag));
 
 
-
-        // inkomen & uitgaven
+        // Inkomen & uitgaven
         let inkomen = d.values.filter(d => d.Inkomen);
         inkomen = d3.mean(inkomen.map(d => d.Inkomen));
         let uitgaven = huishoudelijkeUitgaven + vasteLasten + reserveringsUitgaven;
@@ -130,7 +151,7 @@ function average(groupedData) {
         // Om de minimale waarde te berekenen
         let allAvgs = [huishoudelijkeUitgaven, vasteLasten, reserveringsUitgaven];
 
-        // minimale waarde
+        // Minimale waarde
         let min = d3.entries(allAvgs)
         .sort(function(a, b) {
             return d3.ascending(a.value, b.value);
@@ -141,7 +162,7 @@ function average(groupedData) {
         let saldo = Math.round(inkomen - uitgaven)
 
         let selectedData = {
-            reserveringsuitgaven: Math.round(reserveringsUitgaven),
+            reserveringsuitgaven: Math.round(kledingEnSchoenen + inventaris + huisEnTuin + nietVergoedeZiektekosten + vrijetijdsUitgaven),
             kleding: Math.round(kledingEnSchoenen),
             inventaris: Math.round(inventaris),
             huisentuinonderhoud: Math.round(huisEnTuin),
@@ -155,9 +176,19 @@ function average(groupedData) {
             water: Math.round(water),
             lokaleLasten: Math.round(lokaleLasten),
 
-            reserveringsuitgaven: Math.round(reserveringsUitgaven),
+            overigevastelasten: Math.round(telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang),
+            telefoontelevisieinternet: Math.round(telefoonTelevisieInternet),
+            verzekeringen: Math.round(verzekeringen),
+            contributiesenabonnementen: Math.round(contributiesAbonnementen),
+            onderwijs: Math.round(onderwijs),
+            kinderopvang: Math.round(kinderopvang),
+            vervoer: Math.round(vervoer),
 
             huishoudelijkeuitgaven: Math.round(huishoudelijkeUitgaven),
+            voeding: Math.round(voeding),
+            overigehuishoudelijkeuitgaven: Math.round(overigeHuishoudelijkeUitgaven),
+            reserveringsuitgaven: Math.round(reserveringsUitgaven),
+
 
             inkomen: Math.round(inkomen),
             uitgaven: Math.round(uitgaven),
