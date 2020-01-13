@@ -27,16 +27,29 @@ p b {
     font-style: italic;
 }
 
+section {
+    display: block;
+    position: relative;
+}
+
 svg {
   width: 960px;
   height: 500px;
   margin: 0 auto;
   position: relative;
   display: block;
+  background-color: #c14e4e;
 }
 
-circle {
-    fill: black;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
 }
 
 /* http://bl.ocks.org/emmasaunders/d682fd84b67b304219e49b1e8385b1f8  */

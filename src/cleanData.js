@@ -30,8 +30,6 @@ function makeSubCategories(data) {
         }
     });
 
-    console.log(data.filter(d => d.Post == "huur/hypotheek"));
-
     data.forEach(cat => {
         switch(cat.Post) {
             case 'vaste lasten':
@@ -114,7 +112,6 @@ function average(groupedData) {
 
         // HOOFDPOST ------------------------------------------------------
         // Overige vaste lasten
-        let overigeVasteLasten = {overigeVasteLasten: "ja"};
         // Subposten -------------------------------------------------------
         let telefoonTelevisieInternet = d.values.filter(d => d.Post == "telefoon, televisie, internet");
         telefoonTelevisieInternet = d3.mean(telefoonTelevisieInternet.map(d => d.Bedrag));
@@ -128,6 +125,8 @@ function average(groupedData) {
         kinderopvang = d3.mean(kinderopvang.map(d => d.Bedrag));
         let vervoer = d.values.filter(d => d.Post == "vervoer");
         vervoer = d3.mean(vervoer.map(d => d.Bedrag));
+        // totaal
+        let overigeVasteLasten = telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang + vervoer;
 
 
         // HOOFDPOST ------------------------------------------------------
@@ -146,10 +145,10 @@ function average(groupedData) {
         // Inkomen & uitgaven
         let inkomen = d.values.filter(d => d.Inkomen);
         inkomen = d3.mean(inkomen.map(d => d.Inkomen));
-        let uitgaven = huishoudelijkeUitgaven + vasteLasten + reserveringsUitgaven;
+        let uitgaven = huishoudelijkeUitgaven + vasteLasten + overigeVasteLasten + reserveringsUitgaven;
 
         // Om de minimale waarde te berekenen
-        let allAvgs = [huishoudelijkeUitgaven, vasteLasten, reserveringsUitgaven];
+        let allAvgs = [huishoudelijkeUitgaven, vasteLasten, overigeVasteLasten, reserveringsUitgaven];
 
         // Minimale waarde
         let min = d3.entries(allAvgs)
@@ -162,37 +161,46 @@ function average(groupedData) {
         let saldo = Math.round(inkomen - uitgaven)
 
         let selectedData = {
-            reserveringsuitgaven: Math.round(kledingEnSchoenen + inventaris + huisEnTuin + nietVergoedeZiektekosten + vrijetijdsUitgaven),
-            kleding: Math.round(kledingEnSchoenen),
-            inventaris: Math.round(inventaris),
-            huisentuinonderhoud: Math.round(huisEnTuin),
-            nietvergoedeziektekosten: Math.round(nietVergoedeZiektekosten),
-            vrijetijdsuitgaven: Math.round(vrijetijdsUitgaven),
-
-            vastelasten: Math.round(vasteLasten),
-            huurhypotheek: Math.round(huurHypotheek),
-            gas: Math.round(gas),
-            elektriciteit: Math.round(elektriciteit),
-            water: Math.round(water),
-            lokaleLasten: Math.round(lokaleLasten),
-
-            overigevastelasten: Math.round(telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang),
-            telefoontelevisieinternet: Math.round(telefoonTelevisieInternet),
-            verzekeringen: Math.round(verzekeringen),
-            contributiesenabonnementen: Math.round(contributiesAbonnementen),
-            onderwijs: Math.round(onderwijs),
-            kinderopvang: Math.round(kinderopvang),
-            vervoer: Math.round(vervoer),
-
-            huishoudelijkeuitgaven: Math.round(huishoudelijkeUitgaven),
-            voeding: Math.round(voeding),
-            overigehuishoudelijkeuitgaven: Math.round(overigeHuishoudelijkeUitgaven),
-            reserveringsuitgaven: Math.round(reserveringsUitgaven),
-
+            reserveringsuitgaven: {
+                naam: "Reserverings uitgaven",
+                totaal: Math.round(kledingEnSchoenen + inventaris + huisEnTuin + nietVergoedeZiektekosten + vrijetijdsUitgaven),
+                kleding: Math.round(kledingEnSchoenen),
+                inventaris: Math.round(inventaris),
+                huisentuinonderhoud: Math.round(huisEnTuin),
+                nietvergoedeziektekosten: Math.round(nietVergoedeZiektekosten),
+                vrijetijdsuitgaven: Math.round(vrijetijdsUitgaven),
+            },
+            vastelasten: {
+                naam: "Vaste lasten",
+                totaal: Math.round(vasteLasten),
+                huurhypotheek: Math.round(huurHypotheek),
+                gas: Math.round(gas),
+                elektriciteit: Math.round(elektriciteit),
+                water: Math.round(water),
+                lokaleLasten: Math.round(lokaleLasten),
+            },
+            overigevastelasten: {
+                naam: "Overige vaste lasten",
+                totaal: Math.round(telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang),
+                telefoontelevisieinternet: Math.round(telefoonTelevisieInternet),
+                verzekeringen: Math.round(verzekeringen),
+                contributiesenabonnementen: Math.round(contributiesAbonnementen),
+                onderwijs: Math.round(onderwijs),
+                kinderopvang: Math.round(kinderopvang),
+                vervoer: Math.round(vervoer),
+            },
+            huishoudelijkeuitgaven: {
+                naam: "Huishoudelijke uitgaven",
+                totaal: Math.round(huishoudelijkeUitgaven),
+                voeding: Math.round(voeding),
+                overigehuishoudelijkeuitgaven: Math.round(overigeHuishoudelijkeUitgaven),
+                reserveringsuitgaven: Math.round(reserveringsUitgaven),
+            },
 
             inkomen: Math.round(inkomen),
             uitgaven: Math.round(uitgaven),
-            saldo: saldo, Min: Math.round(min),
+            saldo: saldo,
+            min: Math.round(min),
             max: Math.round(inkomen)
         };
         let avgData = d.values = selectedData;
