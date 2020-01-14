@@ -174,9 +174,7 @@ function average(groupedData) {
                 naam: "Vaste lasten",
                 totaal: Math.round(vasteLasten),
                 huurhypotheek: Math.round(huurHypotheek),
-                gas: Math.round(gas),
-                elektriciteit: Math.round(elektriciteit),
-                water: Math.round(water),
+                gwl: Math.round(gas + elektriciteit + water),
                 lokaleLasten: Math.round(lokaleLasten),
             },
             overigevastelasten: {

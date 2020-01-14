@@ -1,62 +1,501 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,700i&display=swap');
+@import url('fonts.css');
 
 body {
   margin: 0px;
+  display: flex;
+  font-family: 'WhitneyMedium';
   overflow: hidden;
 }
 
-header {
-    padding-top: 20px;
-    text-align: center;
+button:focus,
+select,
+input {
+    outline: 0;
+    -webkit-appearance: none;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    color: #012169;
+    font-family: 'WhitneyBold';
+}
+
+h2 {
+    color: #012169;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+p,
+button {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.button.grey,
+button.grey {
+    background-color: #F5F5F5;
+    color: #707070;
+}
+
+div.container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+div.container,
+header .info-txt,
+nav {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+
+header .info-txt h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header .info-txt {
+    text-align: left;
+    width: 40%;
+}
+
+header nav {
+    min-width: 50%;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button.grey {
+    border: 2px solid #F5F5F5;
+}
+
+.button,
+button {
+    background: #E36B0A 0% 0% no-repeat padding-box;
+    border-radius: 11px;
+    color: white;
+    border: 2px solid #E36B0A;
+}
+
+header nav ul li {
+    color: #012169;
+}
+
+header nav ul li,
+.button,
+button {
+    list-style-type: none;
+    padding: 0;
+    font-weight: 400;
+    padding: 10px 60px;
+    cursor: pointer;
+}
+
+/* Fill in form ----------------------------- */
+.containerSlider {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 400vw;
+    position: relative;
+}
+
+form {
+    width: 300vw;
+}
+
+form .containerSlider > div {
+    padding: 50px 0 80px;
+}
+
+form fieldset label {
+    color: #727272;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+form fieldset {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    padding: 0;
+    width: 85%;
+    margin-left: auto;
+    position: relative;
+}
+
+form h2 {
+    margin-bottom: -25px;
+}
+
+form input {
+    font-size: 24px;
+}
+
+form select {
+    font-size: 16px;
+}
+
+form .wideInput {
+    width: 250px;
+}
+
+form .smallInput {
+    width: 160px;
+    margin-right: 90px;
+}
+
+form input,
+form select {
+    border: 4px solid #012169;
+    border-radius: 10px;
+    padding: 10px 25px;
+    height: 50px;
+    position: relative;
+}
+
+form label.euro input {
+    border-radius: 0 10px 10px 0;
+    width: 200px;
+}
+
+form .euro span {
+    display: block;
+    position: absolute;
+    right: 196px;
+    height: 100%;
+    width: 54px;
+    padding: 6px 13px;
+    border: 4px solid #012169;
+    border-radius: 10px 0 0 10px;
+    box-sizing: border-box;
+    font-family: 'WhitneyBold';
+    font-weight: bolder;
+    font-size: 23px;
+    color: #012169;
+}
+
+form input:focus,
+input:focus + span.euro,
+form select:focus {
+    outline: 0;
+    border-color: rgba(1, 33, 105, 0.85);
+}
+
+/* Navigation buttons ------------------- */
+form nav ul {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+}
+
+form.stepTwo nav ul {
+    opacity: 1;
+}
+
+form nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form:not(.done) nav button:last-of-type {
+    display: none;
+}
+
+form:not(.done) nav button:last-of-type {
+    display: none;
+}
+
+form div,
+form nav {
+    width: 1150px;
+}
+
+/* Iconen voor invoervelden */
+form fieldset::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    left: -15%;
+    top: 30px;
+}
+
+.situatie,
+.uitgaven {
+    transition: all 0.7s ease-in-out;
+}
+
+/* Situatie iconen ---------------- */
+.situatie .situatieForm fieldset:first-of-type::before {
+    background-image: url('/public/img/leeftijd.png');
+}
+
+.situatie .situatieForm fieldset:nth-of-type(2)::before {
+    background-image: url('/public/img/leeftijd.png');
+}
+
+.situatie .situatieForm fieldset:nth-of-type(3)::before {
+    background-image: url('/public/img/leeftijd.png');
+}
+
+.uitgaven:not(.second) fieldset:first-of-type::before {
+    background-image: url('/public/img/huis.png');
+}
+
+.uitgaven:not(.second) fieldset:nth-of-type(2)::before {
+    background-image: url('/public/img/lokaleLasten.png');
+}
+
+.uitgaven:not(.second) fieldset:nth-of-type(3)::before {
+    background-image: url('/public/img/verzekeringen.png');
+}
+
+.uitgaven:not(.second) fieldset:nth-of-type(4)::before {
+    background-image: url('/public/img/telecom.png');
+}
+
+
+.uitgaven.second fieldset:first-of-type::before {
+    background-image: url('/public/img/huis.png');
+}
+
+.uitgaven.second fieldset:nth-of-type(2)::before {
+    background-image: url('/public/img/lokaleLasten.png');
+}
+
+.uitgaven.second fieldset:nth-of-type(3)::before {
+    background-image: url('/public/img/verzekeringen.png');
+}
+
+.uitgaven.second fieldset:nth-of-type(4)::before {
+    background-image: url('/public/img/telecom.png');
+}
+
+/* Fill in form 'situatie' -------------- */
+.situatie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 1;
+}
+
+.situatie aside {
+    display: inline-block;
+}
+
+.situatie aside img {
+    width: 100%;
+}
+
+.situatie aside {
+    max-width: 20%;
+}
+
+.situatie .situatieForm {
+    width: 70%;
+}
+
+/* Uitgaven formulier */
+.uitgaven {
+    transform: translateX(0);
+    opacity: 0;
+    position: relative;
+}
+
+.stepTwo .uitgaven fieldset {
+    width: 92%;
+}
+
+.stepTwo .uitgaven fieldset::before {
+    left: -8%;
+}
+
+.uitgaven h3 {
+    font-size: 25px;
+    color: #E36B0A;
+    font-family: 'WhitneySemibold';
+}
+
+.vergelijkbaarHuishouden {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.vergelijkbaarHuishouden .headings h3:nth-child(2) {
+    margin-left: 150px;
+}
+
+.vergelijkbaarHuishouden .headings {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vergelijkbaarHuishouden ul {
+    position: absolute;
+    width: 30%;
+    left: 32.5%;
+    right: 32.5%;
+    height: 290px;
+    margin-top: 5.5px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: space-between;
+}
+
+.vergelijkbaarHuishouden ul li:not(:first-child) {
+    margin-top: 47.2px;
+}
+
+.vergelijkbaarHuishouden ul li {
+    list-style-type: none;
+    background-color: #012169;
+    color: white;
+    font-family: 'WhitneySemibold';
+    padding: 10px;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.vergelijkbaarHuishouden ul li::after {
+    content: "→";
+    padding-top: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #012169;
+    width: 39px;
+    height: 39px;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    right: -50px;
+}
+
+/* Steps ----------------------------- */
+.stepTwo .uitgaven {
+    transform: translateX(-1150px);
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
+}
+
+.stepTwo a:not(.grey) {
+    color: #E36B0A;
+    background-color: white;
+}
+
+.stepTwo .uitgaven.second {
+    transform: translateX(0);
+    opacity: 0;
+}
+
+.stepTwo .containerSlider.slideOne .uitgaven {
+    transform: translateX(-3450px);
+    opacity: 0;
+}
+
+.stepTwo .containerSlider.slideOne .uitgaven.second {
+    transform: translateX(-2300px);
+    opacity: 1;
+}
+
+.stepTwo .situatie {
+    opacity: 0;
+    transform: translateX(-1150px);
+}
+
+header nav ul li {
+    z-index: 1;
+    width: 33.33%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    position: relative;
+}
+
+header nav ul::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 33.33%;
+    height: 100%;
+    z-index: 0;
+    height: 100%;
+    z-index: 0;
+    background-color: #E36B0A;
+    border-radius: 11px;
+    color: white;
+    border: 2px solid #E36B0A;
+    box-sizing: border-box;
+    transition: all 0.5s ease-in-out;
+}
+
+header.stepTwo nav ul::before {
+    transform: translateX(100%);
+}
+
+header.stepThree nav ul::before {
+    transform: translateX(200%);
+}
+
+header.stepOne nav ul li:first-of-type,
+header.stepTwo nav ul li:nth-of-type(2),
+header.stepThree nav ul li:nth-of-type(3) {
+    color: white;
+}
+
+header.stepTwo nav ul li:first-of-type,
+header.stepOne.stepTwo nav ul li:first-of-type {
+    color: #012169;
+}
+
+form div button {
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+}
+
+h1 {
     font-weight: normal;
 }
 
 p {
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-    font-size: 20px;
+    text-align: left;
+    letter-spacing: 0;
+    color: #012169;
+    opacity: 1;
 }
 
 p b {
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-style: italic;
-}
-
-section {
-    display: block;
-    position: relative;
-}
-
-svg {
-  width: 960px;
-  height: 500px;
-  margin: 0 auto;
-  position: relative;
-  display: block;
-  background-color: #c14e4e;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-/* http://bl.ocks.org/emmasaunders/d682fd84b67b304219e49b1e8385b1f8  */
-text {
-    fill: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    text-anchor: middle;
-    dominant-baseline: central;
 }

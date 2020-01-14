@@ -3853,9 +3853,7 @@
                   naam: "Vaste lasten",
                   totaal: Math.round(vasteLasten),
                   huurhypotheek: Math.round(huurHypotheek),
-                  gas: Math.round(gas),
-                  elektriciteit: Math.round(elektriciteit),
-                  water: Math.round(water),
+                  gwl: Math.round(gas + elektriciteit + water),
                   lokaleLasten: Math.round(lokaleLasten),
               },
               overigevastelasten: {
@@ -90940,42 +90938,6 @@
   	}
   ];
 
-  var margin = {
-          top: 20,
-          right: 20,
-          bottom: 30,
-          left: 40
-      },
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
-  // Scales
-  var x0 = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1);
-
-  var x1 = d3.scale.ordinal();
-
-  var y = d3.scale.linear()
-      .range([height, 0]);
-
-  var xAxis = d3.svg.axis()
-      .scale(x0)
-      .tickSize(0.2)
-      .orient("bottom");
-
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left");
-
-  var color$1 = d3.scale.ordinal()
-      .range(["#ca0020", "#f4a582", "#d5d5d5", "#92c5de", "#0571b0"]);
-
-  var svg = d3.select('body').append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   // local aanroepen
   let data = main;
 
@@ -90988,36 +90950,30 @@
       console.log("Data in app", data);
 
       setUpForm(data);
-
-      // klik op het eerste element en zorg ervoor dat de onchange wordt getriggerd
-      clickFirstItem();
-
+      localStor();
   }
 
   //This awesome function makes dynamic input options based on our data!
   //You can also create the options by hand if you can't follow what happens here
   function setUpForm(data) {
-      const form = d3.select('form')
-          .selectAll('input')
+      const form = d3.select('form fieldset:nth-of-type(2)')
+          .select('form fieldset:nth-of-type(2) select')
+          .on('change', selectedDataForVis)
+          .selectAll('option')
           .data(data)
           .enter()
-          .append('label')
-          .append('span')
-          .text(d => d.key)
-          .append('input')
-          .attr('type', 'radio')
-          .attr('name', 'century')
-          .attr('value', d => d.key)
-          .on('change', balance);
+              .append('option')
+              .text(d => d.key)
+              .attr('type', 'option')
+              .attr('value', d => d.key);
   }
 
-  function balance() {
+  function selectedDataForVis() {
+      var selectedData = data.filter(d => d.key === this.value);
 
-      data = data.filter(d => d.key === this.value);
+      selectedData = selectedData.map(d => d.values);
 
-      data = data.map(d => d.values);
-
-      var categoriesNames = data.map(function(d) {
+      var categoriesNames = selectedData.map(function(d) {
           let reserveringsuitgaven = d.reserveringsuitgaven.naam;
           let vastelasten = d.vastelasten.naam;
           let overigevastelasten = d.overigevastelasten.naam;
@@ -91025,7 +90981,7 @@
           return [reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
       });
 
-      var categoriesValues = data.map(function(d) {
+      var categoriesValues = selectedData.map(function(d) {
           let reserveringsuitgaven = d.reserveringsuitgaven.totaal;
           let vastelasten = d.vastelasten.totaal;
           let overigevastelasten = d.overigevastelasten.totaal;
@@ -91033,80 +90989,83 @@
           return [reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
       });
 
-      x0.domain(categoriesNames.map(name => name));
-      x1.domain(categoriesNames.map(name => name)).rangeRoundBands([0, x0.rangeBand()]);
-      y.domain(data.map(d => d.max));
 
-      svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
 
-      svg.append("g")
-          .attr("class", "y axis")
-          .style('opacity', '0')
-          .call(yAxis)
-          .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
-              .style('font-weight', 'bold')
-              .text("Value");
-
-      svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
-
-      var slice = svg.selectAll(".slice")
-          .data(categoriesValues.map(value => value))
-          .enter().append("g")
-          .attr("class", "g")
-          .attr("transform", function() {
-              return "translate(" + x0(categoriesNames.map(name => name)) + ",0)";
-          });
-
-      slice.selectAll("rect")
-          .data(function(d) {
-              return d;
-          })
-          .enter().append("rect")
-          .attr("width", x1.rangeBand())
-          .attr("x", function(d) {
-              console.log(x1());
-              return x1(d);
-          })
-          .style("fill", function(d) {
-              return color$1(d)
-          })
-          .attr("y", function(d) {
-              return y(0);
-          })
-          .attr("height", function(d) {
-              return height - y(0);
-          })
-          .on("mouseover", function(d) {
-              d3.select(this).style("fill", d3.rgb(color$1(d)).darker(2));
-          })
-          .on("mouseout", function(d) {
-              d3.select(this).style("fill", color$1(d));
-          });
-
-      slice.selectAll("rect")
-          .transition()
-          .delay(function(d) {
-              return Math.random() * 1000;
-          })
-          .duration(1000)
-          .attr("y", function() {
-              return y(categoriesValues.map(value => value));
-          })
-          .attr("height", function() {
-              return height - y(categoriesValues.map(value => value));
-          });
+      console.log("selected data ", selectedData);
+      // calculated values
+      document.querySelectorAll('.vergelijkbaarHuishouden ul li').innerHTML = '';
+      document.querySelector('.vergelijkbaarHuishouden ul li:first-of-type').innerHTML = "€" + selectedData.map(d => d.vastelasten.huurhypotheek) + ",-";
+      document.querySelector('.vergelijkbaarHuishouden ul li:nth-of-type(2)').innerHTML = "€" + selectedData.map(d => d.vastelasten.gwl) + ",-";
+      document.querySelector('.vergelijkbaarHuishouden ul li:nth-of-type(3)').innerHTML = "€" + selectedData.map(d => d.overigevastelasten.verzekeringen) + ",-";
+      document.querySelector('.vergelijkbaarHuishouden ul li:nth-of-type(4)').innerHTML = "€" + selectedData.map(d => d.overigevastelasten.telefoontelevisieinternet) + ",-";
 
   }
 
-  function clickFirstItem(){
-      document.querySelector("#form label:first-of-type span input").click();
+  function localStor(){
+      // onclick: https://stackoverflow.com/questions/1947263/using-an-html-button-to-call-a-javascript-function
+      // localStorage save: http://jsfiddle.net/rx0rjaf3/7/
+      document.getElementById("showResults").onclick = function () {
+          // check if browser supports localStorage
+          if (typeof(Storage) != "undefined") {
+              localStorage.setItem("inkomsten", document.getElementById("inkomsten").value);
+              var inkomsten = localStorage.getItem("inkomsten");
+
+              document.getElementById("inkomsten").value = inkomsten;
+
+              let localData = {
+                  reserveringsuitgaven: {
+                      naam: "Reserverings uitgaven",
+                  //     totaal: Math.round(kledingEnSchoenen + inventaris + huisEnTuin + nietVergoedeZiektekosten + vrijetijdsUitgaven),
+                  //     kleding: Math.round(kledingEnSchoenen),
+                  //     inventaris: Math.round(inventaris),
+                  //     huisentuinonderhoud: Math.round(huisEnTuin),
+                  //     nietvergoedeziektekosten: Math.round(nietVergoedeZiektekosten),
+                  //     vrijetijdsuitgaven: Math.round(vrijetijdsUitgaven),
+                  },
+                  vastelasten: {
+                      naam: "Vaste lasten",
+                  //     totaal: Math.round(vasteLasten),
+                  //     huurhypotheek: Math.round(huurHypotheek),
+                  //     gas: Math.round(gas),
+                  //     elektriciteit: Math.round(elektriciteit),
+                  //     water: Math.round(water),
+                  //     lokaleLasten: Math.round(lokaleLasten),
+                  },
+                  overigevastelasten: {
+                      naam: "Overige vaste lasten",
+                  //     totaal: Math.round(telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang),
+                  //     telefoontelevisieinternet: Math.round(telefoonTelevisieInternet),
+                  //     verzekeringen: Math.round(verzekeringen),
+                  //     contributiesenabonnementen: Math.round(contributiesAbonnementen),
+                  //     onderwijs: Math.round(onderwijs),
+                  //     kinderopvang: Math.round(kinderopvang),
+                  //     vervoer: Math.round(vervoer),
+                  },
+                  huishoudelijkeuitgaven: {
+                      naam: "Huishoudelijke uitgaven",
+                  //     totaal: Math.round(huishoudelijkeUitgaven),
+                  //     voeding: Math.round(voeding),
+                  //     overigehuishoudelijkeuitgaven: Math.round(overigeHuishoudelijkeUitgaven),
+                  //     reserveringsuitgaven: Math.round(reserveringsUitgaven),
+                  },
+
+                  inkomen: Math.round(inkomsten)
+                  // uitgaven: Math.round(uitgaven),
+                  // saldo: saldo,
+                  // min: Math.round(min),
+                  // max: Math.round(inkomen)
+              };
+              console.log(localData);
+          } else {
+              document.getElementById("result").innerHTML = "Je browser ondersteund geen Local Storage";//Error
+          }
+      };
   }
+
+  // Check dit voor tweede click: https://stackoverflow.com/questions/44572859/a-function-that-runs-on-the-second-click?answertab=oldest#tab-top
+  document.getElementById('saveSituatie').onclick = function() {
+      document.getElementById('form').classList.add('stepTwo');
+      document.querySelector('.container > header').classList.add('stepTwo');
+  };
 
 }());

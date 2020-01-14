@@ -1,15 +1,167 @@
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <!-- <script src="https://unpkg.com/d3@5.11.0/dist/d3.min.js"></script> -->
     <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="scripts/Chart.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <header>
-        <h1 id="demo">Budget check tool</h1>
-        <p>aa</p>
-    </header>
 
-    <form id="form"></form>
+    <div class="container">
+
+        <header class="stepOne">
+            <div class="info-txt">
+                <h1 id="demo">Budget check</h1>
+                <p>Met de NIBUD budget check krijt u een onafhankelijke blik op uw inkomsten en uitgaven. De check laat zien waar uw geld blijft en hoe u het doet in vergelijking met anderen. U ontvangt tips die helpen goede eigen geldkeuzes te maken.</p>
+            </div>
+
+            <nav>
+                <ul>
+                    <li>1. Situatie</li>
+                    <li>2. Uitgaven</li>
+                    <li>3. Resultaat</li>
+                </ul>
+            </nav>
+        </header>
+
+        <form id="form">
+            <div class="containerSlider">
+                <div class="situatie">
+                    <aside>
+                        <img src="https://via.placeholder.com/336x341" alt="">
+                    </aside>
+                    <div class="situatieForm">
+                        <fieldset>
+                            <h2>Leeftijd</h2>
+                            <label for="leeftijd">Wat is uw leeftijd?
+                                <input type="text" name="leeftijd" value="" id="leeftijd" class="smallInput">
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <h2>Leefsituatie</h2>
+                            <label>Wat is uw huidige leefsituatie?
+                                <select class="wideInput">
+                                    <option value="">Selecteer mijn leefsituatie</option>
+                                </select>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <h2>Woning</h2>
+                            <label for="inkomsten" class="euro">Open rekenhulp
+                                <input type="text" name="inkomsten" id="inkomsten" class="wideInput"/>
+                                <span>€</span>
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="uitgaven">
+                    <fieldset>
+                        <h2>Woning</h2>
+                        <label for="leeftijd" class="euro">Huur, hypotheek, servicekosten, erfpacht
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Energie & lokale lasten</h2>
+                        <label for="leeftijd" class="euro">GWL, Onroerende zaakbelasting, Reinigingsheffing, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Verzekeringen</h2>
+                        <label for="leeftijd" class="euro">Zorgverzekering, Aansprakelijkheidsverzekering, Inboedelverzekering, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Abonnementen & telecom</h2>
+                        <label for="leeftijd" class="euro">Televisie, internet, mobiele telefoonm, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <div class="vergelijkbaarHuishouden">
+                        <div class="headings">
+                            <h3>Uitgavencategorie</h3>
+                            <h3>Vergelijkbaar huishouden</h3>
+                            <h3>Uw uitgaven per maand</h3>
+                        </div>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="uitgaven second">
+                    <fieldset>
+                        <h2>Woning</h2>
+                        <label for="leeftijd" class="euro">Huur, hypotheek, servicekosten, erfpacht
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Energie & lokale lasten</h2>
+                        <label for="leeftijd" class="euro">GWL, Onroerende zaakbelasting, Reinigingsheffing, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Verzekeringen</h2>
+                        <label for="leeftijd" class="euro">Zorgverzekering, Aansprakelijkheidsverzekering, Inboedelverzekering, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <h2>Abonnementen & telecom</h2>
+                        <label for="leeftijd" class="euro">Televisie, internet, mobiele telefoonm, ect.
+                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <div class="vergelijkbaarHuishouden">
+                        <div class="headings">
+                            <h3>Uitgavencategorie</h3>
+                            <h3>Vergelijkbaar huishouden</h3>
+                            <h3>Uw uitgaven per maand</h3>
+                        </div>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="resultaat">
+
+                </div>
+            </div>
+
+            <nav>
+                <a id="back" class="button grey">Terug</a>
+                <a id="saveSituatie" class="button">Verder</a>
+                <button type="button" id="showResults">Mijn financiele plaatje</button>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </form>
+
+        <canvas id="myChart" width="950" height="500"></canvas>
+
+    </div>
+
     <script src="scripts/bundle.js"></script>
 </body>
 <footer></footer>
