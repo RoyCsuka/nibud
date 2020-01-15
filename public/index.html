@@ -32,21 +32,21 @@
                         <fieldset>
                             <h2>Leeftijd</h2>
                             <label for="leeftijd">Wat is uw leeftijd?
-                                <input type="text" name="leeftijd" value="" id="leeftijd" class="smallInput">
+                                <input type="text" name="leeftijd" id="leeftijd" class="smallInput" required>
                             </label>
                         </fieldset>
                         <fieldset>
                             <h2>Leefsituatie</h2>
                             <label>Wat is uw huidige leefsituatie?
                                 <select class="wideInput">
-                                    <option value="">Selecteer mijn leefsituatie</option>
+                                    <option>Selecteer mijn leefsituatie</option>
                                 </select>
                             </label>
                         </fieldset>
                         <fieldset>
-                            <h2>Woning</h2>
-                            <label for="inkomsten" class="euro">Open rekenhulp
-                                <input type="text" name="inkomsten" id="inkomsten" class="wideInput"/>
+                            <h2>Inkomsten</h2>
+                            <label for="inkomsten" class="euro">Hoeveel verdient uw netto per maand?
+                                <input type="text" name="inkomsten" id="inkomsten" class="wideInput"/ required>
                                 <span>€</span>
                             </label>
                         </fieldset>
@@ -54,96 +54,182 @@
                 </div>
 
                 <div class="uitgaven">
-                    <fieldset>
-                        <h2>Woning</h2>
-                        <label for="leeftijd" class="euro">Huur, hypotheek, servicekosten, erfpacht
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                    <fieldset class="kledingenschoenen">
+                        <h2>Kleding & schoenen</h2>
+                        <label for="kledingenschoenen" class="euro">Denk ook aan bv. kleedgeld kinderen, reparaties, accessoires
+                            <input type="text" name="kledingenschoenen" id="kledingenschoenen" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
-                        <h2>Energie & lokale lasten</h2>
-                        <label for="leeftijd" class="euro">GWL, Onroerende zaakbelasting, Reinigingsheffing, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                    <fieldset class="inventaris">
+                        <h2>Inventaris</h2>
+                        <label for="inventaris" class="euro">Bijdrage Vereniging van Eigenaren (VVE), Grote uitgaven aan meubels of apparatuur
+                            <input type="text" name="inventaris" id="inventaris" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
-                        <h2>Verzekeringen</h2>
-                        <label for="leeftijd" class="euro">Zorgverzekering, Aansprakelijkheidsverzekering, Inboedelverzekering, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                    <fieldset class="nietvergoedeziektekosten">
+                        <h2>Niet-vergoede ziektekosten</h2>
+                        <label for="nietvergoedeziektekosten" class="euro">Eigen risico, Zelfzorgmedicijnen, Eigen bijdragen
+                            <input type="text" name="nietvergoedeziektekosten" id="nietvergoedeziektekosten" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
-                        <h2>Abonnementen & telecom</h2>
-                        <label for="leeftijd" class="euro">Televisie, internet, mobiele telefoonm, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                    <fieldset class="vrijetijdsuitgaven">
+                        <h2>Vrijetijdsuitgaven</h2>
+                        <label for="vrijetijdsuitgaven" class="euro">Vakantie, Hobby’s, Overige vrijetijdsuitgaven (bv. boeken, speelgoed)
+                            <input type="text" name="vrijetijdsuitgaven" id="vrijetijdsuitgaven" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
                     <div class="vergelijkbaarHuishouden">
                         <div class="headings">
-                            <h3>Uitgavencategorie</h3>
+                            <h3>Reserverings uitgaven</h3>
                             <h3>Vergelijkbaar huishouden</h3>
                             <h3>Uw uitgaven per maand</h3>
                         </div>
                         <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="uitgaven second">
-                    <fieldset>
+                    <fieldset class="huurhypotheek">
                         <h2>Woning</h2>
-                        <label for="leeftijd" class="euro">Huur, hypotheek, servicekosten, erfpacht
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                        <label for="huurhypotheek" class="euro">Huur, Hypotheek, Servicekosten, Erfpacht
+                            <input type="text" name="huurhypotheek" id="huurhypotheek" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
-                        <h2>Energie & lokale lasten</h2>
-                        <label for="leeftijd" class="euro">GWL, Onroerende zaakbelasting, Reinigingsheffing, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                    <fieldset class="gwlenlokalelasten">
+                        <h2>GWL & lokale lasten</h2>
+                        <label for="gwlenlokalelasten" class="euro">Gas, Water & Licht, Onroerende zaakbelasting, Reinigingsheffing
+                            <input type="text" name="gwlenlokalelasten" id="gwlenlokalelasten" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="telefoontelevisieinternet">
+                        <h2>Telefoon televisie & internet</h2>
+                        <label for="telefoontelevisieinternet" class="euro">Televisie, Internet, Mobiele telefoon
+                            <input type="text" name="telefoontelevisieinternet" id="telefoontelevisieinternet" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="verzekeringen">
                         <h2>Verzekeringen</h2>
-                        <label for="leeftijd" class="euro">Zorgverzekering, Aansprakelijkheidsverzekering, Inboedelverzekering, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+                        <label for="verzekeringen" class="euro">Zorgverzekering, Aansprakelijkheidsverzekering, Inboedelverzekering
+                            <input type="text" name="verzekeringen" id="verzekeringen" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
-                    <fieldset>
-                        <h2>Abonnementen & telecom</h2>
-                        <label for="leeftijd" class="euro">Televisie, internet, mobiele telefoonm, ect.
-                            <input type="text" name="leeftijd" value="" id="leeftijd" class="wideInput">
+
+                    <div class="vergelijkbaarHuishouden">
+                        <div class="headings">
+                            <h3>Primaire vaste lasten</h3>
+                            <h3>Vergelijkbaar huishouden</h3>
+                            <h3>Uw uitgaven per maand</h3>
+                        </div>
+                        <ul>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="uitgaven third">
+                    <fieldset class="contributiesenabonnementen">
+                        <h2>Contributies & Abbonementen</h2>
+                        <label for="contributiesenabonnementen" class="euro">Mobiele telefoon, sportschool
+                            <input type="text" name="contributiesenabonnementen" id="contributiesenabonnementen" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="onderwijs">
+                        <h2>Onderwijs</h2>
+                        <label for="onderwijs" class="euro">Schoolgeld, schoolspullen, boeken
+                            <input type="text" name="onderwijs" id="onderwijs" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="kinderopvang">
+                        <h2>Kinderopvang</h2>
+                        <label for="kinderopvang" class="euro">Oppas of opvang
+                            <input type="text" name="kinderopvang" id="kinderopvang" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="vervoer">
+                        <h2>Vervoer</h2>
+                        <label for="vervoer" class="euro">Brandstof, Onderhoud, Motorrijtuigenbelasting, Fiets, Openbaar vervoer
+                            <input type="text" name="vervoer" id="vervoer" class="wideInput" required>
                             <span>€</span>
                         </label>
                     </fieldset>
                     <div class="vergelijkbaarHuishouden">
                         <div class="headings">
-                            <h3>Uitgavencategorie</h3>
+                            <h3>Overige vaste lasten</h3>
                             <h3>Vergelijkbaar huishouden</h3>
                             <h3>Uw uitgaven per maand</h3>
                         </div>
                         <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="resultaat">
-
+                <div class="uitgaven fourth">
+                    <fieldset class="voeding">
+                        <h2>Voeding</h2>
+                        <label for="voeding" class="euro">Boodschappen
+                            <input type="text" name="voeding" id="voeding" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="huisentuinonderhoud">
+                        <h2>Huis & tuin</h2>
+                        <label for="huisentuinonderhoud" class="euro">Onderhoud huis en tuin, Bijdrage Vereniging van Eigenaren (VVE)
+                            <input type="text" name="huisentuinonderhoud" id="huisentuinonderhoud" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="overigehuishoudelijkeuitgaven">
+                        <h2>Overige huishoudelijke uitgaven</h2>
+                        <label for="overigehuishoudelijkeuitgaven" class="euro">Voeding, Persoonlijke verzorging (bv. kapper, toiletartikelen)
+                            <input type="text" name="overigehuishoudelijkeuitgaven" id="overigehuishoudelijkeuitgaven" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="reserveringsuitgaven">
+                        <h2>Huishoudelijke reserverings uitgaven</h2>
+                        <label for="reserveringsuitgaven" class="euro">Nieuwe bank, nieuwe glazen, nieuwe tafel
+                            <input type="text" name="reserveringsuitgaven" id="reserveringsuitgaven" class="wideInput" required>
+                            <span>€</span>
+                        </label>
+                    </fieldset>
+                    <div class="vergelijkbaarHuishouden">
+                        <div class="headings">
+                            <h3>Huishoudelijke uitgaven</h3>
+                            <h3>Vergelijkbaar huishouden</h3>
+                            <h3>Uw uitgaven per maand</h3>
+                        </div>
+                        <ul>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                            <li>€,-</li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
 
             <nav>
@@ -151,6 +237,7 @@
                 <a id="saveSituatie" class="button">Verder</a>
                 <button type="button" id="showResults">Mijn financiele plaatje</button>
                 <ul>
+                    <li></li>
                     <li></li>
                     <li></li>
                     <li></li>

@@ -110,35 +110,17 @@ button {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    min-width: 400vw;
+    min-width: 500vw;
+    max-height: 55vh;
     position: relative;
 }
 
 form {
-    width: 300vw;
+    width: 500vw;
 }
 
 form .containerSlider > div {
     padding: 50px 0 80px;
-}
-
-form fieldset label {
-    color: #727272;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
-}
-
-form fieldset {
-    display: flex;
-    flex-direction: row;
-    border: none;
-    padding: 0;
-    width: 85%;
-    margin-left: auto;
-    position: relative;
 }
 
 form h2 {
@@ -214,6 +196,9 @@ form nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    top: 40px;
+    position: relative;
+    z-index: 2;
 }
 
 form:not(.done) nav button:last-of-type {
@@ -229,7 +214,36 @@ form nav {
     width: 1150px;
 }
 
+form fieldset label {
+    color: #727272;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+form fieldset.second,
+form fieldset.third {
+    width: 92%;
+}
+
+form fieldset {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    padding: 0;
+    width: 85%;
+    margin-left: auto;
+    position: relative;
+}
+
 /* Iconen voor invoervelden */
+form fieldset.second::before,
+form fieldset.third::before {
+    left: -8%;
+}
+
 form fieldset::before {
     content: "";
     width: 50px;
@@ -247,7 +261,7 @@ form fieldset::before {
     transition: all 0.7s ease-in-out;
 }
 
-/* Situatie iconen ---------------- */
+/* All form icons ---------------- */
 .situatie .situatieForm fieldset:first-of-type::before {
     background-image: url('/public/img/leeftijd.png');
 }
@@ -260,37 +274,70 @@ form fieldset::before {
     background-image: url('/public/img/leeftijd.png');
 }
 
-.uitgaven:not(.second) fieldset:first-of-type::before {
+
+
+.uitgaven fieldset.inventaris::before {
+    background-image: url('/public/img/inventaris.png');
+}
+
+.uitgaven fieldset.kledingenschoenen::before {
+    background-image: url('/public/img/kledingenschoenen.png');
+}
+
+.uitgaven fieldset.nietvergoedeziektekosten::before {
+    background-image: url('/public/img/nietvergoed.png');
+}
+
+.uitgaven fieldset.vrijetijdsuitgaven::before {
+    background-image: url('/public/img/vrijetijdsuitgaven.png');
+}
+
+.uitgaven fieldset.huurhypotheek::before {
     background-image: url('/public/img/huis.png');
 }
 
-.uitgaven:not(.second) fieldset:nth-of-type(2)::before {
+.uitgaven fieldset.gwlenlokalelasten::before {
     background-image: url('/public/img/lokaleLasten.png');
 }
 
-.uitgaven:not(.second) fieldset:nth-of-type(3)::before {
-    background-image: url('/public/img/verzekeringen.png');
-}
-
-.uitgaven:not(.second) fieldset:nth-of-type(4)::before {
+.uitgaven fieldset.telefoontelevisieinternet::before {
     background-image: url('/public/img/telecom.png');
 }
 
-
-.uitgaven.second fieldset:first-of-type::before {
-    background-image: url('/public/img/huis.png');
-}
-
-.uitgaven.second fieldset:nth-of-type(2)::before {
-    background-image: url('/public/img/lokaleLasten.png');
-}
-
-.uitgaven.second fieldset:nth-of-type(3)::before {
+.uitgaven fieldset.verzekeringen::before {
     background-image: url('/public/img/verzekeringen.png');
 }
 
-.uitgaven.second fieldset:nth-of-type(4)::before {
+.uitgaven fieldset.contributiesenabonnementen::before {
     background-image: url('/public/img/telecom.png');
+}
+
+.uitgaven fieldset.onderwijs::before {
+    background-image: url('/public/img/onderwijs.png');
+}
+
+/* .uitgaven fieldset.kinderopvang::before {
+    background-image: url('/public/img/kinderopvang.png');
+} */
+
+.uitgaven fieldset.vervoer::before {
+    background-image: url('/public/img/auto.png');
+}
+
+.uitgaven fieldset.voeding::before {
+    background-image: url('/public/img/voeding.png');
+}
+
+/* .uitgaven fieldset.huisentuinonderhoud::before {
+    background-image: url('/public/img/huisentuinonderhoud.png');
+} */
+
+/* .uitgaven fieldset.overigehuishoudelijkeuitgaven::before {
+    background-image: url('/public/img/overigehuishoudelijkeuitgaven.png');
+} */
+
+.uitgaven fieldset.reserveringsuitgaven::before {
+    background-image: url('/public/img/inventaris.png');
 }
 
 /* Fill in form 'situatie' -------------- */
@@ -415,8 +462,16 @@ form fieldset::before {
     opacity: 0;
 }
 
-.stepTwo .containerSlider.slideOne .uitgaven {
-    transform: translateX(-3450px);
+.stepTwo .containerSlider.slideOne .uitgaven,
+.stepTwo .containerSlider.slideTwo .uitgaven,
+.stepTwo .containerSlider.slideThree .uitgaven {
+    transform: translateX(-2300px);
+    opacity: 0;
+}
+
+/* slideOne */
+.stepTwo .containerSlider:not(.second) .uitgaven.second {
+    transform: translateX(-1150px);
     opacity: 0;
 }
 
@@ -425,9 +480,79 @@ form fieldset::before {
     opacity: 1;
 }
 
+.stepTwo .containerSlider .uitgaven.third {
+    transform: translateX(-2300px);
+    opacity: 0;
+}
+
+/* slideTwo */
+.stepTwo .containerSlider.slideTwo .uitgaven.second {
+    transform: translateX(-3450px);
+    opacity: 0;
+}
+
+.stepTwo .containerSlider.slideTwo .uitgaven.third {
+    transform: translateX(-3450px);
+    opacity: 1;
+}
+
+/* slideThree */
+.stepTwo .containerSlider.slideTwo .uitgaven.fourth {
+    transform: translateX(-3450px);
+    opacity: 0;
+}
+
+.stepTwo .containerSlider.slideThree .uitgaven.third {
+    transform: translateX(-4600px);
+    opacity: 0;
+}
+
+.stepTwo .containerSlider.slideThree .uitgaven.fourth {
+    transform: translateX(-4600px);
+    opacity: 1;
+}
+
 .stepTwo .situatie {
     opacity: 0;
     transform: translateX(-1150px);
+}
+
+
+.stepTwo .containerSlider.slideThree + nav a:last-of-type {
+    display: none;
+}
+
+.stepTwo .containerSlider.slideThree + nav button:last-of-type {
+    display: inline-block;
+}
+
+form nav ul {
+    margin-left: 500px;
+    width: 150px;
+}
+
+form nav ul li {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%!important;
+    background-color: #6A6A6A;
+    display: inline-block;
+}
+
+form.stepTwo > div:not(.slideOne):not(.slideTwo):not(.slideThree):not(.results) + nav ul li:first-of-type {
+    opacity: 0.2;
+}
+
+.slideOne + nav ul li:nth-of-type(2) {
+    opacity: 0.2;
+}
+
+.slideTwo + nav ul li:nth-of-type(3) {
+    opacity: 0.2;
+}
+
+.slideThree + nav ul li:nth-of-type(4) {
+    opacity: 0.2;
 }
 
 header nav ul li {
