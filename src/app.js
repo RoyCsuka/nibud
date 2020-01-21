@@ -13,13 +13,15 @@ let xVar = "Alleenstaand";
 // Voor de doorklik knoppen
 var timesClicked = 0;
 
+// Selecteer chart
+var barChart = document.getElementById('subCat');
+var lineChart = document.getElementById('mainCat');
+
 makeBugetVisualisation()
 
 // Our main function which runs other function to make a visualization
 async function makeBugetVisualisation() {
     data = await cleanedArr(data)
-
-    console.log("Data in app", data);
 
     setUpForm(data)
     localStor()
@@ -42,32 +44,10 @@ function setUpForm(data) {
 
 function selectedDataForVis() {
     var selectedData = data.filter(d => d.key === this.value);
-
     selectedData = selectedData.map(d => d.values);
 
-    var categoriesNames = selectedData.map(function(d) {
-        let reserveringsuitgaven = d.reserveringsuitgaven.naam;
-        let vastelasten = d.vastelasten.naam;
-        let overigevastelasten = d.overigevastelasten.naam;
-        let huishoudelijkeuitgaven = d.huishoudelijkeuitgaven.naam;
-        return [reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
-    });
-
-    var categoriesValues = selectedData.map(function(d) {
-        let reserveringsuitgaven = d.reserveringsuitgaven.totaal;
-        let vastelasten = d.vastelasten.totaal;
-        let overigevastelasten = d.overigevastelasten.totaal;
-        let huishoudelijkeuitgaven = d.huishoudelijkeuitgaven.totaal;
-        return [reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
-    });
-
-
-
-    console.log("selected data ", selectedData);
     // calculated values
     document.querySelectorAll('.vergelijkbaarHuishouden ul li').innerHTML = '';
-
-    console.log("crash", selectedData.map(d => d.reserveringsuitgaven.nietvergoedeziektekosten));
 
     document.querySelector('.uitgaven .vergelijkbaarHuishouden ul li:first-of-type').innerHTML = "€" + selectedData.map(d => d.reserveringsuitgaven.kleding) + ",-";
     document.querySelector('.uitgaven .vergelijkbaarHuishouden ul li:nth-of-type(2)').innerHTML = "€" + selectedData.map(d => d.reserveringsuitgaven.inventaris) + ",-";
@@ -89,139 +69,283 @@ function selectedDataForVis() {
     document.querySelector('.uitgaven.fourth .vergelijkbaarHuishouden ul li:nth-of-type(3)').innerHTML = "€" + selectedData.map(d => d.huishoudelijkeuitgaven.overigehuishoudelijkeuitgaven) + ",-";
     document.querySelector('.uitgaven.fourth .vergelijkbaarHuishouden ul li:nth-of-type(4)').innerHTML = "€" + selectedData.map(d => d.huishoudelijkeuitgaven.reserveringsuitgaven) + ",-";
 
+    localStor(selectedData)
+
 }
 
-function localStor(){
+function localStor(currentData) {
     // onclick: https://stackoverflow.com/questions/1947263/using-an-html-button-to-call-a-javascript-function
     // localStorage save: http://jsfiddle.net/rx0rjaf3/7/
     document.getElementById("showResults").onclick = function () {
         // check if browser supports localStorage
         if (typeof(Storage) != "undefined") {
+            localStorage.setItem("leeftijd", document.getElementById("leeftijd").value);
             localStorage.setItem("kledingenschoenen", document.getElementById("kledingenschoenen").value);
-            var kledingenschoenen = localStorage.getItem("kledingenschoenen");
-            document.getElementById("kledingenschoenen").value = kledingenschoenen;
-
             localStorage.setItem("gwlenlokalelasten", document.getElementById("gwlenlokalelasten").value);
-            var gwlenlokalelasten = localStorage.getItem("gwlenlokalelasten");
-            document.getElementById("gwlenlokalelasten").value = gwlenlokalelasten;
-
             localStorage.setItem("inkomsten", document.getElementById("inkomsten").value);
-            var inkomsten = localStorage.getItem("inkomsten");
-            document.getElementById("inkomsten").value = inkomsten;
-
             localStorage.setItem("huurhypotheek", document.getElementById("huurhypotheek").value);
-            var huurhypotheek = localStorage.getItem("huurhypotheek");
-            document.getElementById("huurhypotheek").value = huurhypotheek;
-
             localStorage.setItem("kinderopvang", document.getElementById("kinderopvang").value);
-            var kinderopvang = localStorage.getItem("kinderopvang");
-            document.getElementById("kinderopvang").value = kinderopvang;
-
             localStorage.setItem("contributiesenabonnementen", document.getElementById("contributiesenabonnementen").value);
-            var contributiesenabonnementen = localStorage.getItem("contributiesenabonnementen");
-            document.getElementById("contributiesenabonnementen").value = contributiesenabonnementen;
-
             localStorage.setItem("verzekeringen", document.getElementById("verzekeringen").value);
-            var verzekeringen = localStorage.getItem("verzekeringen");
-            document.getElementById("verzekeringen").value = verzekeringen;
-
             localStorage.setItem("telefoontelevisieinternet", document.getElementById("telefoontelevisieinternet").value);
-            var telefoontelevisieinternet = localStorage.getItem("telefoontelevisieinternet");
-            document.getElementById("telefoontelevisieinternet").value = telefoontelevisieinternet;
-
             localStorage.setItem("onderwijs", document.getElementById("onderwijs").value);
-            var onderwijs = localStorage.getItem("onderwijs");
-            document.getElementById("onderwijs").value = onderwijs;
-
             localStorage.setItem("vervoer", document.getElementById("vervoer").value);
-            var vervoer = localStorage.getItem("vervoer");
-            document.getElementById("vervoer").value = vervoer;
-
             localStorage.setItem("inventaris", document.getElementById("inventaris").value);
-            var inventaris = localStorage.getItem("inventaris");
-            document.getElementById("inventaris").value = inventaris;
-
             localStorage.setItem("nietvergoedeziektekosten", document.getElementById("nietvergoedeziektekosten").value);
-            var nietvergoedeziektekosten = localStorage.getItem("nietvergoedeziektekosten");
-            document.getElementById("nietvergoedeziektekosten").value = nietvergoedeziektekosten;
-
             localStorage.setItem("vrijetijdsuitgaven", document.getElementById("vrijetijdsuitgaven").value);
-            var vrijetijdsuitgaven = localStorage.getItem("vrijetijdsuitgaven");
-            document.getElementById("vrijetijdsuitgaven").value = vrijetijdsuitgaven;
-
             localStorage.setItem("voeding", document.getElementById("voeding").value);
-            var voeding = localStorage.getItem("voeding");
-            document.getElementById("voeding").value = voeding;
-
             localStorage.setItem("overigehuishoudelijkeuitgaven", document.getElementById("overigehuishoudelijkeuitgaven").value);
-            var overigehuishoudelijkeuitgaven = localStorage.getItem("overigehuishoudelijkeuitgaven");
-            document.getElementById("overigehuishoudelijkeuitgaven").value = overigehuishoudelijkeuitgaven;
-
             localStorage.setItem("reserveringsuitgaven", document.getElementById("reserveringsuitgaven").value);
-            var reserveringsuitgaven = localStorage.getItem("reserveringsuitgaven");
-            document.getElementById("reserveringsuitgaven").value = reserveringsuitgaven;
-
             localStorage.setItem("huisentuinonderhoud", document.getElementById("huisentuinonderhoud").value);
-            var huisentuinonderhoud = localStorage.getItem("huisentuinonderhoud");
-            document.getElementById("huisentuinonderhoud").value = huisentuinonderhoud;
 
-
-
-            let localData = {
-                reserveringsuitgaven: {
-                    naam: "Reserverings uitgaven",
-                    totaal: Math.round(Number(kledingenschoenen) + Number(inventaris) + Number(nietvergoedeziektekosten) + Number(vrijetijdsuitgaven)),
-                    kleding: Number(kledingenschoenen),
-                    inventaris: Number(inventaris),
-                    nietvergoedeziektekosten: Number(nietvergoedeziektekosten),
-                    vrijetijdsuitgaven: Number(vrijetijdsuitgaven),
-                },
-                vastelasten: {
-                    naam: "Primaire vaste lasten",
-                    totaal: Math.round(Number(huurhypotheek) + Number(gwlenlokalelasten) + Number(telefoontelevisieinternet) + Number(verzekeringen)),
-                    huurhypotheek: Number(huurhypotheek),
-                    gwl: Number(gwlenlokalelasten),
-                    telefoontelevisieinternet: Number(telefoontelevisieinternet),
-                    verzekeringen: Number(verzekeringen)
-                },
-                overigevastelasten: {
-                    naam: "Overige vaste lasten",
-                    totaal: Math.round(Number(contributiesenabonnementen) + Number(onderwijs) + Number(kinderopvang) + Number(vervoer)),
-                    contributiesenabonnementen: Number(contributiesenabonnementen),
-                    onderwijs: Number(onderwijs),
-                    kinderopvang: Number(kinderopvang),
-                    vervoer: Number(vervoer),
-                },
-                huishoudelijkeuitgaven: {
-                    naam: "Huishoudelijke uitgaven",
-                    totaal: Math.round(Number(voeding) + Number(huisentuinonderhoud) + Number(overigehuishoudelijkeuitgaven) + Number(reserveringsuitgaven)),
-                    voeding: Number(voeding),
-                    huisentuinonderhoud: Number(huisentuinonderhoud),
-                    overigehuishoudelijkeuitgaven: Number(overigehuishoudelijkeuitgaven),
-                    reserveringsuitgaven: Number(reserveringsuitgaven),
-                },
-
-                inkomen: Number(inkomsten),
-                // uitgaven: uitgaven,
-                // saldo: saldo,
-                // min: min,
-                // max: inkomen
-            };
-            console.log(localData);
+            drawChart(currentData)
 
             document.querySelector('.containerSlider').classList.remove('slideTwo');
-            document.querySelector('.containerSlider').classList.add('results');
+            document.querySelector('body').classList.add('results');
         } else {
             document.getElementById("result").innerHTML = "Je browser ondersteund geen Local Storage";//Error
         }
     }
+
+    // fill in form values
+    var leeftijd = localStorage.getItem("leeftijd");
+    document.getElementById("leeftijd").value = leeftijd;
+    var kledingenschoenen = localStorage.getItem("kledingenschoenen");
+    document.getElementById("kledingenschoenen").value = kledingenschoenen;
+    var gwlenlokalelasten = localStorage.getItem("gwlenlokalelasten");
+    document.getElementById("gwlenlokalelasten").value = gwlenlokalelasten;
+    var inkomsten = localStorage.getItem("inkomsten");
+    document.getElementById("inkomsten").value = inkomsten;
+    var huurhypotheek = localStorage.getItem("huurhypotheek");
+    document.getElementById("huurhypotheek").value = huurhypotheek;
+    var kinderopvang = localStorage.getItem("kinderopvang");
+    document.getElementById("kinderopvang").value = kinderopvang;
+    var contributiesenabonnementen = localStorage.getItem("contributiesenabonnementen");
+    document.getElementById("contributiesenabonnementen").value = contributiesenabonnementen;
+    var verzekeringen = localStorage.getItem("verzekeringen");
+    document.getElementById("verzekeringen").value = verzekeringen;
+    var telefoontelevisieinternet = localStorage.getItem("telefoontelevisieinternet");
+    document.getElementById("telefoontelevisieinternet").value = telefoontelevisieinternet;
+    var onderwijs = localStorage.getItem("onderwijs");
+    document.getElementById("onderwijs").value = onderwijs;
+    var vervoer = localStorage.getItem("vervoer");
+    document.getElementById("vervoer").value = vervoer;
+    var inventaris = localStorage.getItem("inventaris");
+    document.getElementById("inventaris").value = inventaris;
+    var nietvergoedeziektekosten = localStorage.getItem("nietvergoedeziektekosten");
+    document.getElementById("nietvergoedeziektekosten").value = nietvergoedeziektekosten;
+    var vrijetijdsuitgaven = localStorage.getItem("vrijetijdsuitgaven");
+    document.getElementById("vrijetijdsuitgaven").value = vrijetijdsuitgaven;
+    var voeding = localStorage.getItem("voeding");
+    document.getElementById("voeding").value = voeding;
+    var overigehuishoudelijkeuitgaven = localStorage.getItem("overigehuishoudelijkeuitgaven");
+    document.getElementById("overigehuishoudelijkeuitgaven").value = overigehuishoudelijkeuitgaven;
+    var reserveringsuitgaven = localStorage.getItem("reserveringsuitgaven");
+    document.getElementById("reserveringsuitgaven").value = reserveringsuitgaven;
+    var huisentuinonderhoud = localStorage.getItem("huisentuinonderhoud");
+    document.getElementById("huisentuinonderhoud").value = huisentuinonderhoud;
+}
+
+function drawChart(currentData) {
+    var allTotalValues = currentData.map(function(d) {
+        var totaleUitgaven = d.reserveringsuitgaven.totaal + d.vastelasten.totaal + d.overigevastelasten.totaal + d.huishoudelijkeuitgaven.totaal;
+        let beginSaldo = d.inkomen;
+        let reserveringsuitgaven = beginSaldo - d.reserveringsuitgaven.totaal;
+        let vastelasten = reserveringsuitgaven - d.vastelasten.totaal;
+        let overigevastelasten = vastelasten - d.overigevastelasten.totaal;
+        let huishoudelijkeuitgaven = totaleUitgaven - d.huishoudelijkeuitgaven.totaal;
+        return [beginSaldo, reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
+    });
+
+    function allTotalValuesLocal() {
+        var totaleUitgavenLocal = '';
+        let beginSaldo = Number(localStorage.getItem("inkomsten"))
+
+        let reserveringsuitgaven = Number(localStorage.getItem("kledingenschoenen")) + Number(localStorage.getItem("inventaris")) + Number(localStorage.getItem("nietvergoedeziektekosten")) + Number(localStorage.getItem("vrijetijdsuitgaven"));
+        let saldoReserveringsuitgaven = beginSaldo - reserveringsuitgaven;
+
+        let vastelasten = Number(localStorage.getItem("huurhypotheek")) + Number(localStorage.getItem("gwlenlokalelasten")) + Number(localStorage.getItem("telefoontelevisieinternet")) + Number(localStorage.getItem("verzekeringen"));
+        let saldoVastelasten = saldoReserveringsuitgaven - vastelasten;
+
+        let overigevastelasten = Number(localStorage.getItem("contributiesenabonnementen")) + Number(localStorage.getItem("onderwijs")) + Number(localStorage.getItem("kinderopvang")) + Number(localStorage.getItem("vervoer"));
+        let overigevastelastenSaldo = saldoVastelasten - overigevastelasten;
+
+        let huishoudelijkeuitgaven = Number(localStorage.getItem("voeding")) + Number(localStorage.getItem("huisentuinonderhoud")) + Number(localStorage.getItem("overigehuishoudelijkeuitgaven")) + Number(localStorage.getItem("reserveringsuitgaven"));
+        let huishoudelijkeuitgavenSaldo = overigevastelastenSaldo - huishoudelijkeuitgaven;
+
+        return [beginSaldo, saldoReserveringsuitgaven, saldoVastelasten, overigevastelastenSaldo, huishoudelijkeuitgavenSaldo];
+    }
+
+    console.log("local", allTotalValuesLocal()[0]);
+    console.log("dataset", allTotalValues[0][1]);
+
+    let differenceOfReserveringsuitgaven = allTotalValuesLocal()[0] - allTotalValues[0][1];
+
+    document.querySelector('#reserveringsuitgavenSaldo b').innerHTML = "-€" + Math.abs(differenceOfReserveringsuitgaven);
+
+    // Line chart
+    var mainCat = new Chart(lineChart, {
+        type: 'line',
+        data: {
+            labels: ['', '', '', '', ''],
+            datasets: [{
+                label: 'Gemiddeld NL',
+                backgroundColor:'rgba(0, 0, 0, 0)',
+                borderColor: '#CDCDCD',
+                data: allTotalValues[0]
+            }, {
+                label: 'Jouw uitgaven',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                borderColor: '#E36B0A',
+                data: allTotalValuesLocal()
+            }]
+        },
+        options: {
+            borderWidth: 5,
+            elements: {
+                line: {
+                    tension: 0
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                }]
+            }
+        }
+    });
+
+    // Zero state barchart
+    var myChart = new Chart(barChart, {
+        type: 'bar',
+        data: {
+            labels: ['', '', '', ''],
+            datasets: [{
+                label: 'Gemiddeld NL',
+                backgroundColor: '#E36B0A',
+                barThickness: 55,
+                data: [8,8,8,8]
+            }, {
+                label: 'Jouw uitgaven',
+                backgroundColor:'#A2A2A2',
+                barThickness: 55,
+                data: [8,8,8,8]
+            }]
+        },
+        options: {
+        barValueSpacing: 20,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max: 350,
+                        beginAtZero: true
+                    },
+                    barPercentage: 1.0,
+                    categoryPercentage: 1.0,
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            }
+        }
+    });
+
+    // Click on reserveringsuitgaven
+    document.querySelector('.dashboard div.reserveringsuitgaven').onclick = function() {
+        document.querySelector('.lineChartMainCat').classList.remove('vastelasten')
+        document.querySelector('.lineChartMainCat').classList.remove('overigevastelasten')
+        document.querySelector('.lineChartMainCat').classList.remove('huishoudelijkeuitgaven')
+        document.querySelector('.zeroState').classList.remove('zeroState')
+        document.querySelector('.lineChartMainCat').classList.add('reserveringsuitgaven')
+
+        var reserveringsuitgavenNaam = currentData.map(function(d) {
+            return d.reserveringsuitgaven.naam;
+        });
+
+        var reserveringsuitgavenValues = currentData.map(function(d) {
+            let kleding = d.reserveringsuitgaven.kleding;
+            let inventaris = d.reserveringsuitgaven.inventaris;
+            let nietvergoedeziektekosten = d.reserveringsuitgaven.nietvergoedeziektekosten;
+            let vrijetijdsuitgaven = d.reserveringsuitgaven.vrijetijdsuitgaven;
+            return [kleding, inventaris, nietvergoedeziektekosten, vrijetijdsuitgaven];
+        });
+
+        var subCat = new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: ['Kleding en schoenen', 'Inventaris', 'Niet vergoede ziektekosten', 'Vrijetijds uitgaven'],
+                datasets: [{
+                    backgroundColor:'#A2A2A2',
+                    barThickness: 55,
+                    data: reserveringsuitgavenValues[0]
+                }, {
+                    backgroundColor: '#E36B0A',
+                    barThickness: 55,
+                    data: [localStorage.getItem("kledingenschoenen"), localStorage.getItem("inventaris"), localStorage.getItem("nietvergoedeziektekosten"), localStorage.getItem("vrijetijdsuitgaven")]
+                }]
+            },
+            options: {
+                barValueSpacing: 20,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            // display:false
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            // display:false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.yLabel;
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 }
 
 // INVOEREN VAN GEGEVENS
 // Verder klik knop
 // Check dit voor tweede click: https://stackoverflow.com/questions/44572859/a-function-that-runs-on-the-second-click?answertab=oldest#tab-top
 document.getElementById('saveSituatie').onclick = function() {
-
     timesClicked ++;
 
     if(timesClicked == 1) {
@@ -261,4 +385,18 @@ document.getElementById('back').onclick = function() {
         console.log("back");
         timesClicked ++;
     }
+}
+
+document.querySelector('header nav ul li:first-of-type').onclick = function() {
+    timesClicked = 0;
+    document.querySelector('.containerSlider').classList.remove('slideOne');
+    document.querySelector('.containerSlider').classList.remove('slideTwo');
+    document.querySelector('.containerSlider').classList.remove('slideThree');
+    document.querySelector('header').classList.remove('stepTwo');
+    document.querySelector('form').classList.remove('stepTwo');
+}
+
+// Terug naar formulieren knop
+document.getElementById('gegevensAanpassen').onclick = function() {
+    document.querySelector('body').classList.remove('results');
 }

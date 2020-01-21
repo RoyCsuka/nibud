@@ -5,7 +5,7 @@ body {
   margin: 0px;
   display: flex;
   font-family: 'WhitneyMedium';
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 button:focus,
@@ -41,7 +41,9 @@ button.grey {
 
 div.container {
     max-width: 1150px;
+    max-height: 100vh;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 div.container,
@@ -51,10 +53,20 @@ nav {
     flex-direction: column;
 }
 
+div.container > header {
+    justify-content: space-between;
+    height: 20vh;
+    padding-top: 60px;
+    padding-bottom: 0;
+}
+
 header {
     display: flex;
-    justify-content: space-between;
-    padding-top: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    transition: all 0.7s ease-in-out;
+    max-width: 1150px;
+    justify-content: flex-end;
 }
 
 header .info-txt h1 {
@@ -91,6 +103,11 @@ button {
     border: 2px solid #E36B0A;
 }
 
+/* Buttons 'hulp nodig?' en 'gevens aanpassen' */
+header > button.button {
+    padding: 8px 20px;
+}
+
 header nav ul li {
     color: #012169;
 }
@@ -117,6 +134,10 @@ button {
 
 form {
     width: 500vw;
+    height: 70vh;
+    max-height: inherit;
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
 }
 
 form .containerSlider > div {
@@ -316,9 +337,9 @@ form fieldset::before {
     background-image: url('/public/img/onderwijs.png');
 }
 
-/* .uitgaven fieldset.kinderopvang::before {
-    background-image: url('/public/img/kinderopvang.png');
-} */
+.uitgaven fieldset.kinderopvang::before {
+    background-image: url('/public/img/opvang.png');
+}
 
 .uitgaven fieldset.vervoer::before {
     background-image: url('/public/img/auto.png');
@@ -328,13 +349,13 @@ form fieldset::before {
     background-image: url('/public/img/voeding.png');
 }
 
-/* .uitgaven fieldset.huisentuinonderhoud::before {
-    background-image: url('/public/img/huisentuinonderhoud.png');
-} */
+.uitgaven fieldset.huisentuinonderhoud::before {
+    background-image: url('/public/img/huis.png');
+}
 
-/* .uitgaven fieldset.overigehuishoudelijkeuitgaven::before {
-    background-image: url('/public/img/overigehuishoudelijkeuitgaven.png');
-} */
+.uitgaven fieldset.overigehuishoudelijkeuitgaven::before {
+    background-image: url('/public/img/huishoudelijk.png');
+}
 
 .uitgaven fieldset.reserveringsuitgaven::before {
     background-image: url('/public/img/inventaris.png');
@@ -349,15 +370,13 @@ form fieldset::before {
 }
 
 .situatie aside {
+    max-width: 25%;
+    padding-top: 70px;
     display: inline-block;
 }
 
 .situatie aside img {
     width: 100%;
-}
-
-.situatie aside {
-    max-width: 20%;
 }
 
 .situatie .situatieForm {
@@ -539,7 +558,7 @@ form nav ul li {
     display: inline-block;
 }
 
-form.stepTwo > div:not(.slideOne):not(.slideTwo):not(.slideThree):not(.results) + nav ul li:first-of-type {
+div:not(.slideOne):not(.slideTwo):not(.slideThree):not(.info-txt) + nav ul li:first-of-type {
     opacity: 0.2;
 }
 
@@ -592,6 +611,18 @@ header.stepThree nav ul::before {
     transform: translateX(200%);
 }
 
+#back {
+    transition: all 0.5s ease-in-out;
+}
+
+.stepOne + form #back {
+    opacity: 0;
+}
+
+.stepOne.stepTwo + form #back {
+    opacity: 1;
+}
+
 header.stepOne nav ul li:first-of-type,
 header.stepTwo nav ul li:nth-of-type(2),
 header.stepThree nav ul li:nth-of-type(3) {
@@ -623,4 +654,228 @@ p {
 p b {
     font-weight: bold;
     font-style: italic;
+}
+
+#gegevensAanpassen {
+    display: flex;
+    margin-left: 20px;
+}
+
+.dashboard {
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+    position: absolute;
+    top: 100vh;
+}
+
+.results .dashboard {
+    opacity: 1;
+    z-index: 10;
+    top: 0;
+}
+
+.results form {
+    opacity: 0;
+}
+
+.results div.container > header:first-of-type {
+    opacity: 0;
+    margin-top: -668px;
+}
+
+#mainCat {
+    margin-bottom: 70px;
+}
+
+.dashboard header {
+    padding-bottom: 0;
+}
+
+.dashboard h2 {
+    font-family: 'WhitneyBold', sans-serif;
+    margin-bottom: 5px;
+    margin-top: 0;
+    padding-left: 41px;
+}
+
+.lineChartMainCat > .reserveringsuitgaven {
+    left: 47px;
+}
+.lineChartMainCat > span.reserveringsuitgaven {
+    left: 41px;
+}
+
+
+.lineChartMainCat > .vastelasten {
+    left: 323px;
+}
+.lineChartMainCat > span.vastelasten {
+    left: 319px;
+}
+
+
+.lineChartMainCat > .overigevastelasten {
+    left: 598px;
+}
+.lineChartMainCat > span.overigevastelasten {
+    left: 595.5px;
+}
+
+
+.lineChartMainCat > .huishoudelijkeuitgaven {
+    right: 8px;
+}
+.lineChartMainCat > span.huishoudelijkeuitgaven {
+    right: 2.5px;
+}
+
+.lineChartMainCat > .reserveringsuitgaven,
+.lineChartMainCat > .vastelasten,
+.lineChartMainCat > .overigevastelasten,
+.lineChartMainCat > .huishoudelijkeuitgaven {
+    cursor: pointer;
+}
+
+.lineChartMainCat > div:not(:first-of-type),
+.lineChartMainCat > span {
+    position: absolute;
+    top: 71px;
+}
+
+.lineChartMainCat > div:not(:first-of-type) {
+    height: 100%;
+    width: 267px;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lineChartMainCat.reserveringsuitgaven > div.reserveringsuitgaven,
+.lineChartMainCat.vastelasten > div.vastelasten,
+.lineChartMainCat.overigevastelasten > div.overigevastelasten,
+.lineChartMainCat.huishoudelijkeuitgaven > div.huishoudelijkeuitgaven,
+.lineChartMainCat > div:not(:first-of-type):hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.lineChartMainCat > span:first-of-type {
+    height: calc(100% - 50px);
+    border-left: 2px solid #CDCDCD;
+}
+
+.lineChartMainCat > span {
+    width: 273.5px;
+    height: calc(100% - 50px);
+    border-right: 2px solid #CDCDCD;
+    z-index: -1;
+}
+
+.lineChartMainCat > span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82%;
+    z-index: -1;
+}
+
+.lineChartMainCat > div.reserveringsuitgaven:hover + span.reserveringsuitgaven::before,
+.lineChartMainCat > div.vastelasten:hover + span.vastelasten::before,
+.lineChartMainCat > div.overigevastelasten:hover + span.overigevastelasten::before,
+.lineChartMainCat > div.huishoudelijkeuitgaven:hover + span.huishoudelijkeuitgaven::before,
+.lineChartMainCat.reserveringsuitgaven > div.reserveringsuitgaven + span.reserveringsuitgaven::before,
+.lineChartMainCat.vastelasten > div.vastelasten + span.vastelasten::before,
+.lineChartMainCat.overigevastelasten > div.overigevastelasten + span.overigevastelasten::before,
+.lineChartMainCat.huishoudelijkeuitgaven > div.huishoudelijkeuitgaven + span.huishoudelijkeuitgaven::before {
+    background-color: #FEF7F2!important;
+}
+
+.lineChartMainCat,
+.barchartResults {
+    max-width: 1150px;
+    position: relative;
+}
+
+.dashboard footer b,
+.dashboard footer h5 {
+    font-family: 'WhitneyBook', sans-serif;
+    font-size: 18px;
+    color: #707070;
+    margin: 0 0 10px;
+}
+
+.dashboard footer b {
+    color: #012169;
+}
+
+.dashboard footer#reserveringsuitgavenSaldo {
+    left: 41px;
+}
+
+.dashboard footer#vastelastenSaldo {
+    left: 319px;
+}
+
+.dashboard footer#overigevastelastenSaldo {
+    left: 595.5px;
+}
+
+.dashboard footer#huishoudelijkeuitgavenSaldo {
+    right: 2.5px;
+}
+
+.dashboard footer {
+    position: absolute;
+    bottom: -50px;
+    width: 273.5px;
+    text-align: center;
+}
+
+
+#reserveringsuitgavenButton {
+    display: none;
+}
+
+.zeroState #reserveringsuitgavenButton {
+    position: absolute;
+    top: 100px;
+    left: 290px;
+    display: inherit;
+    z-index: 2;
+    background-color: #E5E5E5;
+    color: #012169;
+    border: 2px solid #E5E5E5;
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+.zeroState.barchartResults::before {
+    content: "";
+    display: block;
+    width: 1150px;
+    height: 170%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    opacity: 0.45;
+    background-color: #FFFFFF;
+    z-index: 1;
+    display: inherit;
+}
+
+#sideBar {
+    display: inherit;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3vw;
+    height: 100vh;
+    background-color: white;
+}
+
+#sideBar,
+#moreInfoTips,
+#contactBugetCoach {
+    display: none;
 }

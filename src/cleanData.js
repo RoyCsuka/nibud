@@ -62,7 +62,6 @@ function makeSubCategories(data) {
                 cat.maincat = "huishoudelijke uitgaven"
         }
     });
-    console.log(data);
     return data
 }
 
