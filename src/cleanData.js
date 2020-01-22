@@ -162,7 +162,7 @@ function average(groupedData) {
         let selectedData = {
             reserveringsuitgaven: {
                 naam: "Reserverings uitgaven",
-                totaal: Math.round(kledingEnSchoenen + inventaris + huisEnTuin + nietVergoedeZiektekosten + vrijetijdsUitgaven),
+                totaal: Math.round(kledingEnSchoenen + inventaris + nietVergoedeZiektekosten + vrijetijdsUitgaven),
                 kleding: Math.round(kledingEnSchoenen),
                 inventaris: Math.round(inventaris),
                 nietvergoedeziektekosten: Math.round(nietVergoedeZiektekosten),
@@ -170,7 +170,7 @@ function average(groupedData) {
             },
             vastelasten: {
                 naam: "Primaire vaste lasten",
-                totaal: Math.round(vasteLasten),
+                totaal: Math.round(huurHypotheek + gas + elektriciteit + water + lokaleLasten + telefoonTelevisieInternet + verzekeringen),
                 huurhypotheek: Math.round(huurHypotheek),
                 gwl: Math.round(gas + elektriciteit + water + lokaleLasten),
                 telefoontelevisieinternet: Math.round(telefoonTelevisieInternet),
@@ -178,7 +178,7 @@ function average(groupedData) {
             },
             overigevastelasten: {
                 naam: "Overige vaste lasten",
-                totaal: Math.round(telefoonTelevisieInternet + verzekeringen + contributiesAbonnementen + onderwijs + kinderopvang),
+                totaal: Math.round(contributiesAbonnementen + onderwijs + kinderopvang + vervoer),
                 contributiesenabonnementen: Math.round(contributiesAbonnementen),
                 onderwijs: Math.round(onderwijs),
                 kinderopvang: Math.round(kinderopvang),
@@ -186,7 +186,7 @@ function average(groupedData) {
             },
             huishoudelijkeuitgaven: {
                 naam: "Huishoudelijke uitgaven",
-                totaal: Math.round(huishoudelijkeUitgaven),
+                totaal: Math.round(voeding + huisEnTuin + overigeHuishoudelijkeUitgaven + reserveringsUitgaven),
                 voeding: Math.round(voeding),
                 huisentuinonderhoud: Math.round(huisEnTuin),
                 overigehuishoudelijkeuitgaven: Math.round(overigeHuishoudelijkeUitgaven),

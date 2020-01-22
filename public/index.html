@@ -252,53 +252,63 @@
             </header>
             <section class="lineChartMainCat">
                 <h2>Uitgaven per post</h2>
-                <canvas id="mainCat" width="1150" height="280"></canvas>
+                <canvas id="mainCat" width="1150" height="250"></canvas>
 
                 <div class="reserveringsuitgaven"></div>
                 <span class="reserveringsuitgaven"></span>
                 <footer id="reserveringsuitgavenSaldo">
                     <h5>Reserveringsuitgaven</h5>
-                    <b>-€700</b>
+                    <b></b>
                 </footer>
 
                 <div class="vastelasten"></div>
                 <span class="vastelasten"></span>
                 <footer id="vastelastenSaldo">
                     <h5>Woning lasten</h5>
-                    <b>-€700</b>
+                    <b></b>
                 </footer>
 
                 <div class="overigevastelasten"></div>
                 <span class="overigevastelasten"></span>
                 <footer id="overigevastelastenSaldo">
                     <h5>Overige vaste lasten</h5>
-                    <b>-€700</b>
+                    <b></b>
                 </footer>
 
                 <div class="huishoudelijkeuitgaven"></div>
                 <span class="huishoudelijkeuitgaven"></span>
                 <footer id="huishoudelijkeuitgavenSaldo">
                     <h5>Huishoudelijke uitgaven</h5>
-                    <b>-€700</b>
+                    <b></b>
                 </footer>
             </section>
 
             <section class="barchartResults zeroState">
-                <canvas id="subCat" width="1150" height="280"></canvas>
+                <h2>Reserveringsuitgaven <span></span></h2>
+                <small>T.o.v. het gemiddelde</small>
+                <canvas id="subCat" width="1150" height="250"></canvas>
+
+                <span class="firstBar"></span>
                 <footer id="firstBar">
-                    <h5>Reserveringsuitgaven</h5>
-                    <b>€200</b>
+                    <h5></h5>
+                    <b></b>
                 </footer>
+
+                <span class="secondBar"></span>
                 <footer id="secondBar">
-                    <h5>Reserveringsuitgaven</h5>
+                    <h5></h5>
                     <b></b>
                 </footer>
+
+                <span class="thirdBar"></span>
                 <footer id="thirdBar">
-                    <h5>Reserveringsuitgaven</h5>
+                    <h5></h5>
                     <b></b>
                 </footer>
+
+                <span class="fourthBar"></span>
                 <footer id="fourthBar">
-                    <h5>Reserveringsuitgaven</h5>
+                    <h5></h5>
                     <b></b>
                 </footer>
                 <button id="reserveringsuitgavenButton">Selecteer één van de uitgaven hierboven voor meer informatie</button>
@@ -307,6 +317,7 @@
 
         <aside id="sideBar">
             <span class="login"></span>
+            <span id="tipalert">0</span>
             <section class="tooltips">
                 <h2>Budgettips</h2>
                 <h4>Huidge subcat</h4>
