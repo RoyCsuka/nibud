@@ -14,15 +14,19 @@ Hieronder is het prototype te zien van ons gekozen concept. Dit prototype is geb
 Voor het prototype zijn er verschillende stappen die je moet doorlopen die hieronder te zien zijn:
 
 > Het invullen van je huidige situatie
+
 ![Huidige situatie](https://raw.githubusercontent.com/RoyCsuka/assets/master/situatie.png)
 
 > Het invullen van al je uitgaven
+
 ![Huidige situatie](https://raw.githubusercontent.com/RoyCsuka/assets/master/uitgaven.png)
 
 > Hiervan krijgt de gebruiker een overzicht en kan die meteen zien waar het probleem ligt
+
 ![Huidige situatie](https://raw.githubusercontent.com/RoyCsuka/assets/master/overzicht.png)
 
 > En als je onzeker bent over je geldzaken en je komt er niet uit met de tips, kun je altijd contact opnemen met een budgetcoach
+
 ![Huidige situatie](https://raw.githubusercontent.com/RoyCsuka/assets/master/neemcontactop.png)
 
 ## Uitwerking
