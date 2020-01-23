@@ -1,7 +1,19 @@
 # NIBUD Bugetcheck
 ## Inhoudsopgave
-## <a id="yes"></a>SECTION ONE ##
-something here
+- [Concept](https://github.com/RoyCsuka/nibud/blob/master/README.md#de-opdracht)
+- [Concept](https://github.com/RoyCsuka/nibud/blob/master/README.md#concept)
+   - [Design](https://github.com/RoyCsuka/nibud/blob/master/README.md#design)
+   - [Uitwerking](https://github.com/RoyCsuka/nibud/blob/master/README.md#uitwerking)
+- [Dependency](https://github.com/RoyCsuka/nibud/blob/master/README.md#dependency)
+- [Features](https://github.com/RoyCsuka/nibud/blob/master/README.md#features)
+   - [Inloggen](https://github.com/RoyCsuka/nibud/blob/master/README.md#inloggen)
+   - [Formulieren](https://github.com/RoyCsuka/nibud/blob/master/README.md#formulieren)
+   - [Local storage](https://github.com/RoyCsuka/nibud/blob/master/README.md#localstorage)
+   - [Persoonlijke tips](https://github.com/RoyCsuka/nibud/blob/master/README.md#persoonlijke-tips-krijgen-als-je-meer-uitgeeft-dan-het-gemiddelde)
+- [Data](https://github.com/RoyCsuka/nibud/blob/master/README.md#data)
+- [Nice to have](https://github.com/RoyCsuka/nibud/blob/master/README.md#nice-to-have)
+- [Credits](https://github.com/RoyCsuka/nibud/blob/master/README.md#credits)   
+
 
 # De opdracht
 Het onafhankelijke voorlichtingsinstituut Nibud, doet onderzoek en geeft voorlichting over de huishoudportemonnee van Nederland.
@@ -37,6 +49,9 @@ Voor het prototype zijn er verschillende stappen die je moet doorlopen die hiero
 Hieronder is het prototype te zien die met Chart.js en D3 gebouwd is:
 ![Prototype gifje](https://i.gyazo.com/8305839a78c4f3862a8e841cb189e8ff.gif)
 > Voor de volledige werking en flow, [bekijk dan de live link](https://serene-dubinsky-c2c707.netlify.com/).
+
+# Dependency
+De visualisaties zijn gemaakt in [Chart.js](https://www.chartjs.org/) en er zijn [D3 feautures](https://d3js.org/) gebruikt voor de data.
 
 # Features
 ## Inloggen
