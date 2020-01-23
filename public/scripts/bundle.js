@@ -92629,10 +92629,10 @@
       });
   }
 
-  document.querySelector('.loginContainer').onclick = function() {
+  document.querySelector('.forms').onclick = function() {
       document.querySelector('.loginContainer').classList.add('filled');
 
-      document.querySelector('.loginContainer.filled').onclick = function() {
+      document.querySelector('.loginContainer.filled .forms').onclick = function() {
           document.querySelector('.loginContainer').classList.add('hide');
       };
   };

@@ -44,12 +44,11 @@ footer b {
     height: 100vh;
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 99999;
     transition: all 0.7s ease-in-out;
 }
 .filled.hide {
-    left: -100vw;
+    top: -100vh;
 }
 div.login {
     background-image: url('../img/background-login.png');
@@ -68,6 +67,7 @@ div.login::after {
     bottom: 0;
     right: 0;
     background-color: white;
+    cursor: pointer;
 }
 div.forms {
     background-image: url('../img/login-forms.png');
@@ -80,6 +80,7 @@ div.forms {
     position: absolute;
     top: 0;
     right: 0;
+    cursor: pointer;
 }
 .filled div.forms {
     background-image: url('../img/login-forms-filled.png');
