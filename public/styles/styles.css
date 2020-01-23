@@ -5,7 +5,7 @@ body {
   margin: 0px;
   display: flex;
   font-family: 'WhitneyMedium';
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 button:focus,
@@ -307,81 +307,81 @@ form fieldset::before {
 
 /* All form icons ---------------- */
 .situatie .situatieForm fieldset:first-of-type::before {
-    background-image: url('/public/img/leeftijd.png');
+    background-image: url('../img/leeftijd.png');
 }
 
 .situatie .situatieForm fieldset:nth-of-type(2)::before {
-    background-image: url('/public/img/leeftijd.png');
+    background-image: url('../img/leeftijd.png');
 }
 
 .situatie .situatieForm fieldset:nth-of-type(3)::before {
-    background-image: url('/public/img/leeftijd.png');
+    background-image: url('../img/leeftijd.png');
 }
 
 
 
 .uitgaven fieldset.inventaris::before {
-    background-image: url('/public/img/inventaris.png');
+    background-image: url('../img/inventaris.png');
 }
 
 .uitgaven fieldset.kledingenschoenen::before {
-    background-image: url('/public/img/kledingenschoenen.png');
+    background-image: url('../img/kledingenschoenen.png');
 }
 
 .uitgaven fieldset.nietvergoedeziektekosten::before {
-    background-image: url('/public/img/nietvergoed.png');
+    background-image: url('../img/nietvergoed.png');
 }
 
 .uitgaven fieldset.vrijetijdsuitgaven::before {
-    background-image: url('/public/img/vrijetijdsuitgaven.png');
+    background-image: url('../img/vrijetijdsuitgaven.png');
 }
 
 .uitgaven fieldset.huurhypotheek::before {
-    background-image: url('/public/img/huis.png');
+    background-image: url('../img/huis.png');
 }
 
 .uitgaven fieldset.gwlenlokalelasten::before {
-    background-image: url('/public/img/lokaleLasten.png');
+    background-image: url('../img/lokaleLasten.png');
 }
 
 .uitgaven fieldset.telefoontelevisieinternet::before {
-    background-image: url('/public/img/telecom.png');
+    background-image: url('../img/telecom.png');
 }
 
 .uitgaven fieldset.verzekeringen::before {
-    background-image: url('/public/img/verzekeringen.png');
+    background-image: url('../img/verzekeringen.png');
 }
 
 .uitgaven fieldset.contributiesenabonnementen::before {
-    background-image: url('/public/img/telecom.png');
+    background-image: url('../img/telecom.png');
 }
 
 .uitgaven fieldset.onderwijs::before {
-    background-image: url('/public/img/onderwijs.png');
+    background-image: url('../img/onderwijs.png');
 }
 
 .uitgaven fieldset.kinderopvang::before {
-    background-image: url('/public/img/opvang.png');
+    background-image: url('../img/opvang.png');
 }
 
 .uitgaven fieldset.vervoer::before {
-    background-image: url('/public/img/auto.png');
+    background-image: url('../img/auto.png');
 }
 
 .uitgaven fieldset.voeding::before {
-    background-image: url('/public/img/voeding.png');
+    background-image: url('../img/voeding.png');
 }
 
 .uitgaven fieldset.huisentuinonderhoud::before {
-    background-image: url('/public/img/huis.png');
+    background-image: url('../img/huis.png');
 }
 
 .uitgaven fieldset.overigehuishoudelijkeuitgaven::before {
-    background-image: url('/public/img/huishoudelijk.png');
+    background-image: url('../img/huishoudelijk.png');
 }
 
 .uitgaven fieldset.reserveringsuitgaven::before {
-    background-image: url('/public/img/inventaris.png');
+    background-image: url('../img/inventaris.png');
 }
 
 /* Fill in form 'situatie' -------------- */
@@ -871,7 +871,7 @@ canvas#mainCat {
 
 .zeroState #reserveringsuitgavenButton {
     position: absolute;
-    top: 100px;
+    top: 75px;
     left: 290px;
     display: inherit;
     z-index: 2;
@@ -963,7 +963,9 @@ canvas#subCat {
 .results #sideBar {
     display: block;
 }
-
+#sideBar.open {
+    width: 380px;
+}
 #sideBar {
     display: none;
     height: 100vh;
@@ -975,47 +977,213 @@ canvas#subCat {
     -webkit-box-shadow: -5px 0px 15px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: -5px 0px 15px 0px rgba(0,0,0,0.1);
     box-shadow: -5px 0px 15px 0px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: all 0.7s ease-in-out;
 }
-
+#sideBar.blankState #tipalert.wiggle,
+#sideBar.open #tipalert.wiggle {
+    opacity: 0;
+    top: 22px;
+}
+#sideBar #tipalert.wiggle {
+    opacity: 1;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
 #sideBar #tipalert {
-    background-image: url('/public/img/tip-bg.png');
+    cursor: pointer;
+    background-image: url('../img/tip-bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    margin: 50px auto 0;
-    border-radius: 10px;
-    height: 30px;
-    width: 30px;
+    padding: 50px 15px;
     text-align: center;
-    display: block;
-    position: relative;
+    position: absolute;
+    transition: all 0.7s ease-in-out;
     z-index: 1;
+    top: 25px;
+    right: 11px;
+    color: white;
+    opacity: 0;
 }
-#sideBar #tipalert::before {
-    background-image: url('/public/img/new-tip.png');
+#sideBar.open #informationButton {
+    background-image: url('../img/close.png');
+    background-size: 50%;
+}
+#sideBar #informationButton {
+    background-image: url('../img/new-tip.png');
     background-position: center center;
-    width: 30px;
-    height: 30px;
-    z-index: 0;
-    top: -25px;
-}
-#sideBar #tipalert::before,
-#sideBar #tipalert::after {
-    content: "";
-    display: block;
-    background-size: contain;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
+    top: 30px;
+    right: 12px;
+    background-color: #EFEFEF;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 38px;
+    height: 38px;
 }
-
-
+#sideBar.open .tooltips {
+    opacity: 1;
+}
 #sideBar .tooltips {
     opacity: 0;
     display: block;
+    transition: all 0.7s ease-in-out;
+    width: 380px;
+    padding: 50px;
+    box-sizing: border-box;
 }
-
+#sideBar .tooltips img {
+    max-width: 380px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 50px;
+    box-sizing: border-box;
+    z-index: -1;
+}
+#sideBar .tooltips h2,
+#moreInfoTips h2,
+#contactBugetCoach h2 {
+    font-family: 'WhitneyBold', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+#contactBugetCoach h2 {
+    margin-top: 50px;
+}
+#sideBar .tooltips h4,
+#moreInfoTips h3,
+#moreInfoTips h4,
+#contactBugetCoach h3,
+#contactBugetCoach h4 {
+    font-family: 'WhitneyLight', sans-serif;
+    color: #707070;
+    font-size: 30px;
+    margin: 0;
+}
+#contactBugetCoach p {
+    color: #707070;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+#contactBugetCoach h3 {
+    color: #012169;
+    font-family: 'WhitneyLight', sans-serif;
+}
+#contactBugetCoach h3,
+#moreInfoTips h3 {
+    font-family: 'WhitneyMedium', sans-serif;
+    margin-top: 65px;
+}
+#moreInfoTips ol,
+#contactBugetCoach ol,
+#sideBar .tooltips ol {
+    margin-top: 30px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+#moreInfoTips ol li,
+#contactBugetCoach ol li,
+#sideBar .tooltips ol li {
+    font-family: 'WhitneyLight', sans-serif;
+    color: #707070;
+    padding: 10px 0;
+}
+#moreInfoTips ol,
+#contactBugetCoach ol {
+    max-width: 65%;
+}
+#moreInfoTips ol li,
+#contactBugetCoach ol li {
+    padding: 8px 0;
+}
+#sideBar #moreInfo {
+    min-width: 100%;
+    z-index: 7;
+}
+#moreInfoTips {
+    z-index: 10;
+}
+#contactBugetCoach {
+    z-index: 11;
+    margin-top: 120px;
+}
 #moreInfoTips,
 #contactBugetCoach {
-    display: none;
+    display: block;
+    position: absolute;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    bottom: -100%;
+    transition: all 1.3s ease-in-out;
+    overflow-y: scroll;
+}
+#moreInfoTips.open,
+#contactBugetCoach.open {
+    bottom: 0;
+}
+#moreInfoTips .container,
+#contactBugetCoach .container {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+}
+#moreInfoTips .container img,
+#contactBugetCoach .container img {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    z-index: -1;
+    max-width: 33%;
+}
+#moreInfoTips .container:first-of-type {
+    padding-bottom: 0;
+}
+#moreInfoTips .container:last-of-type {
+    margin-bottom: 80px;
+}
+#moreInfoTips #contactBugetCoachButton {
+    margin-top: 20px;
+}
+.open #backToDashboard {
+    opacity: 1;
+    top: 60px;
+}
+#backToDashboard {
+    position: fixed;
+    top: 100vh;
+    opacity: 0;
+    transition: all 1.3s ease-in-out;
+    z-index: 10;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

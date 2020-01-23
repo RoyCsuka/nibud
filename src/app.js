@@ -8,13 +8,7 @@ import budgettips from './budgettips.json';
 let data = main;
 var allTips = budgettips
 
-allTips.forEach(i => {
-    // console.log("Alltips dataset", i);
-    if(i === "Kleding en schoenen") {
-
-    }
-    // console.log(i.soortuitgaven);
-});
+console.log("tips:", allTips);
 
 //The initial variable the y axis is set on
 let yVar = "";
@@ -22,6 +16,13 @@ let xVar = "Alleenstaand";
 
 // Voor de doorklik knoppen
 var timesClicked = 0;
+
+// Budget tip innerHTML & button
+var informationButton = document.getElementById('informationButton');
+var tipCount = document.getElementById('tipalert');
+var tipMoreInfoButton = document.getElementById('moreInfo');
+var tipMoreInfoSection = document.getElementById('moreInfoTips');
+var backToDashboard = document.getElementById('backToDashboard');
 
 // Selecteer chart
 var barChart = document.getElementById('subCat');
@@ -37,8 +38,7 @@ async function makeBugetVisualisation() {
     localStor()
 }
 
-//This awesome function makes dynamic input options based on our data!
-//You can also create the options by hand if you can't follow what happens here
+// Change value form
 function setUpForm(data) {
     const form = d3.select('form fieldset:nth-of-type(2)')
         .select('form fieldset:nth-of-type(2) select')
@@ -161,7 +161,6 @@ function drawChart(currentData) {
         var totaleUitgaven = d.reserveringsuitgaven.totaal + d.vastelasten.totaal + d.overigevastelasten.totaal + d.huishoudelijkeuitgaven.totaal;
         let beginSaldo = d.inkomen;
         let reserveringsuitgaven = beginSaldo - d.reserveringsuitgaven.totaal;
-        console.log("eerste uitgaven", d.reserveringsuitgaven);
         let vastelasten = reserveringsuitgaven - d.vastelasten.totaal;
         let overigevastelasten = vastelasten - d.overigevastelasten.totaal;
         let huishoudelijkeuitgaven = totaleUitgaven - d.huishoudelijkeuitgaven.totaal;
@@ -203,12 +202,12 @@ function drawChart(currentData) {
         data: {
             labels: ['', '', '', '', ''],
             datasets: [{
-                label: 'Uw uitgaven',
+                label: '',
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 borderColor: '#E36B0A',
                 data: allTotalValuesLocal()
             }, {
-                label: 'Gemiddeld',
+                label: '',
                 backgroundColor:'rgba(0, 0, 0, 0)',
                 borderColor: '#CDCDCD',
                 data: allTotalValues[0]
@@ -237,6 +236,16 @@ function drawChart(currentData) {
                         fontColor: '#0F6000'
                     }
                 }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
             }
         }
     });
@@ -259,10 +268,10 @@ function drawChart(currentData) {
             }]
         },
         options: {
-        barValueSpacing: 20,
+        barValueSpacing: 50,
             scales: {
                 xAxes: [{
-                    barPercentage: 1.0,
+                    barPercentage: 0.5,
                     categoryPercentage: 1.0,
                     gridLines: {
                         display:false
@@ -292,7 +301,6 @@ function drawChart(currentData) {
             }
         }
     });
-
 
     // Onclick mainCat vlakken -----------------------------------------------------------------------------------------
     // Click on reserveringsuitgaven ----------------------------------------------------------
@@ -336,52 +344,6 @@ function drawChart(currentData) {
         document.querySelector('#thirdBar h5').innerHTML = "Niet-vergoede ziektekosten";
         document.querySelector('#fourthBar b').innerHTML = "€" + Math.abs(vrijetijdsuitgavenSaldo) + ",-";
         document.querySelector('#fourthBar h5').innerHTML = "Vrijetijdsuitgaven";
-
-
-
-        // BUGDETTIPS SECTION
-        document.getElementById('tipalert').innerHTML = 0;
-
-        let alluitgaven = {
-            kleding: kledingenschoenenSaldo,
-            inventaris: inventarisSaldo,
-            nietvergoedeziektekosten: nietvergoedeziektekostenSaldo,
-            vrijetijdsuitgaven: vrijetijdsuitgavenSaldo
-        }
-
-        let values = [kledingenschoenenSaldo, inventarisSaldo, nietvergoedeziektekostenSaldo, vrijetijdsuitgavenSaldo]
-        let min = d3.min(values, function (d) {
-             return d
-         });
-        var alerts = 0
-
-        console.log("min", min);
-        console.log("data", alluitgaven);
-
-        values.forEach(i => {
-            if(i < 0) {
-                alerts ++;
-            }
-        });
-
-        document.getElementById('tipalert').innerHTML = alerts;
-
-        if(kledingenschoenenSaldo < 0) {
-            if(kledingenschoenenSaldo === min) {}
-            document.getElementById('tipalert').innerHTML
-        }
-        if(inventarisSaldo < 0) {
-            if(inventarisSaldo === min) {}
-
-        }
-        if(nietvergoedeziektekostenSaldo < 0) {
-            if(nietvergoedeziektekosten === min) {}
-
-        }
-        if(vrijetijdsuitgavenSaldo < 0) {
-            if(vrijetijdsuitgaven === min) {}
-
-        }
 
         // Less or more values
         if(totalreserveringsuitgaven > 1) {
@@ -437,6 +399,173 @@ function drawChart(currentData) {
         } else {
             document.querySelector('#fourthBar b').className = 'more';
             document.querySelector('#fourthBar b').append(' meer')
+        }
+
+
+
+        // BUGDETTIPS SECTION
+        document.querySelector('.tooltips h4').innerHTML = "Reserverings uitgaven"
+        tipCount.innerHTML = 0;
+
+        let values = [kledingenschoenenSaldo, inventarisSaldo, nietvergoedeziektekostenSaldo, vrijetijdsuitgavenSaldo]
+        let min = d3.min(values, function (d) {
+             return d
+         });
+        var alerts = 0
+        tipCount.className = '';
+
+        values.forEach(i => { if(i < 0) { alerts ++; } });
+
+        tipCount.innerHTML = alerts;
+
+        if(kledingenschoenenSaldo < 0) {
+            document.getElementById('tip1').style.display = 'block';
+            let localSubCatExpence = allTips[0].firsthead.replace(/-/g, localStorage.getItem("kledingenschoenen"))
+            document.querySelector('#moreInfoTips #tip1 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip1 img').src="img/kledingschoenen.svg";
+
+            function procentMore() {
+                let subcatValue = reserveringsuitgavenValues[0][0]
+                let subcatLocalValue = Number(localStorage.getItem("kledingenschoenen"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = allTips[0].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip1 ol li:first-of-type').innerHTML = allTips[0].tip1
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(2)').innerHTML = allTips[0].tip2
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(3)').innerHTML = allTips[0].tip3
+
+            if(kledingenschoenenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[0].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[0].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[0].tip3
+            }
+        } else {
+            document.getElementById('tip1').style.display = 'none';
+        }
+
+        if(inventarisSaldo < 0) {
+            document.getElementById('tip2').style.display = 'block';
+            let localSubCatExpence = allTips[1].firsthead.replace(/-/g, localStorage.getItem("inventaris"))
+            document.querySelector('#moreInfoTips #tip2 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip2 img').src="img/inventaris.svg";
+
+            function procentMore() {
+                let subcatValue = reserveringsuitgavenValues[0][1]
+                let subcatLocalValue = Number(localStorage.getItem("inventaris"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = allTips[1].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip2 ol li:first-of-type').innerHTML = allTips[1].tip1
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(2)').innerHTML = allTips[1].tip2
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(3)').innerHTML = allTips[1].tip3
+
+            if(kledingenschoenenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[1].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[1].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[1].tip3
+            }
+        } else {
+            document.getElementById('tip2').style.display = 'none';
+        }
+
+        if(nietvergoedeziektekostenSaldo < 0) {
+            document.getElementById('tip3').style.display = 'block';
+            let localSubCatExpence = allTips[3].firsthead.replace(/-/g, localStorage.getItem("nietvergoedeziektekosten"))
+            document.querySelector('#moreInfoTips #tip3 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip3 img').src="img/nietvergoedeziektekosten.svg";
+
+            function procentMore() {
+                let subcatValue = reserveringsuitgavenValues[0][2]
+                let subcatLocalValue = Number(localStorage.getItem("nietvergoedeziektekosten"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = allTips[3].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip3 ol li:first-of-type').innerHTML = allTips[3].tip1
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(2)').innerHTML = allTips[3].tip2
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(3)').innerHTML = allTips[3].tip3
+
+            if(kledingenschoenenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[3].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[3].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[3].tip3
+            }
+        } else {
+            document.getElementById('tip3').style.display = 'none';
+        }
+
+        if(vrijetijdsuitgavenSaldo < 0) {
+            document.getElementById('tip4').style.display = 'block';
+            let localSubCatExpence = allTips[4].firsthead.replace(/-/g, localStorage.getItem("vrijetijdsuitgaven"))
+            document.querySelector('#moreInfoTips #tip4 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip4 img').src="img/vrijetijdsuItgaven.svg";
+
+            function procentMore() {
+                let subcatValue = reserveringsuitgavenValues[0][3]
+                let subcatLocalValue = Number(localStorage.getItem("vrijetijdsuitgaven"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = allTips[4].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip4 ol li:first-of-type').innerHTML = allTips[4].tip1
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(2)').innerHTML = allTips[4].tip2
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(3)').innerHTML = allTips[4].tip3
+
+            if(kledingenschoenenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[4].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[4].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[4].tip3
+            }
+        } else {
+            document.getElementById('tip4').style.display = 'none';
+        }
+
+        if(tipCount.innerHTML > 0) {
+            setTimeout(function() {
+                tipCount.className = 'wiggle';
+            }, 200);
+            tipCount.onclick = function() {
+                document.getElementById('sideBar').classList.toggle('open')
+            }
+        }
+
+        tipMoreInfoButton.onclick = function() {
+            document.getElementById('sideBar').classList.remove('open')
+            tipMoreInfoSection.classList.toggle('open')
         }
 
         subCat.data.datasets[0].data = [localStorage.getItem("kledingenschoenen"), localStorage.getItem("inventaris"), localStorage.getItem("nietvergoedeziektekosten"), localStorage.getItem("vrijetijdsuitgaven")]
@@ -541,15 +670,185 @@ function drawChart(currentData) {
             document.querySelector('#thirdBar b').append(' meer')
         }
 
-        if(telefoontelevisieinternetSaldo > 1) {
+        if(verzekeringenSaldo > 1) {
             document.querySelector('#fourthBar b').className = 'less';
             document.querySelector('#fourthBar b').append(' minder')
-        } else if(telefoontelevisieinternetSaldo === 0) {
+        } else if(verzekeringenSaldo === 0) {
             document.querySelector('#fourthBar b').classList = ('zelfde')
             document.querySelector('#fourthBar b').append('')
         } else {
             document.querySelector('#fourthBar b').className = 'more';
             document.querySelector('#fourthBar b').append(' meer')
+        }
+
+        // BUGDETTIPS SECTION
+        document.querySelector('.tooltips h4').innerHTML = "Woning lasten"
+        tipCount.innerHTML = 0;
+
+        let values = [huurhypotheekSaldo, gwlenlokalelastenSaldo, telefoontelevisieinternetSaldo, verzekeringenSaldo]
+        let min = d3.min(values, function (d) {
+             return d
+         });
+
+        var alerts = 0;
+
+        tipCount.className = '';
+
+        values.forEach(i => {
+            if(i < 0) {
+                alerts ++;
+            }
+        });
+        tipCount.innerHTML = alerts;
+
+        if(huurhypotheekSaldo < 0) {
+            document.getElementById('tip1').style.display = 'block';
+            let localSubCatExpence = allTips[5].firsthead.replace(/-/g, localStorage.getItem("huurhypotheek"))
+            document.querySelector('#moreInfoTips #tip1 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip1 img').src="img/huurhypotheek.svg";
+
+            function procentMore() {
+                let subcatValue = vastelastenValues[0][0]
+                let subcatLocalValue = Number(localStorage.getItem("huurhypotheek"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = allTips[5].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip1 ol li:first-of-type').innerHTML = allTips[5].tip1
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(2)').innerHTML = allTips[5].tip2
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(3)').innerHTML = allTips[5].tip3
+
+            if(huurhypotheekSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[5].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[5].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[5].tip3
+            }
+        } else {
+            document.getElementById('tip1').style.display = 'none';
+        }
+
+        if(gwlenlokalelastenSaldo < 0) {
+            document.getElementById('tip2').style.display = 'block';
+            let localSubCatExpence = allTips[9].firsthead.replace(/-/g, localStorage.getItem("gwlenlokalelasten"))
+            document.querySelector('#moreInfoTips #tip2 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip2 img').src="img/gwlenlokalelasten.svg";
+
+            function procentMore() {
+                let subcatValue = vastelastenValues[0][1]
+                let subcatLocalValue = Number(localStorage.getItem("gwlenlokalelasten"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = allTips[9].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip2 ol li:first-of-type').innerHTML = allTips[9].tip1
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(2)').innerHTML = allTips[9].tip2
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(3)').innerHTML = allTips[9].tip3
+
+            if(gwlenlokalelastenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[9].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[9].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[9].tip3
+            }
+        } else {
+            document.getElementById('tip2').style.display = 'none';
+        }
+
+        if(telefoontelevisieinternetSaldo < 0) {
+            document.getElementById('tip3').style.display = 'block';
+            let localSubCatExpence = allTips[11].firsthead.replace(/-/g, localStorage.getItem("telefoontelevisieinternet"))
+            document.querySelector('#moreInfoTips #tip3 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip3 img').src="img/telefoontelevisieinternet.svg";
+
+            function procentMore() {
+                let subcatValue = vastelastenValues[0][2]
+                let subcatLocalValue = Number(localStorage.getItem("telefoontelevisieinternet"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = allTips[11].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip3 ol li:first-of-type').innerHTML = allTips[11].tip1
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(2)').innerHTML = allTips[11].tip2
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(3)').innerHTML = allTips[11].tip3
+
+            if(telefoontelevisieinternetSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[11].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[11].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[11].tip3
+            }
+        } else {
+            document.getElementById('tip3').style.display = 'none';
+        }
+
+        if(verzekeringenSaldo < 0) {
+            document.getElementById('tip4').style.display = 'block';
+            let localSubCatExpence = allTips[12].firsthead.replace(/-/g, localStorage.getItem("verzekeringen"))
+            document.querySelector('#moreInfoTips #tip4 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip4 img').src="img/verzekeringen.svg";
+
+            function procentMore() {
+                let subcatValue = vastelastenValues[0][3]
+                let subcatLocalValue = Number(localStorage.getItem("verzekeringen"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = allTips[12].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip4 ol li:first-of-type').innerHTML = allTips[12].tip1
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(2)').innerHTML = allTips[12].tip2
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(3)').innerHTML = allTips[12].tip3
+
+            if(verzekeringenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[12].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[12].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[12].tip3
+            }
+        } else {
+            document.getElementById('tip4').style.display = 'none';
+        }
+
+        if(tipCount.innerHTML > 0) {
+            setTimeout(function() {
+                tipCount.className = 'wiggle';
+            }, 200);
+            tipCount.onclick = function() {
+                document.getElementById('sideBar').classList.toggle('open')
+            }
+        }
+
+        tipMoreInfoButton.onclick = function() {
+            document.getElementById('sideBar').classList.remove('open')
+            tipMoreInfoSection.classList.toggle('open')
         }
 
         subCat.data.datasets[0].data = [localStorage.getItem("huurhypotheek"), localStorage.getItem("gwlenlokalelasten"), localStorage.getItem("telefoontelevisieinternet"), localStorage.getItem("verzekeringen")]
@@ -665,6 +964,177 @@ function drawChart(currentData) {
             document.querySelector('#fourthBar b').append(' meer')
         }
 
+
+        // BUGDETTIPS SECTION
+        document.querySelector('.tooltips h4').innerHTML = "Overige vaste lasten";
+        tipCount.innerHTML = 0;
+
+        let values = [contributiesenabonnementenSaldo, onderwijsSaldo, kinderopvangSaldo, vervoerSaldo]
+        let min = d3.min(values, function (d) {
+             return d
+         });
+
+        var alerts = 0;
+
+        tipCount.className = '';
+
+        values.forEach(i => {
+            if(i < 0) {
+                alerts ++;
+            }
+        });
+        tipCount.innerHTML = alerts;
+
+        if(contributiesenabonnementenSaldo < 0) {
+            document.getElementById('tip1').style.display = 'block';
+            let localSubCatExpence = allTips[14].firsthead.replace(/-/g, localStorage.getItem("contributiesenabonnementen"))
+            document.querySelector('#moreInfoTips #tip1 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip1 img').src="img/contributiesenabonnementen.svg";
+
+            function procentMore() {
+                let subcatValue = overigevastelastenValues[0][0]
+                let subcatLocalValue = Number(localStorage.getItem("contributiesenabonnementen"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = allTips[14].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip1 ol li:first-of-type').innerHTML = allTips[14].tip1
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(2)').innerHTML = allTips[14].tip2
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(3)').innerHTML = allTips[14].tip3
+
+            if(contributiesenabonnementenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[14].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[14].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[14].tip3
+            }
+        } else {
+            document.getElementById('tip1').style.display = 'none';
+        }
+
+        if(onderwijsSaldo < 0) {
+            document.getElementById('tip2').style.display = 'block';
+            let localSubCatExpence = allTips[15].firsthead.replace(/-/g, localStorage.getItem("onderwijs"))
+            document.querySelector('#moreInfoTips #tip2 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip2 img').src="img/onderwijs.svg";
+
+            function procentMore() {
+                let subcatValue = overigevastelastenValues[0][1]
+                let subcatLocalValue = Number(localStorage.getItem("onderwijs"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = allTips[15].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip2 ol li:first-of-type').innerHTML = allTips[15].tip1
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(2)').innerHTML = allTips[15].tip2
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(3)').innerHTML = allTips[15].tip3
+
+            if(onderwijsSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[15].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[15].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[15].tip3
+            }
+        } else {
+            document.getElementById('tip2').style.display = 'none';
+        }
+
+        if(kinderopvangSaldo < 0) {
+            document.getElementById('tip3').style.display = 'block';
+            let localSubCatExpence = allTips[16].firsthead.replace(/-/g, localStorage.getItem("kinderopvang"))
+            document.querySelector('#moreInfoTips #tip3 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip3 img').src="img/kinderopvang.svg";
+
+            function procentMore() {
+                let subcatValue = overigevastelastenValues[0][2]
+                let subcatLocalValue = Number(localStorage.getItem("kinderopvang"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = allTips[16].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip3 ol li:first-of-type').innerHTML = allTips[16].tip1
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(2)').innerHTML = allTips[16].tip2
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(3)').innerHTML = allTips[16].tip3
+
+            if(kinderopvangSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[16].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[16].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[16].tip3
+            }
+        } else {
+            document.getElementById('tip3').style.display = 'none';
+        }
+
+        if(vervoerSaldo < 0) {
+            document.getElementById('tip4').style.display = 'block';
+            let localSubCatExpence = allTips[13].firsthead.replace(/-/g, localStorage.getItem("vervoer"))
+            document.querySelector('#moreInfoTips #tip4 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip4 img').src="img/vervoer.svg";
+
+            function procentMore() {
+                let subcatValue = overigevastelastenValues[0][3]
+                let subcatLocalValue = Number(localStorage.getItem("vervoer"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = allTips[13].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip4 ol li:first-of-type').innerHTML = allTips[13].tip1
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(2)').innerHTML = allTips[13].tip2
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(3)').innerHTML = allTips[13].tip3
+
+            if(vervoerSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[13].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[13].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[13].tip3
+            }
+        } else {
+            document.getElementById('tip4').style.display = 'none';
+        }
+
+        if(tipCount.innerHTML > 0) {
+            setTimeout(function() {
+                tipCount.className = 'wiggle';
+            }, 200);
+            tipCount.onclick = function() {
+                document.getElementById('sideBar').classList.toggle('open')
+            }
+        }
+
+        tipMoreInfoButton.onclick = function() {
+            document.getElementById('sideBar').classList.remove('open')
+            tipMoreInfoSection.classList.toggle('open')
+        }
+
         subCat.data.datasets[0].data = [localStorage.getItem("contributiesenabonnementen"), localStorage.getItem("onderwijs"), localStorage.getItem("kinderopvang"), localStorage.getItem("vervoer")]
         subCat.data.datasets[1].data = overigevastelastenValues[0]
         subCat.options.scales = {
@@ -685,8 +1155,7 @@ function drawChart(currentData) {
         subCat.update();
     }
 
-
-    // Click on overige huishoudelijkeuitgaven ----------------------------------------------------------
+    // Click on huishoudelijkeuitgaven ----------------------------------------------------------
     document.querySelector('.dashboard div.huishoudelijkeuitgaven').onclick = function() {
         document.querySelector('.lineChartMainCat').classList.remove('vastelasten')
         document.querySelector('.lineChartMainCat').classList.remove('overigevastelasten')
@@ -722,12 +1191,13 @@ function drawChart(currentData) {
         document.querySelector('#fourthBar b').innerHTML = "€" + Math.abs(reserveringsuitgavenSaldo) + ",-";
         document.querySelector('#fourthBar h5').innerHTML = "Huishoudelijke reserverings uitgaven";
 
+        // hier
         // Less or more values
         if(totalhuishoudelijkeuitgaven > 1) {
             document.querySelector('.barchartResults > h2 span').className = 'less';
             document.querySelector('.barchartResults > h2 span').append(' minder')
         } else if(totalhuishoudelijkeuitgaven === 0) {
-            document.querySelector('.barchartResults > h2 span').className = 'zelfde';
+            document.querySelector('.barchartResults > h2 span').classList = ('zelfde')
             document.querySelector('.barchartResults > h2 span').append('')
         } else {
             document.querySelector('.barchartResults > h2 span').className = 'more';
@@ -767,15 +1237,186 @@ function drawChart(currentData) {
             document.querySelector('#thirdBar b').append(' meer')
         }
 
-        if(overigehuishoudelijkeuitgavenSaldo > 1) {
+        if(reserveringsuitgavenSaldo > 1) {
             document.querySelector('#fourthBar b').className = 'less';
             document.querySelector('#fourthBar b').append(' minder')
-        } else if(overigehuishoudelijkeuitgavenSaldo === 0) {
+        } else if(reserveringsuitgavenSaldo === 0) {
             document.querySelector('#fourthBar b').className = 'zelfde';
             document.querySelector('#fourthBar b').append('')
         } else {
             document.querySelector('#fourthBar b').className = 'more';
             document.querySelector('#fourthBar b').append(' meer')
+        }
+
+
+        // BUGDETTIPS SECTION
+        document.querySelector('.tooltips h4').innerHTML = "Huishoudelijke uitgaven";
+        tipCount.innerHTML = 0;
+
+        let values = [voedingSaldo, huisentuinonderhoudSaldo, overigehuishoudelijkeuitgavenSaldo, reserveringsuitgavenSaldo]
+        let min = d3.min(values, function (d) {
+             return d
+         });
+
+        var alerts = 0;
+
+        tipCount.className = '';
+
+        values.forEach(i => {
+            if(i < 0) {
+                alerts ++;
+            }
+        });
+        tipCount.innerHTML = alerts;
+
+        if(voedingSaldo < 0) {
+            document.getElementById('tip1').style.display = 'block';
+            let localSubCatExpence = allTips[17].firsthead.replace(/-/g, localStorage.getItem("voeding"))
+            document.querySelector('#moreInfoTips #tip1 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip1 img').src="img/voeding.svg";
+
+            function procentMore() {
+                let subcatValue = huishoudelijkeuitgavenValues[0][0]
+                let subcatLocalValue = Number(localStorage.getItem("voeding"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = allTips[17].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip1 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip1 ol li:first-of-type').innerHTML = allTips[17].tip1
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(2)').innerHTML = allTips[17].tip2
+            document.querySelector('#moreInfoTips #tip1 ol li:nth-of-type(3)').innerHTML = allTips[17].tip3
+
+            if(voedingSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[17].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[17].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[17].tip3
+            }
+        } else {
+            document.getElementById('tip1').style.display = 'none';
+        }
+
+        if(huisentuinonderhoudSaldo < 0) {
+            document.getElementById('tip2').style.display = 'block';
+            let localSubCatExpence = allTips[2].firsthead.replace(/-/g, localStorage.getItem("huisentuinonderhoud"))
+            document.querySelector('#moreInfoTips #tip2 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip2 img').src="img/huisentuinonderhoud.svg";
+
+            function procentMore() {
+                let subcatValue = huishoudelijkeuitgavenValues[0][1]
+                let subcatLocalValue = Number(localStorage.getItem("huisentuinonderhoud"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = allTips[2].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip2 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip2 ol li:first-of-type').innerHTML = allTips[2].tip1
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(2)').innerHTML = allTips[2].tip2
+            document.querySelector('#moreInfoTips #tip2 ol li:nth-of-type(3)').innerHTML = allTips[2].tip3
+
+            if(huisentuinonderhoudSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[2].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[2].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[2].tip3
+            }
+        } else {
+            document.getElementById('tip2').style.display = 'none';
+        }
+
+        if(overigehuishoudelijkeuitgavenSaldo < 0) {
+            document.getElementById('tip3').style.display = 'block';
+            let localSubCatExpence = allTips[18].firsthead.replace(/-/g, localStorage.getItem("overigehuishoudelijkeuitgaven"))
+            document.querySelector('#moreInfoTips #tip3 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip3 img').src="img/overigehuishoudelijkeuitgaven.svg";
+
+            function procentMore() {
+                let subcatValue = huishoudelijkeuitgavenValues[0][2]
+                let subcatLocalValue = Number(localStorage.getItem("overigehuishoudelijkeuitgaven"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = allTips[18].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip3 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip3 ol li:first-of-type').innerHTML = allTips[18].tip1
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(2)').innerHTML = allTips[18].tip2
+            document.querySelector('#moreInfoTips #tip3 ol li:nth-of-type(3)').innerHTML = allTips[18].tip3
+
+            if(overigehuishoudelijkeuitgavenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[18].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[18].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[18].tip3
+            }
+        } else {
+            document.getElementById('tip3').style.display = 'none';
+        }
+
+        if(reserveringsuitgavenSaldo < 0) {
+            document.getElementById('tip4').style.display = 'block';
+            let localSubCatExpence = allTips[19].firsthead.replace(/-/g, localStorage.getItem("reserveringsuitgaven"))
+            document.querySelector('#moreInfoTips #tip4 h2').innerHTML = localSubCatExpence
+            document.querySelector('#moreInfoTips #tip4 img').src="img/reserveringsuitgaven.svg";
+
+            function procentMore() {
+                let subcatValue = huishoudelijkeuitgavenValues[0][3]
+                let subcatLocalValue = Number(localStorage.getItem("reserveringsuitgaven"))
+                var waarde = subcatValue / 100
+                waarde = subcatLocalValue / waarde
+                waarde = waarde - 100;
+                if(isFinite(waarde)){
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = allTips[19].procentmore.replace(/-/g, Math.round(waarde))
+                } else {
+                    document.querySelector('#moreInfoTips #tip4 h4').innerHTML = "Dit is gelijk met iemand met uw inkomen";
+
+                }
+            }
+            procentMore()
+
+            document.querySelector('#moreInfoTips #tip4 ol li:first-of-type').innerHTML = allTips[19].tip1
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(2)').innerHTML = allTips[19].tip2
+            document.querySelector('#moreInfoTips #tip4 ol li:nth-of-type(3)').innerHTML = allTips[19].tip3
+
+            if(reserveringsuitgavenSaldo === min) {
+                document.querySelector('.tooltips ol li:first-of-type').innerHTML = allTips[19].tip1
+                document.querySelector('.tooltips ol li:nth-of-type(2)').innerHTML = allTips[19].tip2
+                document.querySelector('.tooltips ol li:nth-of-type(3)').innerHTML = allTips[19].tip3
+            }
+        } else {
+            document.getElementById('tip4').style.display = 'none';
+        }
+
+        if(tipCount.innerHTML > 0) {
+            setTimeout(function() {
+                tipCount.className = 'wiggle';
+            }, 200);
+            tipCount.onclick = function() {
+                document.getElementById('sideBar').classList.toggle('open')
+            }
+        }
+
+        tipMoreInfoButton.onclick = function() {
+            document.getElementById('sideBar').classList.remove('open')
+            tipMoreInfoSection.classList.toggle('open')
         }
 
         subCat.data.datasets[0].data = [localStorage.getItem("voeding"), localStorage.getItem("huisentuinonderhoud"), localStorage.getItem("overigehuishoudelijkeuitgaven"), localStorage.getItem("reserveringsuitgaven")]
@@ -800,7 +1441,7 @@ function drawChart(currentData) {
 
 }
 
-// INVOEREN VAN GEGEVENS
+// INVOEREN VAN GEGEVENS formulier begin
 // Verder klik knop
 // Check dit voor tweede click: https://stackoverflow.com/questions/44572859/a-function-that-runs-on-the-second-click?answertab=oldest#tab-top
 document.getElementById('saveSituatie').onclick = function() {
@@ -857,4 +1498,27 @@ document.querySelector('header nav ul li:first-of-type').onclick = function() {
 // Terug naar formulieren knop
 document.getElementById('gegevensAanpassen').onclick = function() {
     document.querySelector('body').classList.remove('results');
+}
+
+
+if(tipCount.innerHTML == '0') {
+    tipCount.onclick = function() {
+        document.getElementById('sideBar').classList.toggle('blankState')
+        console.log("TOGGLE blank state content");
+    }
+}
+
+backToDashboard.onclick = function() {
+    tipMoreInfoSection.classList.toggle('open')
+}
+
+var buttons = document.getElementsByClassName('contactBugetCoachButton')
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        document.getElementById('contactBugetCoach').className = 'open';
+    })
+}
+
+document.getElementById('backToDashboardSecond').onclick = function() {
+    document.getElementById('contactBugetCoach').className = '';
 }
