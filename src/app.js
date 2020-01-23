@@ -1519,6 +1519,14 @@ for (let i = 0; i < buttons.length; i++) {
     })
 }
 
+document.querySelector('.loginContainer').onclick = function() {
+    document.querySelector('.loginContainer').classList.add('filled');
+
+    document.querySelector('.loginContainer.filled').onclick = function() {
+        document.querySelector('.loginContainer').classList.add('hide');
+    }
+}
+
 document.getElementById('backToDashboardSecond').onclick = function() {
     document.getElementById('contactBugetCoach').className = '';
 }
