@@ -157,6 +157,7 @@ function localStor(currentData) {
 }
 
 function drawChart(currentData) {
+    console.log("current data", currentData);
     var allTotalValues = currentData.map(function(d) {
         var totaleUitgaven = d.reserveringsuitgaven.totaal + d.vastelasten.totaal + d.overigevastelasten.totaal + d.huishoudelijkeuitgaven.totaal;
         let beginSaldo = d.inkomen;

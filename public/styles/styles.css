@@ -850,11 +850,11 @@ canvas#mainCat {
 .lineChartMainCat > div:not(:first-of-type),
 .lineChartMainCat > span {
     position: absolute;
-    top: 71px;
+    top: 40px;
 }
 
 .lineChartMainCat > div:not(:first-of-type) {
-    height: 100%;
+    height: calc(100% + 31px);
     width: 267px;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.5);
@@ -1000,7 +1000,7 @@ canvas#subCat {
 
 .lineChartMainCat > span {
     position: absolute;
-    top: 71px;
+    top: 50px;
 }
 
 .barchartResults > span:first-of-type {
@@ -1196,18 +1196,39 @@ canvas#subCat {
 #moreInfoTips {
     z-index: 10;
 }
+#moreInfoTips::before {
+    content: "";
+    display: block;
+    background-color: white;
+    width: 200vw;
+    position: fixed;
+    top: 140%;
+    left: -50%;
+    height: 120px;
+    z-index: 1;
+    -webkit-box-shadow: 0px 28px 44px -17px rgba(199,199,199,0.15);
+    -moz-box-shadow: 0px 28px 44px -17px rgba(199,199,199,0.47);
+    box-shadow: 0px 28px 44px -17px rgba(199,199,199,0.15);
+    transition: all 1.3s ease-in-out;
+}
+#moreInfoTips.open::before {
+    top: 0;
+}
 #contactBugetCoach {
     z-index: 11;
     margin-top: 120px;
 }
 #moreInfoTips,
 #contactBugetCoach {
+    -webkit-box-shadow: 0px -45px 44px -17px rgba(199,199,199,0.47);
+    -moz-box-shadow: 0px -45px 44px -17px rgba(199,199,199,0.47);
+    box-shadow: 0px -45px 44px -17px rgba(199,199,199,0.47);
     display: block;
     position: absolute;
     background-color: white;
     width: 100vw;
     height: 100vh;
-    bottom: -100%;
+    bottom: -140%;
     transition: all 1.3s ease-in-out;
     overflow-y: scroll;
 }
@@ -1243,11 +1264,11 @@ canvas#subCat {
 }
 .open #backToDashboard {
     opacity: 1;
-    top: 60px;
+    top: 35px;
 }
 #backToDashboard {
     position: fixed;
-    top: 100vh;
+    top: 140%;
     opacity: 0;
     transition: all 1.3s ease-in-out;
     z-index: 10;
