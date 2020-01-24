@@ -163,7 +163,7 @@ function drawChart(currentData) {
         let reserveringsuitgaven = beginSaldo - d.reserveringsuitgaven.totaal;
         let vastelasten = reserveringsuitgaven - d.vastelasten.totaal;
         let overigevastelasten = vastelasten - d.overigevastelasten.totaal;
-        let huishoudelijkeuitgaven = totaleUitgaven - d.huishoudelijkeuitgaven.totaal;
+        let huishoudelijkeuitgaven = vastelasten - d.huishoudelijkeuitgaven.totaal;
         return [beginSaldo, reserveringsuitgaven, vastelasten, overigevastelasten, huishoudelijkeuitgaven];
     });
 
@@ -190,6 +190,8 @@ function drawChart(currentData) {
     let differenceOfVastelasten = allTotalValuesLocal()[1] - allTotalValuesLocal()[2];
     let differenceOfOverigevastelasten = allTotalValuesLocal()[2] - allTotalValuesLocal()[3];
     let differenceOfHuishoudelijkeuitgaven = allTotalValuesLocal()[3] - allTotalValuesLocal()[4];
+
+    console.log("check", allTotalValues[0]);
 
     document.querySelector('#reserveringsuitgavenSaldo b').innerHTML = "-€" + Math.abs(differenceOfReserveringsuitgaven) + ",-";
     document.querySelector('#vastelastenSaldo b').innerHTML = "-€" + Math.abs(differenceOfVastelasten) + ",-";

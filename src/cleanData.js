@@ -70,6 +70,7 @@ function groupMainData(source) {
 
         .key(function(d) { return d.Huishouden; })
         .entries(source);
+        console.log("Hoofd categorieën", transformed);
 
     return transformed
 }
@@ -158,6 +159,14 @@ function average(groupedData) {
         // Console log van alle resultaten
         // Inkomen minimale uitgaven zodat je weet hoeveel je over hebt
         let saldo = Math.round(inkomen - uitgaven)
+
+
+        console.log("voeding", voeding);
+        console.log("huisEnTuin", huisEnTuin);
+        console.log("overigeHuishoudelijkeUitgaven", overigeHuishoudelijkeUitgaven);
+        console.log("reserveringsUitgaven", reserveringsUitgaven);
+        console.log("Totaal", Math.round(voeding + huisEnTuin + overigeHuishoudelijkeUitgaven + reserveringsUitgaven));
+        console.log("");
 
         let selectedData = {
             reserveringsuitgaven: {
