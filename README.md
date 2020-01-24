@@ -11,7 +11,7 @@
    - [Local storage](https://github.com/RoyCsuka/nibud/blob/master/README.md#localstorage)
    - [Persoonlijke tips](https://github.com/RoyCsuka/nibud/blob/master/README.md#persoonlijke-tips-krijgen-als-je-meer-uitgeeft-dan-het-gemiddelde)
 - [Data](https://github.com/RoyCsuka/nibud/blob/master/README.md#data)
-- [Nice to have](https://github.com/RoyCsuka/nibud/blob/master/README.md#nice-to-have)
+- [Wat mist er nog?](https://github.com/RoyCsuka/nibud/blob/master/README.md#wat-mist-er-nog)
 - [Credits](https://github.com/RoyCsuka/nibud/blob/master/README.md#credits)   
 
 
