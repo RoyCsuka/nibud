@@ -53,10 +53,7 @@ Hieronder is het prototype te zien die met Chart.js en D3 gebouwd is:
 # Dependency
 De visualisaties zijn gemaakt in [Chart.js](https://www.chartjs.org/) en er zijn [D3 feautures](https://d3js.org/) gebruikt voor de data.
 
-# Features
-## Inloggen
-De tool begint met inloggen, deze optie heb ik helaas niet verwerkt i.v.m. tijdsnood (verder uitleg [zie mijn wiki](https://github.com/RoyCsuka/nibud/wiki/Wat-er-nog-mist)). Het voordeel van inloggen zou zijn dat jouw gegevens alleen te zien zijn als je ingelogd bent. Zo kunnen je gezinsleden of huisgenoten hier niet zomaar in mee kijken als je je hierbij niet prettig zou voelen.
-
+# Werkende features
 ## Formulieren
 Na inloggen zou je al je gegevens in moeten voeren, je huidige leefsitautie (heb je kinderen, woon je alleen, hoe oud ben je, enzovoort), je uitgaven en hierna wordt je vergeleken tot het gemiddelde van de database van het NIBUD d.m.v. een datavisualisatie.
 
@@ -72,15 +69,30 @@ De tips die krijgt op basis van wat je uitgeeft is een simpele berekening, het i
 Voor de data heb ik de database gekregen van het NIBUD. De data moet ik zelf gaan categoriseren op basis van onze cardsorting die hieronder te zien is. De eerste weergave van de datavisualisatie wordt namelijk verdeelt over de 4 hoofdcategorieën en hierop kun je klikken waardoor je all categorien erbij krijgt die daaronder vallen.
 ![Cardsorting](https://i.gyazo.com/f9475727dd713f1e6fc61be21bc74d8b.jpg)
 
-# Nice to have
+# Wat mist er nog?
 Hieronder een aantal punten die ik graag nog had uit willen werken als er meer tijd was geweest. Voor volledige beschrijving waar deze punten over gaan [zie mijn wiki](https://github.com/RoyCsuka/nibud/wiki/Wat-er-nog-mist).
 1. Log-in feauture
+> De tool begint met inloggen, deze optie heb ik helaas niet verwerkt i.v.m. tijdsnood. Het voordeel van inloggen zou zijn dat jouw gegevens alleen te zien zijn als je ingelogd bent. Zo kunnen je gezinsleden of huisgenoten hier niet zomaar in mee kijken als je je hierbij niet prettig zou voelen.
 2. Verificatie van input
+> Om gebruikersvrienderlijke UX toe te voegen is het handig om de formulieren fout gevoelig te programmeren. Nu is het namelijk nog mogelijk om tekens in te voeren of veel te hogen waardes. Deze fout gevoeligheid heb ik niet aangedacht i.v.m. tijdsnood.
 3. Responsive versie
+> Pas de laatste week was het design af van de mobiele versie. Het zou handig zijn als deze tool daarvoor ook wordt uitgewerkt.
 4. Navigeren met tab zonder bug
+> Als je nu navigeert met tab door de formulieren heen ga je niet naar het volgende scherm als dit nodig is.
 5. Negative waardes van de line & bar -chart
+> De waardes in de min moest rood worden, dit was echter nog moeilijker dan gedacht en heb ik dus niet verwerkt.
 6. De tooltips en font family
+> De vormgeving van de tooltips (on hover) zijn nog niet naar de huisstijl veranderd en zo is dit ook zo voor het lettertype in de bar & line -chart
 7. De laatste gegeven feedback een week voor de oplevering
+> Het laatste feedback gesprek was een week voor de presenatie en oplevering dus door tijdsnood is dit niet uitgewerkt.
+8. Nul waardes niet meenemen omdat dit geen relevante uitgaven zijn voor de gebruiker
+> Als er geen uitgaven zijn voor een bepaalde post hoeft het niet meegenomen te worden in de grafieken.
+9. De data
+> Het inladen van de data via CSV is wel de mooiste oplossing, echter heb ik het nu met JSON gedaan. Ook heb ik niet alle data ingeladen maar daar kwam ik achteraf pas achter.
+10. Niet verder kunnen als de waardes niet ingevoerd zijn
+> Je kunt nu verder klikken als invoervelden niet ingevuld zijn.
+> Ook is het handig als je de velden hieronder allemaal in hebt gevuld dat de knop een oranje achtergrond krijgt en een witte kleur voor de letters.
+![invoervelden](https://i.gyazo.com/6242c6acd2b6ccbcadc50b2bc193ade8.png)
 
 # Credits
 Tijdens dit project heb ik een aantal bronnen gebruikt met verschillende doeleindes die mij verder geholpen met het bouwen van deze tool. Hieronder een opsomming van de gebruikte bronnen.
