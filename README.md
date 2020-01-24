@@ -91,6 +91,7 @@ Hieronder een aantal punten die ik graag nog had uit willen werken als er meer t
 > Het inladen van de data via CSV is wel de mooiste oplossing, echter heb ik het nu met JSON gedaan. Ook heb ik niet alle data ingeladen maar daar kwam ik achteraf pas achter.
 10. Niet verder kunnen als de waardes niet ingevoerd zijn
 > Je kunt nu verder klikken als invoervelden niet ingevuld zijn.
+
 > Ook is het handig als je de velden hieronder allemaal in hebt gevuld dat de knop een oranje achtergrond krijgt en een witte kleur voor de letters.
 ![invoervelden](https://i.gyazo.com/6242c6acd2b6ccbcadc50b2bc193ade8.png)
 
